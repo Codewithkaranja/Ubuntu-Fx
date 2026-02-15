@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UbuntuFX – About Us</title>
+
+  <!-- Jost -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ===== RESET & TOKENS (match learn premium) ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root{
+      --deep-navy:#0A1F2F;
+      --emerald:#00C853;
+      --gold:#F9A825;
+      --slate-blue:#1E3A5F;
+      --soft-gray:#F4F6F8;
+      --black:#000;
+      --white:#fff;
+
+      --text: rgba(244,246,248,.92);
+      --muted: rgba(244,246,248,.72);
+      --muted2: rgba(244,246,248,.58);
+      --border: rgba(255,255,255,.10);
+      --border2: rgba(255,255,255,.16);
+
+      --container: 1280px;
+      --radius: 18px;
+      --radius2: 22px;
+      --pill: 999px;
+
+      --shadow: 0 18px 50px rgba(0,0,0,.40);
+      --shadow2: 0 12px 34px rgba(0,0,0,.35);
+
+      --ease: cubic-bezier(.2,.8,.2,1);
+      --font: "Jost", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+      --sx: 8px; --sm: 16px; --md: 24px; --lg: 32px; --xl: 48px; --xxl: 64px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body{
+      font-family: var(--font);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(0,200,83,.14), transparent 55%),
+        radial-gradient(1200px 800px at 85% 15%, rgba(249,168,37,.10), transparent 60%),
+        radial-gradient(1100px 700px at 50% 105%, rgba(30,58,95,.35), transparent 60%),
+        var(--deep-navy);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container{ width: min(var(--container), 92vw); margin: 0 auto; }
+
+    h1,h2,h3,h4{ color: var(--white); letter-spacing: -.3px; }
+    h1{ font-size: clamp(34px, 4.3vw, 54px); line-height: 1.08; }
+    h2{ font-size: clamp(24px, 2.6vw, 36px); line-height: 1.15; }
+    p{ color: var(--muted); }
+
+    /* ===== Buttons ===== */
+    .btn{
+      border:0; cursor:pointer; border-radius: var(--pill);
+      padding: 12px 18px;
+      font-weight: 900;
+      font-size: 14.5px;
+      letter-spacing: .2px;
+      display:inline-flex; align-items:center; gap:10px;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
+      user-select:none; white-space:nowrap;
+    }
+    .btn-primary{
+      color:#062016;
+      background: linear-gradient(135deg, rgba(0,200,83,1), rgba(0,200,83,.78));
+      box-shadow: 0 18px 45px rgba(0,200,83,.22);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 22px 52px rgba(0,200,83,.28); }
+    .btn-ghost{
+      color: var(--text);
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    .btn-ghost:hover{ transform: translateY(-2px); border-color: var(--border2); box-shadow: var(--shadow2); }
+    .btn-gold{
+      color:#2b1b00;
+      background: linear-gradient(135deg, rgba(249,168,37,1), rgba(249,168,37,.78));
+      box-shadow: 0 18px 45px rgba(249,168,37,.18);
+    }
+    .btn-gold:hover{ transform: translateY(-2px); box-shadow: 0 22px 52px rgba(249,168,37,.24); }
+
+    /* ===== Navbar (same premium dropdown behavior) ===== */
+    .nav-wrap{
+      position: sticky; top:0; z-index:999;
+      padding: 14px 0;
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .navbar{ display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand{ display:inline-flex; align-items:center; gap:12px; min-width:200px; }
+    .logo-slot{
+      width:44px; height:44px; border-radius:14px; overflow:hidden;
+      border:1px solid var(--border);
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      display:grid; place-items:center;
+    }
+    .logo-slot img{ width:100%; height:100%; object-fit:cover; }
+    .brand strong{ font-weight: 950; letter-spacing:.2px; }
+    .brand small{ display:block; color: var(--muted2); font-weight: 600; margin-top:-2px; }
+
+    .nav-links{ display:flex; align-items:center; gap:18px; }
+    .nav-links a{
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: .2px;
+      padding: 10px 12px;
+      border-radius: var(--pill);
+      transition: background .2s var(--ease), color .2s var(--ease);
+    }
+    .nav-links a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+    .nav-links a.active{
+      color: var(--white);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(249,168,37,.25);
+    }
+
+    .nav-actions{ display:flex; align-items:center; gap:10px; }
+    .menu-btn{
+      display:none;
+      width:44px; height:44px; border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      cursor:pointer;
+    }
+
+    .mobile-panel{
+      display:none; margin-top:12px;
+      border:1px solid var(--border);
+      background: rgba(10,31,47,.92);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .mobile-panel .inner{ padding:14px; display:grid; gap:10px; }
+    .mobile-panel a{
+      padding:12px; border-radius:14px;
+      color: var(--muted);
+      font-weight: 900;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .mobile-panel a:hover{ color: var(--text); border-color: rgba(255,255,255,.12); }
+    .mobile-open .mobile-panel{ display:block; }
+
+    @media (max-width:980px){
+      .nav-links{ display:none; }
+      .menu-btn{ display:inline-grid; place-items:center; }
+      .brand{ min-width:auto; }
+    }
+
+    /* ===== Helpers ===== */
+    .section{ padding: 84px 0; }
+    .section-sm{ padding: 64px 0; }
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 14px; border-radius: var(--pill);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 14px;
+      backdrop-filter: blur(10px);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px; background: var(--emerald);
+      box-shadow: 0 0 0 6px rgba(0,200,83,.14);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 12px; border-radius: var(--pill);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing:.2px;
+    }
+    .pill i{ color: var(--gold); }
+    .pill strong{ color: var(--white); font-weight: 950; }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: 0 10px 30px rgba(0,0,0,.28);
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:before{
+      content:""; position:absolute; inset:-1px;
+      background:
+        radial-gradient(360px 170px at 10% 0%, rgba(0,200,83,.10), transparent 62%),
+        radial-gradient(360px 170px at 90% 0%, rgba(249,168,37,.08), transparent 62%);
+      opacity:.75; pointer-events:none;
+    }
+    .card > *{ position:relative; z-index:1; }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    @media (max-width:980px){
+      .grid-2, .grid-3{ grid-template-columns: 1fr; }
+    }
+
+    /* ===== About hero ===== */
+    .hero{
+      padding: 64px 0 12px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 16px;
+      align-items: start;
+    }
+    @media (max-width:980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+    .stat-row{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width:720px){
+      .stat-row{ grid-template-columns: 1fr; }
+    }
+    .stat{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      padding: 14px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.28);
+    }
+    .stat .num{ font-size: 22px; font-weight: 950; color: rgba(255,255,255,.92); letter-spacing:-.2px; }
+    .stat .lbl{ color: rgba(244,246,248,.62); font-weight: 800; margin-top: 4px; }
+
+    /* ===== Values ===== */
+    .value{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(145deg, rgba(30,58,95,.70), rgba(19,42,64,.75));
+      box-shadow: 0 12px 34px rgba(0,0,0,.32);
+      padding: 16px;
+      position: relative;
+      overflow:hidden;
+      min-height: 200px;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+    }
+    .value:hover{
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 22px 55px rgba(0,0,0,.45), 0 0 0 1px rgba(0,200,83,.14);
+    }
+    .value .ic{
+      width:46px; height:46px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      display:grid; place-items:center;
+      color: var(--gold);
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      margin-bottom: 12px;
+    }
+    .value h3{ font-size: 18px; }
+    .value p{ margin-top: 8px; }
+
+    /* ===== Team / Founder ===== */
+    .profile{
+      display:grid;
+      grid-template-columns: 220px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    @media (max-width:720px){
+      .profile{ grid-template-columns: 1fr; }
+    }
+    .avatar{
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(260px 180px at 20% 15%, rgba(0,200,83,.18), transparent 65%),
+        radial-gradient(260px 180px at 80% 10%, rgba(249,168,37,.14), transparent 65%),
+        rgba(255,255,255,.05);
+      min-height: 220px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.40);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+    .avatar i{
+      font-size: 58px;
+      color: rgba(249,168,37,.75);
+    }
+    .quote{
+      border-left: 4px solid rgba(249,168,37,.85);
+      padding-left: 14px;
+      color: rgba(244,246,248,.78);
+      font-style: italic;
+      margin-top: 12px;
+    }
+
+    /* ===== CTA strip ===== */
+    .cta-strip{
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(520px 240px at 10% 10%, rgba(0,200,83,.16), transparent 60%),
+        radial-gradient(520px 240px at 90% 0%, rgba(249,168,37,.12), transparent 62%),
+        rgba(0,0,0,.18);
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      padding: 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      backdrop-filter: blur(12px);
+    }
+    .cta-strip h3{ font-size: 18px; }
+    .cta-strip p{ margin-top: 4px; max-width: 80ch; }
+
+    /* ===== Footer (match premium) ===== */
+    footer{
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding: 54px 0 22px;
+      margin-top: 30px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .9fr .9fr;
+      gap: 18px;
+      align-items:start;
+    }
+    @media (max-width:980px){ .footer-grid{ grid-template-columns: 1fr; } }
+    .footer-brand{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .footer-logo{
+      width:46px; height:46px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      overflow:hidden; display:grid; place-items:center;
+    }
+    .footer-logo img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .footer h4{
+      margin:0 0 12px;
+      font-size: 14px;
+      letter-spacing: .28px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.82);
+    }
+    .footer p,.footer a,.footer li{
+      color: rgba(255,255,255,.70);
+      font-size: 14.5px;
+      line-height: 1.75;
+    }
+    .footer ul{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+    .footer a:hover{ color: rgba(255,255,255,.92); }
+    .contact-line{ display:flex; gap:10px; align-items:flex-start; margin: 10px 0; }
+    .contact-line i{ margin-top:3px; color: var(--gold); width:18px; }
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top: 22px;
+      padding-top: 16px;
+      display:flex; flex-wrap:wrap; gap:10px;
+      justify-content:space-between; align-items:center;
+    }
+    .footer-bottom small{ color: rgba(255,255,255,.55); line-height: 1.6; }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <div class="nav-wrap">
+    <div class="container">
+      <div class="navbar">
+        <a class="brand" href="index.html" aria-label="UbuntuFX Home">
+          <div class="logo-slot" title="UbuntuFX Logo">
+            <img src="assets/logo.png" alt="UbuntuFX Logo"
+              onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-chart-line&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
+          </div>
+          <div>
+            <strong>UbuntuFX</strong>
+            <small>Learn • Practice • Execute</small>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary Navigation">
+          <a href="index.html">Home</a>
+          <a href="learn.html">Learn</a>
+          <a href="market-analysis.html">Market Analysis</a>
+          <a href="strategies.html">Strategies</a>
+          <a href="calendar.html">Calendar</a>
+          <a href="livechart.html">Live Charts</a>
+          <a class="active" href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-gold" href="learn.html"><i class="fa-solid fa-graduation-cap"></i> Start Learning</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile dropdown -->
+      <div class="mobile-panel" id="mobilePanel" aria-label="Mobile Navigation">
+        <div class="inner">
+          <a href="index.html">Home</a>
+          <a href="learn.html">Learn</a>
+          <a href="market-analysis.html">Market Analysis</a>
+          <a href="strategies.html">Strategies</a>
+          <a href="calendar.html">Calendar</a>
+          <a href="livechart.html">Live Charts</a>
+          <a href="about.html" style="border-color:rgba(249,168,37,.25); color: rgba(244,246,248,.95);">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="learn.html" style="border-color:rgba(0,200,83,.25); color: rgba(244,246,248,.95);">
+            <i class="fa-solid fa-graduation-cap"></i> Start Learning
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Built for traders who want structure—not noise</span>
+          <h1 style="margin-top:10px;">
+            <i class="fa-solid fa-users" style="color:var(--gold); margin-right:10px;"></i>
+            About UbuntuFX
+          </h1>
+          <p style="max-width: 88ch; font-size: 1.05rem; margin-top: 10px;">
+            UbuntuFX is a premium learning and market intelligence platform designed to help traders build
+            a <b style="color:rgba(255,255,255,.92)">repeatable process</b>: risk control, market structure awareness,
+            and execution discipline—without the hype culture.
+          </p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
+            <span class="pill"><i class="fa-solid fa-shield-halved"></i> Focus: <strong>Risk-first</strong></span>
+            <span class="pill"><i class="fa-solid fa-compass"></i> Approach: <strong>Frameworks</strong></span>
+            <span class="pill"><i class="fa-solid fa-clipboard-check"></i> Outcome: <strong>Consistency</strong></span>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
+            <a class="btn btn-primary" href="learn.html"><i class="fa-solid fa-play"></i> Start Curriculum</a>
+            <a class="btn btn-ghost" href="strategies.html"><i class="fa-solid fa-layer-group"></i> Strategy Library</a>
+            <a class="btn btn-ghost" href="market-analysis.html"><i class="fa-solid fa-newspaper"></i> Market Analysis</a>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat">
+              <div class="num">Risk-first</div>
+              <div class="lbl">Capital preservation framework</div>
+            </div>
+            <div class="stat">
+              <div class="num">Structure</div>
+              <div class="lbl">Liquidity & context awareness</div>
+            </div>
+            <div class="stat">
+              <div class="num">Discipline</div>
+              <div class="lbl">Execution + journaling habits</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 style="font-size:16px;">
+            <i class="fa-solid fa-bullseye" style="color:var(--gold); margin-right:10px;"></i>
+            Our Mission
+          </h3>
+          <p style="margin-top:8px;">
+            To bridge the gap between retail and institutional thinking by teaching
+            <b style="color:rgba(255,255,255,.92)">clear frameworks</b>—not signals, not hype.
+          </p>
+
+          <div style="height:1px;background:rgba(255,255,255,.10);margin:12px 0;"></div>
+
+          <div style="display:grid; gap:10px;">
+            <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.18);">
+              <i class="fa-solid fa-check" style="color:var(--emerald); margin-top:3px;"></i>
+              <div>
+                <div style="font-weight:950;color:rgba(255,255,255,.92)">Education-first</div>
+                <div style="color:rgba(244,246,248,.62);font-weight:800;font-size:12.5px;">Basics to advanced, step-by-step.</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.18);">
+              <i class="fa-solid fa-check" style="color:var(--emerald); margin-top:3px;"></i>
+              <div>
+                <div style="font-weight:950;color:rgba(255,255,255,.92)">Analysis, not signals</div>
+                <div style="color:rgba(244,246,248,.62);font-weight:800;font-size:12.5px;">Understand the “why” behind moves.</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.18);">
+              <i class="fa-solid fa-check" style="color:var(--emerald); margin-top:3px;"></i>
+              <div>
+                <div style="font-weight:950;color:rgba(255,255,255,.92)">Risk & psychology</div>
+                <div style="color:rgba(244,246,248,.62);font-weight:800;font-size:12.5px;">Longevity beats short-term wins.</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <!-- VALUES -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="card" style="margin-bottom:16px;">
+        <h2 style="font-size: 20px; margin-bottom: 6px;">
+          <i class="fa-solid fa-gem" style="color:var(--gold); margin-right:10px;"></i>
+          Our Values
+        </h2>
+        <p style="max-width: 90ch;">
+          UbuntuFX is built around a professional philosophy: protect capital, think in probabilities, and execute with discipline.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="value">
+          <div class="ic"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Risk-First</h3>
+          <p>
+            We start with risk: position sizing, invalidation, and drawdown rules—because survival is the first edge.
+          </p>
+        </div>
+
+        <div class="value">
+          <div class="ic"><i class="fa-solid fa-water"></i></div>
+          <h3>Liquidity Awareness</h3>
+          <p>
+            Markets hunt liquidity. We teach structure and context so you stop reacting and start anticipating.
+          </p>
+        </div>
+
+        <div class="value">
+          <div class="ic"><i class="fa-solid fa-bullseye"></i></div>
+          <h3>Process Over Outcomes</h3>
+          <p>
+            One great trade means nothing. A repeatable process compounds—win or lose.
+          </p>
+        </div>
+
+        <div class="value">
+          <div class="ic"><i class="fa-solid fa-brain"></i></div>
+          <h3>Psychology & Discipline</h3>
+          <p>
+            We focus on decision hygiene: journaling, checklists, and execution routines that reduce emotional trading.
+          </p>
+        </div>
+
+        <div class="value">
+          <div class="ic"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Clarity & Simplicity</h3>
+          <p>
+            No indicator overload. We prioritize clean frameworks that work across market conditions.
+          </p>
+        </div>
+
+        <div class="value">
+          <div class="ic"><i class="fa-solid fa-users"></i></div>
+          <h3>Community Accountability</h3>
+          <p>
+            Growth is faster with structure + feedback. We build a community of learners who respect process.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="section-sm" style="padding-top: 0;">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card">
+          <h2 style="font-size: 20px;">
+            <i class="fa-solid fa-sitemap" style="color:var(--gold); margin-right:10px;"></i>
+            How We Work
+          </h2>
+          <p style="margin-top:8px; max-width: 92ch;">
+            Our ecosystem is designed to move you from knowledge to execution:
+            learn the concept, see it in market context, and apply it through a strategy framework.
+          </p>
+
+          <div style="height:1px;background:rgba(255,255,255,.10);margin:12px 0;"></div>
+
+          <div style="display:grid; gap:10px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.18);">
+              <i class="fa-solid fa-graduation-cap" style="color:var(--emerald);margin-top:3px;"></i>
+              <div>
+                <div style="font-weight:950;color:rgba(255,255,255,.92)">Learn</div>
+                <div style="color:rgba(244,246,248,.62);font-weight:800;font-size:12.5px;">From basics to advanced structure and macro.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.18);">
+              <i class="fa-solid fa-newspaper" style="color:var(--emerald);margin-top:3px;"></i>
+              <div>
+                <div style="font-weight:950;color:rgba(255,255,255,.92)">Analyze</div>
+                <div style="color:rgba(244,246,248,.62);font-weight:800;font-size:12.5px;">Context-first breakdowns—technical + narrative.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.18);">
+              <i class="fa-solid fa-layer-group" style="color:var(--emerald);margin-top:3px;"></i>
+              <div>
+                <div style="font-weight:950;color:rgba(255,255,255,.92)">Execute</div>
+                <div style="color:rgba(244,246,248,.62);font-weight:800;font-size:12.5px;">Apply frameworks with risk rules and checklists.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Founder / Team -->
+        <div class="card">
+          <h2 style="font-size: 20px;">
+            <i class="fa-solid fa-user-tie" style="color:var(--gold); margin-right:10px;"></i>
+            Founder’s Note
+          </h2>
+
+          <div class="profile" style="margin-top:10px;">
+            <div class="avatar" aria-label="Founder image placeholder">
+              <!-- Replace with <img src="assets/founder.jpg" ...> when ready -->
+              <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div>
+              <p style="margin:0;">
+                <b style="color:rgba(255,255,255,.92)">[Replace this with your story]</b> —
+                the journey from confusion, overtrading, and “signal dependence” to building a rules-based process.
+                UbuntuFX exists to give traders what most never get: <b style="color:rgba(255,255,255,.92)">structure, context, and risk discipline</b>.
+              </p>
+
+              <div class="quote">
+                “Consistency comes from decision quality—not prediction. If you control risk and follow a process, outcomes improve over time.”
+              </div>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+                <a class="btn btn-primary" href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+                <a class="btn btn-ghost" href="learn.html"><i class="fa-solid fa-graduation-cap"></i> Curriculum</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA strip -->
+      <div class="cta-strip" style="margin-top:16px;">
+        <div>
+          <h3><i class="fa-solid fa-sparkles" style="color:var(--gold); margin-right:10px;"></i> Ready to trade with structure?</h3>
+          <p>
+            Start with the Beginner Track, then move into market analysis and strategy execution.
+            Build habits. Track performance. Improve systematically.
+          </p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn-gold" href="learn.html"><i class="fa-solid fa-play"></i> Start Learning</a>
+          <a class="btn btn-ghost" href="strategies.html"><i class="fa-solid fa-layer-group"></i> View Strategies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CARD -->
+  <section class="section-sm" style="padding-top: 0;">
+    <div class="container">
+      <div class="card" style="text-align:center;">
+        <h2 style="font-size: 20px;">
+          <i class="fa-solid fa-location-dot" style="color:var(--gold); margin-right:10px;"></i>
+          Visit or Reach Us
+        </h2>
+        <p style="margin-top:8px;">
+          Keep it professional—reach out for partnerships, education inquiries, or support.
+        </p>
+
+        <div style="display:grid; gap:10px; max-width: 720px; margin: 12px auto 0;">
+          <div style="display:flex; gap:10px; justify-content:center; align-items:flex-start; flex-wrap:wrap;">
+            <span class="pill"><i class="fa-solid fa-map-pin"></i> <strong>ABC Place, Westlands</strong> Nairobi</span>
+            <span class="pill"><i class="fa-solid fa-phone"></i> <strong>0717 770 557</strong></span>
+            <span class="pill"><i class="fa-solid fa-envelope"></i> <strong>info@ubuntufx.com</strong></span>
+          </div>
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="contact.html"><i class="fa-solid fa-paper-plane"></i> Go to Contact</a>
+          <a class="btn btn-ghost" href="calendar.html"><i class="fa-solid fa-calendar-days"></i> Economic Calendar</a>
+          <a class="btn btn-ghost" href="livechart.html"><i class="fa-solid fa-chart-line"></i> Live Charts</a>
+        </div>
+
+        <p style="margin-top:10px; color:rgba(244,246,248,.55); font-size: 13px; font-weight: 800;">
+          Risk Disclaimer: Trading foreign exchange on margin carries risk. UbuntuFX provides educational content only.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-logo" title="UbuntuFX Logo">
+              <img src="assets/logo.png" alt="UbuntuFX Logo"
+                onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-chart-line&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
+            </div>
+            <div>
+              <div style="font-weight:950; letter-spacing:.2px; color:rgba(255,255,255,.92);">UbuntuFX</div>
+              <div style="color:rgba(255,255,255,.60); font-size:14px; margin-top:2px;">Structure for serious traders</div>
+            </div>
+          </div>
+
+          <p>
+            UbuntuFX is a premium Forex education and market intelligence platform built to help traders develop structure,
+            discipline, and repeatable decision-making.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="learn.html">Learn Forex</a></li>
+            <li><a href="market-analysis.html">Market Analysis</a></li>
+            <li><a href="strategies.html">Trading Strategies</a></li>
+            <li><a href="calendar.html">Economic Calendar</a></li>
+            <li><a href="livechart.html">Live Charts</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <div class="contact-line">
+            <i class="fa-solid fa-envelope"></i>
+            <div><a href="mailto:info@ubuntufx.com">info@ubuntufx.com</a></div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <a href="tel:+254717770557">0717770557</a><br />
+              <span style="color:rgba(255,255,255,.55); font-size:13px;">(+254 717 770 557)</span>
+            </div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>ABC Place, Westlands<br /><span style="color:rgba(255,255,255,.55); font-size:13px;">Nairobi, Kenya</span></div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-circle-info"></i>
+            <div style="color:rgba(255,255,255,.65); font-size:13.5px;">
+              Risk Disclaimer: Trading involves risk. UbuntuFX provides educational content only.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <small>© <span id="year"></span> UbuntuFX. All rights reserved.</small>
+        <small style="color:rgba(255,255,255,.55);">
+          Designed & developed by
+          <a href="https://sarahadevelopers.co.ke" target="_blank" rel="noopener" style="color:rgba(0,200,83,.95); font-weight:950;">
+            Saraha Developers
+          </a>
+        </small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // mobile nav (dropdown)
+    const menuBtn = document.getElementById("menuBtn");
+    const mobilePanel = document.getElementById("mobilePanel");
+
+    function setMenu(open){
+      document.body.classList.toggle("mobile-open", open);
+      menuBtn.setAttribute("aria-expanded", String(open));
+      menuBtn.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    }
+
+    menuBtn.addEventListener("click", () => setMenu(!document.body.classList.contains("mobile-open")));
+
+    mobilePanel.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") setMenu(false);
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!document.body.classList.contains("mobile-open")) return;
+      if (!document.querySelector(".nav-wrap").contains(e.target)) setMenu(false);
+    });
+  </script>
+</body>
+</html>

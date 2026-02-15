@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UbuntuFX – Economic Calendar</title>
+
+  <!-- Jost -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="calendar.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="nav-wrap">
+    <div class="container">
+      <div class="navbar">
+        <a class="brand" href="index.html" aria-label="UbuntuFX Home">
+          <div class="logo-slot" title="UbuntuFX Logo">
+            <img src="assets/logo.png" alt="UbuntuFX Logo"
+              onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-chart-line&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
+          </div>
+          <div>
+            <strong>UbuntuFX</strong>
+            <small>Structure • Discipline • Edge</small>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary Navigation">
+          <a href="index.html">Home</a>
+          <a href="learn.html">Learn</a>
+          <a href="market-analysis.html">Market Analysis</a>
+          <a href="strategies.html">Strategies</a>
+          <a class="active" href="calendar.html">Calendar</a>
+          <a href="livechart.html">Live Charts</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-primary" href="#subscribe"><i class="fa-solid fa-envelope"></i> Join Newsletter</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile dropdown -->
+      <div class="mobile-panel" id="mobilePanel" aria-label="Mobile Navigation">
+        <div class="inner">
+          <a href="index.html">Home</a>
+          <a href="learn.html">Learn</a>
+          <a href="market-analysis.html">Market Analysis</a>
+          <a href="strategies.html">Strategies</a>
+          <a href="calendar.html" style="border-color:rgba(249,168,37,.25); color: rgba(244,246,248,.95);">Calendar</a>
+          <a href="livechart.html">Live Charts</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="#subscribe" style="border-color:rgba(0,200,83,.25); color: rgba(244,246,248,.95);">
+            <i class="fa-solid fa-envelope"></i> Join Newsletter
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Plan volatility. Protect your risk.</span>
+          <h1 style="margin-top:10px;">
+            <i class="fa-solid fa-calendar-days" style="color:var(--gold); margin-right:10px;"></i>
+            Economic Calendar
+          </h1>
+          <p style="max-width: 70ch; font-size: 1.05rem; margin-top: 10px;">
+            Track high-impact releases, central bank events, and market-moving headlines. Use the filters to focus on your pairs and
+            build a disciplined plan before volatility hits.
+          </p>
+
+          <div class="meta-row">
+            <span class="pill"><i class="fa-solid fa-clock"></i> Timezone: <strong>UTC+3</strong> (Nairobi)</span>
+            <span class="pill"><i class="fa-solid fa-shield-halved"></i> Rule: <strong>Reduce risk</strong> near High impact</span>
+            <span class="pill"><i class="fa-solid fa-bolt"></i> Watch: <strong>USD</strong> & <strong>Rates</strong> events</span>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn btn-ghost" id="btnNow"><i class="fa-solid fa-location-crosshairs"></i> Jump to Next Event</button>
+            <button class="btn btn-ghost" id="btnReset"><i class="fa-solid fa-rotate-right"></i> Reset Filters</button>
+            <button class="btn btn-ghost" id="btnExport"><i class="fa-solid fa-file-arrow-down"></i> Export (CSV)</button>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="How to use this calendar">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div class="icon-badge" style="margin:0;"><i class="fa-solid fa-compass"></i></div>
+              <div>
+                <h3 style="margin:0;font-size:18px;">How to use it (UbuntuFX method)</h3>
+                <p style="margin-top:6px;color:var(--muted);font-size:14.8px;">
+                  We use events to shape bias, not to “gamble the spike”.
+                </p>
+              </div>
+            </div>
+            <span class="status upcoming"><i class="fa-solid fa-signal"></i> Pro Mode</span>
+          </div>
+
+          <div style="margin-top:14px; display:grid; gap: 10px;">
+            <div class="mini" style="background:rgba(0,0,0,.22); border-color:rgba(255,255,255,.08);">
+              <div class="k">Before High-impact</div>
+              <div class="v">Reduce size <span>• widen invalidation • avoid new positions</span></div>
+            </div>
+            <div class="mini" style="background:rgba(0,0,0,.22); border-color:rgba(255,255,255,.08);">
+              <div class="k">During release</div>
+              <div class="v">Wait for structure <span>• avoid first candle • confirm direction</span></div>
+            </div>
+            <div class="mini" style="background:rgba(0,0,0,.22); border-color:rgba(255,255,255,.08);">
+              <div class="k">After release</div>
+              <div class="v">Trade the reaction <span>• align with bias • protect risk</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- FILTERS + TABLE -->
+  <section class="section-sm" style="padding-top: 10px;">
+    <div class="container">
+
+      <!-- TOOLBAR -->
+      <div class="toolbar">
+        <div class="filters">
+          <div class="group" aria-label="Date Range Filters">
+            <span class="filter-pill active" data-range="today"><i class="fa-regular fa-calendar"></i> Today</span>
+            <span class="filter-pill" data-range="tomorrow">Tomorrow</span>
+            <span class="filter-pill" data-range="week">This Week</span>
+            <span class="filter-pill" data-range="nextweek">Next Week</span>
+          </div>
+
+          <div class="group" aria-label="Currency Filters">
+            <span class="filter-pill active" data-ccy="ALL"><i class="fa-solid fa-globe"></i> All</span>
+            <span class="filter-pill" data-ccy="USD">USD</span>
+            <span class="filter-pill" data-ccy="EUR">EUR</span>
+            <span class="filter-pill" data-ccy="GBP">GBP</span>
+            <span class="filter-pill" data-ccy="JPY">JPY</span>
+            <span class="filter-pill" data-ccy="CAD">CAD</span>
+            <span class="filter-pill" data-ccy="AUD">AUD</span>
+            <span class="filter-pill" data-ccy="NZD">NZD</span>
+            <span class="filter-pill" data-ccy="CHF">CHF</span>
+          </div>
+
+          <div class="group" aria-label="Impact Filters">
+            <span class="filter-pill active" data-impact="HIGH"><i class="fa-solid fa-triangle-exclamation"></i> High</span>
+            <span class="filter-pill active" data-impact="MED">Medium</span>
+            <span class="filter-pill" data-impact="LOW">Low</span>
+          </div>
+        </div>
+
+        <div class="search" aria-label="Search events">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="searchInput" type="text" placeholder="Search: CPI, NFP, Powell, GDP..." />
+        </div>
+      </div>
+
+      <!-- CALENDAR CARD -->
+      <div class="calendar-card">
+        <div class="calendar-head">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="badge"><i class="fa-solid fa-filter"></i> Showing: <span id="resultsCount">0</span> events</span>
+            <span class="badge"><i class="fa-solid fa-clock"></i> Local time: <span class="num" id="tzLabel">UTC+3</span></span>
+          </div>
+
+          <div class="legend">
+            <span class="chip"><span class="impact high">High</span></span>
+            <span class="chip"><span class="impact med">Medium</span></span>
+            <span class="chip"><span class="impact low">Low</span></span>
+            <span class="chip"><span class="status upcoming"><i class="fa-regular fa-hourglass-half"></i> Upcoming</span></span>
+            <span class="chip"><span class="status done"><i class="fa-regular fa-circle-check"></i> Released</span></span>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time (UTC+3)</th>
+                <th>Currency</th>
+                <th>Event</th>
+                <th>Actual</th>
+                <th>Forecast</th>
+                <th>Previous</th>
+                <th>Impact</th>
+                <th>Status</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+
+            <tbody id="calendarBody">
+              <!-- Rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="muted-note">
+        <i class="fa-regular fa-clock"></i>
+        <span>All times displayed in Nairobi time (UTC+3). Values are demo data; connect live feed later.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INSIGHTS (more detailed content, premium) -->
+  <section class="section">
+    <div class="container">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom: 18px; flex-wrap:wrap;">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> UbuntuFX calendar insights</span>
+          <h2 style="margin-top:10px;">Trade news with structure, not emotion.</h2>
+        </div>
+        <p style="max-width: 74ch;">
+          Most retail traders lose around news because they chase the first spike. We focus on confirmation, structure, and risk control.
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon-badge"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Impact ≠ direction</h3>
+          <p>
+            High-impact events increase volatility, not certainty. Wait for price to show direction with structure before executing.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon-badge"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Risk rules around news</h3>
+          <p>
+            If you trade at all during news: reduce size, define invalidation, and avoid tight stops during the first minutes.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon-badge"><i class="fa-solid fa-compass"></i></div>
+          <h3>Bias + scenario planning</h3>
+          <p>
+            Use forecast vs previous to create scenarios. Then combine with session timing (London/NY) for higher-quality execution.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE CTA -->
+  <section class="section-sm" id="subscribe">
+    <div class="container">
+      <div class="hero-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <div>
+            <span class="eyebrow"><span class="dot"></span> Weekly (5–7 minutes)</span>
+            <h2 style="margin-top:10px;">Get the Weekly Market Breakdown</h2>
+            <p style="margin-top:10px;max-width: 78ch;">
+              Macro context, key releases, watchlist levels, and a risk-first checklist. No spam. Unsubscribe anytime.
+            </p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a class="btn btn-primary" href="contact.html"><i class="fa-solid fa-envelope"></i> Subscribe via Contact</a>
+            <a class="btn btn-ghost" href="market-analysis.html"><i class="fa-solid fa-chart-column"></i> View Analysis</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-logo" title="UbuntuFX Logo">
+              <img src="assets/logo.png" alt="UbuntuFX Logo"
+                onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-chart-line&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
+            </div>
+            <div>
+              <div style="font-weight:900; letter-spacing:.2px; color:rgba(255,255,255,.92);">UbuntuFX</div>
+              <div style="color:rgba(255,255,255,.60); font-size:14px; margin-top:2px;">Structure • Discipline • Edge</div>
+            </div>
+          </div>
+
+          <p>
+            UbuntuFX is a premium Forex education and market intelligence platform built to help traders develop structure, discipline,
+            and repeatable decision-making.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="learn.html">Learn Forex</a></li>
+            <li><a href="market-analysis.html">Market Analysis</a></li>
+            <li><a href="strategies.html">Trading Strategies</a></li>
+            <li><a href="calendar.html">Economic Calendar</a></li>
+            <li><a href="livechart.html">Live Charts</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <div class="contact-line">
+            <i class="fa-solid fa-envelope"></i>
+            <div><a href="mailto:info@ubuntufx.com">info@ubuntufx.com</a></div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <a href="tel:+254717770557">0717770557</a><br />
+              <span style="color:rgba(255,255,255,.55); font-size:13px;">(+254 717 770 557)</span>
+            </div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>ABC Place, Westlands<br /><span style="color:rgba(255,255,255,.55); font-size:13px;">Nairobi, Kenya</span></div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-circle-info"></i>
+            <div style="color:rgba(255,255,255,.65); font-size:13.5px;">
+              Risk Disclaimer: Forex trading involves risk. UbuntuFX provides educational content only. No guaranteed outcomes.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <small>© <span id="year"></span> UbuntuFX. All rights reserved.</small>
+        <small class="credit">
+          Designed & Developed by <a href="https://sarahadevelopers.co.ke" target="_blank" rel="noopener">Saraha Developers</a>
+        </small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="calendar.js"></script>
+</body>
+</html>

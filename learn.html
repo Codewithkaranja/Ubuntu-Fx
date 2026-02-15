@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UbuntuFX – Learn Forex</title>
+
+  <!-- Jost -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ===== RESET & TOKENS ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root{
+      --deep-navy:#0A1F2F;
+      --emerald:#00C853;
+      --gold:#F9A825;
+      --slate-blue:#1E3A5F;
+      --soft-gray:#F4F6F8;
+      --black:#000;
+      --white:#fff;
+
+      --text: rgba(244,246,248,.92);
+      --muted: rgba(244,246,248,.72);
+      --muted2: rgba(244,246,248,.58);
+      --border: rgba(255,255,255,.10);
+      --border2: rgba(255,255,255,.16);
+
+      --container: 1280px;
+      --radius: 18px;
+      --radius2: 22px;
+      --pill: 999px;
+
+      --shadow: 0 18px 50px rgba(0,0,0,.40);
+      --shadow2: 0 12px 34px rgba(0,0,0,.35);
+
+      --ease: cubic-bezier(.2,.8,.2,1);
+      --font: "Jost", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+      --sx: 8px; --sm: 16px; --md: 24px; --lg: 32px; --xl: 48px; --xxl: 64px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body{
+      font-family: var(--font);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(0,200,83,.14), transparent 55%),
+        radial-gradient(1200px 800px at 85% 15%, rgba(249,168,37,.10), transparent 60%),
+        radial-gradient(1100px 700px at 50% 105%, rgba(30,58,95,.35), transparent 60%),
+        var(--deep-navy);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container{ width: min(var(--container), 92vw); margin: 0 auto; }
+    h1,h2,h3,h4{ color: var(--white); letter-spacing: -.3px; }
+    h1{ font-size: clamp(34px, 4.3vw, 54px); line-height: 1.08; }
+    h2{ font-size: clamp(24px, 2.6vw, 36px); line-height: 1.15; }
+    p{ color: var(--muted); }
+
+    /* ===== Buttons ===== */
+    .btn{
+      border:0; cursor:pointer; border-radius: var(--pill);
+      padding: 12px 18px;
+      font-weight: 900;
+      font-size: 14.5px;
+      letter-spacing: .2px;
+      display:inline-flex; align-items:center; gap:10px;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
+      user-select:none; white-space:nowrap;
+    }
+    .btn-primary{
+      color:#062016;
+      background: linear-gradient(135deg, rgba(0,200,83,1), rgba(0,200,83,.78));
+      box-shadow: 0 18px 45px rgba(0,200,83,.22);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 22px 52px rgba(0,200,83,.28); }
+    .btn-ghost{
+      color: var(--text);
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    .btn-ghost:hover{ transform: translateY(-2px); border-color: var(--border2); box-shadow: var(--shadow2); }
+    .btn-gold{
+      color:#2b1b00;
+      background: linear-gradient(135deg, rgba(249,168,37,1), rgba(249,168,37,.78));
+      box-shadow: 0 18px 45px rgba(249,168,37,.18);
+    }
+    .btn-gold:hover{ transform: translateY(-2px); box-shadow: 0 22px 52px rgba(249,168,37,.24); }
+
+    /* ===== Navbar (premium + responsive dropdown) ===== */
+    .nav-wrap{
+      position: sticky; top:0; z-index:999;
+      padding: 14px 0;
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .navbar{ display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand{ display:inline-flex; align-items:center; gap:12px; min-width:200px; }
+    .logo-slot{
+      width:44px; height:44px; border-radius:14px; overflow:hidden;
+      border:1px solid var(--border);
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      display:grid; place-items:center;
+    }
+    .logo-slot img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .brand strong{ font-weight: 950; letter-spacing:.2px; }
+    .brand small{ display:block; color: var(--muted2); font-weight: 600; margin-top:-2px; }
+
+    .nav-links{ display:flex; align-items:center; gap:18px; }
+    .nav-links a{
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: .2px;
+      padding: 10px 12px;
+      border-radius: var(--pill);
+      transition: background .2s var(--ease), color .2s var(--ease);
+    }
+    .nav-links a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+    .nav-links a.active{
+      color: var(--white);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(249,168,37,.25);
+    }
+
+    .nav-actions{ display:flex; align-items:center; gap:10px; }
+    .menu-btn{
+      display:none;
+      width:44px; height:44px; border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      cursor:pointer;
+    }
+
+    .mobile-panel{
+      display:none; margin-top:12px;
+      border:1px solid var(--border);
+      background: rgba(10,31,47,.92);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .mobile-panel .inner{ padding:14px; display:grid; gap:10px; }
+    .mobile-panel a{
+      padding:12px; border-radius:14px;
+      color: var(--muted);
+      font-weight: 900;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .mobile-panel a:hover{ color: var(--text); border-color: rgba(255,255,255,.12); }
+    .mobile-open .mobile-panel{ display:block; }
+
+    @media (max-width:980px){
+      .nav-links{ display:none; }
+      .menu-btn{ display:inline-grid; place-items:center; }
+      .brand{ min-width:auto; }
+    }
+
+    /* ===== Section helpers ===== */
+    .section{ padding: 84px 0; }
+    .section-sm{ padding: 64px 0; }
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 14px; border-radius: var(--pill);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 14px;
+      backdrop-filter: blur(10px);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px; background: var(--emerald);
+      box-shadow: 0 0 0 6px rgba(0,200,83,.14);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 12px; border-radius: var(--pill);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing:.2px;
+    }
+    .pill i{ color: var(--gold); }
+    .pill strong{ color: var(--white); font-weight: 950; }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: 0 10px 30px rgba(0,0,0,.28);
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:before{
+      content:""; position:absolute; inset:-1px;
+      background:
+        radial-gradient(360px 170px at 10% 0%, rgba(0,200,83,.10), transparent 62%),
+        radial-gradient(360px 170px at 90% 0%, rgba(249,168,37,.08), transparent 62%);
+      opacity:.75; pointer-events:none;
+    }
+    .card > *{ position:relative; z-index:1; }
+
+    /* ===== Curriculum layout ===== */
+    .top-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      align-items: start;
+    }
+    @media (max-width:980px){ .top-grid{ grid-template-columns: 1fr; } }
+
+    .track{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(145deg, rgba(30,58,95,.70), rgba(19,42,64,.75));
+      box-shadow: 0 12px 34px rgba(0,0,0,.32);
+      padding: 16px;
+      position: relative;
+      overflow:hidden;
+    }
+    .track:hover{
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 22px 55px rgba(0,0,0,.45), 0 0 0 1px rgba(249,168,37,.14);
+    }
+    .track-head{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .track-icon{
+      width:44px; height:44px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      display:grid; place-items:center;
+      color: var(--gold);
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      flex: 0 0 auto;
+    }
+    .track-title{ font-size: 18px; font-weight: 950; letter-spacing: -.2px; line-height: 1.25; }
+    .tiny{ color: var(--muted2); font-weight: 800; font-size: 12.5px; }
+
+    .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      color: rgba(244,246,248,.78);
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing:.2px;
+    }
+    .tag i{ color: rgba(249,168,37,.95); }
+
+    .modules{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width:1100px){ .modules{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width:720px){ .modules{ grid-template-columns: 1fr; } }
+
+    .module{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(145deg, rgba(30,58,95,.70), rgba(19,42,64,.75));
+      box-shadow: 0 12px 34px rgba(0,0,0,.32);
+      padding: 16px;
+      position: relative;
+      overflow:hidden;
+      display:flex; flex-direction:column; gap:10px;
+      min-height: 250px;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+    }
+    .module:hover{
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 22px 55px rgba(0,0,0,.45), 0 0 0 1px rgba(0,200,83,.14);
+    }
+    .module-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+    .module h3{ font-size: 18px; line-height: 1.25; }
+    .module .meta{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+    .duration{ color: rgba(244,246,248,.62); font-weight: 800; font-size: 12.5px; display:flex; align-items:center; gap:8px; }
+
+    .lvl{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      font-weight: 950;
+      font-size: 12px;
+      letter-spacing:.2px;
+    }
+    .lvl.beginner{ color: rgba(165,214,167,.95); border-color: rgba(46,125,50,.55); }
+    .lvl.intermediate{ color: rgba(255,224,130,.95); border-color: rgba(178,106,0,.55); }
+    .lvl.advanced{ color: rgba(255,171,145,.95); border-color: rgba(191,54,12,.55); }
+
+    .learn-more{
+      margin-top:auto;
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,200,83,.18);
+      background: rgba(0,200,83,.08);
+      color: rgba(0,200,83,.95);
+      font-weight: 950;
+      transition: transform .2s var(--ease);
+    }
+    .learn-more:hover{ transform: translateY(-2px); }
+
+    /* ===== Filter bar ===== */
+    .filters{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      margin: 14px 0 0;
+    }
+    .filter-row{
+      display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 10px 12px;
+      border-radius: var(--pill);
+    }
+    .filter-pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 14px;
+      border-radius: var(--pill);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      cursor:pointer;
+      transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+      user-select:none;
+    }
+    .filter-pill:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.16); color: var(--text); }
+    .filter-pill.active{
+      background: rgba(30,58,95,.60);
+      border-color: rgba(249,168,37,.35);
+      color: var(--white);
+    }
+    .search{
+      display:flex; align-items:center; gap:10px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 10px 12px;
+      border-radius: var(--pill);
+      min-width: min(360px, 92vw);
+    }
+    .search i{ color: var(--muted2); }
+    .search input{
+      width:100%;
+      border:0; outline:none;
+      background: transparent;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14.5px;
+      font-weight: 800;
+    }
+    .search input::placeholder{ color: rgba(244,246,248,.50); }
+
+    /* ===== Modal (module details) ===== */
+    .modal{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.62);
+      backdrop-filter: blur(10px);
+      display:none;
+      z-index: 9999;
+      padding: 16px;
+    }
+    .modal.show{ display:grid; place-items:center; }
+    .modal-box{
+      width: min(980px, 96vw);
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(10,31,47,.92), rgba(0,0,0,.72));
+      box-shadow: 0 24px 70px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .modal-top{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .modal-top h3{ font-size: 18px; }
+    .x{
+      width:44px; height:44px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      cursor:pointer;
+    }
+    .modal-body{
+      padding: 16px;
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap: 16px;
+    }
+    @media (max-width:980px){ .modal-body{ grid-template-columns: 1fr; } }
+
+    .panel{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .list{ display:grid; gap:10px; margin-top:10px; }
+    .li{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 10px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+    }
+    .li i{ color: var(--emerald); margin-top:3px; }
+    .hr{ height:1px; background: rgba(255,255,255,.10); margin:12px 0; }
+
+    /* ===== Footer ===== */
+    footer{
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding: 54px 0 22px;
+      margin-top: 30px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .9fr .9fr;
+      gap: 18px;
+      align-items:start;
+    }
+    @media (max-width:980px){ .footer-grid{ grid-template-columns: 1fr; } }
+    .footer-brand{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .footer-logo{
+      width:46px; height:46px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      overflow:hidden; display:grid; place-items:center;
+    }
+    .footer-logo img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .footer h4{
+      margin:0 0 12px;
+      font-size: 14px;
+      letter-spacing: .28px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.82);
+    }
+    .footer p,.footer a,.footer li{
+      color: rgba(255,255,255,.70);
+      font-size: 14.5px;
+      line-height: 1.75;
+    }
+    .footer ul{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+    .footer a:hover{ color: rgba(255,255,255,.92); }
+    .contact-line{ display:flex; gap:10px; align-items:flex-start; margin: 10px 0; }
+    .contact-line i{ margin-top:3px; color: var(--gold); width:18px; }
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top: 22px;
+      padding-top: 16px;
+      display:flex; flex-wrap:wrap; gap:10px;
+      justify-content:space-between; align-items:center;
+    }
+    .footer-bottom small{ color: rgba(255,255,255,.55); line-height: 1.6; }
+
+    /* ===== Toast ===== */
+    .toast{
+      position:fixed; right:16px; bottom:16px; z-index:9999;
+      padding:12px 14px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.75);
+      backdrop-filter: blur(12px);
+      color:rgba(255,255,255,.92);
+      box-shadow:0 18px 40px rgba(0,0,0,.45);
+      transform: translateY(10px);
+      opacity:0;
+      transition: opacity .25s ease, transform .25s ease;
+      pointer-events:none;
+      font-weight: 800;
+      letter-spacing: .2px;
+      max-width: 380px;
+    }
+    .toast.show{ opacity:1; transform: translateY(0); }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <div class="nav-wrap">
+    <div class="container">
+      <div class="navbar">
+        <a class="brand" href="index.html" aria-label="UbuntuFX Home">
+          <div class="logo-slot" title="UbuntuFX Logo">
+            <img src="assets/logo.png" alt="UbuntuFX Logo"
+              onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-graduation-cap&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
+          </div>
+          <div>
+            <strong>UbuntuFX</strong>
+            <small>Learn • Practice • Execute</small>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary Navigation">
+          <a href="index.html">Home</a>
+          <a class="active" href="learn.html">Learn</a>
+          <a href="market-analysis.html">Market Analysis</a>
+          <a href="strategies.html">Strategies</a>
+          <a href="calendar.html">Calendar</a>
+          <a href="livechart.html">Live Charts</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-gold" href="strategies.html"><i class="fa-solid fa-layer-group"></i> Explore Strategies</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile dropdown -->
+      <div class="mobile-panel" id="mobilePanel" aria-label="Mobile Navigation">
+        <div class="inner">
+          <a href="index.html">Home</a>
+          <a href="learn.html" style="border-color:rgba(249,168,37,.25); color: rgba(244,246,248,.95);">Learn</a>
+          <a href="market-analysis.html">Market Analysis</a>
+          <a href="strategies.html">Strategies</a>
+          <a href="calendar.html">Calendar</a>
+          <a href="livechart.html">Live Charts</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="strategies.html" style="border-color:rgba(0,200,83,.25); color: rgba(244,246,248,.95);">
+            <i class="fa-solid fa-layer-group"></i> Explore Strategies
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="section-sm" style="padding-bottom: 18px;">
+    <div class="container">
+      <div class="top-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Structured curriculum • No hype • Risk-first</span>
+          <h1 style="margin-top:10px;">
+            <i class="fa-solid fa-graduation-cap" style="color:var(--gold); margin-right:10px;"></i>
+            Learn Forex
+          </h1>
+          <p style="max-width: 82ch; font-size: 1.05rem; margin-top: 10px;">
+            A premium learning path built for serious traders: fundamentals, structure, risk, psychology, and execution —
+            delivered as <b style="color:rgba(255,255,255,.92)">clear modules</b> with a practical checklist for real markets.
+          </p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
+            <span class="pill"><i class="fa-solid fa-shield-halved"></i> Focus: <strong>Risk control</strong></span>
+            <span class="pill"><i class="fa-solid fa-bullseye"></i> Outcome: <strong>Repeatable process</strong></span>
+            <span class="pill"><i class="fa-solid fa-clock"></i> Updated: <strong id="updated">—</strong></span>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
+            <button class="btn btn-primary" id="btnStart"><i class="fa-solid fa-play"></i> Start Beginner Track</button>
+            <a class="btn btn-ghost" href="livechart.html"><i class="fa-solid fa-chart-line"></i> Open Live Charts</a>
+            <a class="btn btn-ghost" href="calendar.html"><i class="fa-solid fa-calendar-days"></i> Check Calendar</a>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 style="font-size:16px;">
+            <i class="fa-solid fa-compass" style="color:var(--gold); margin-right:10px;"></i>
+            How to use this curriculum
+          </h3>
+          <p style="margin-top:8px;">
+            Follow the order: <b style="color:rgba(255,255,255,.92)">Basics → Risk → Structure → Execution</b>.
+            Don’t collect knowledge — build a system.
+          </p>
+
+          <div class="hr"></div>
+
+          <div class="list">
+            <div class="li">
+              <i class="fa-solid fa-check"></i>
+              <div>
+                <div style="font-weight:950;color:rgba(255,255,255,.92)">One module per day</div>
+                <div class="tiny">Apply it on live charts for 15 minutes.</div>
+              </div>
+            </div>
+            <div class="li">
+              <i class="fa-solid fa-check"></i>
+              <div>
+                <div style="font-weight:950;color:rgba(255,255,255,.92)">Journal everything</div>
+                <div class="tiny">Track rules followed vs. outcome.</div>
+              </div>
+            </div>
+            <div class="li">
+              <i class="fa-solid fa-check"></i>
+              <div>
+                <div style="font-weight:950;color:rgba(255,255,255,.92)">Risk-first mindset</div>
+                <div class="tiny">Protect capital before chasing returns.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a class="btn btn-gold" href="strategies.html"><i class="fa-solid fa-layer-group"></i> Strategy Library</a>
+            <a class="btn btn-ghost" href="market-analysis.html"><i class="fa-solid fa-layer-group"></i> Market Context</a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters">
+        <div class="filter-row" id="levelRow" aria-label="Level Filters">
+          <span class="filter-pill active" data-level="all"><i class="fa-solid fa-layer-group"></i> All</span>
+          <span class="filter-pill" data-level="beginner"><i class="fa-solid fa-seedling"></i> Beginner</span>
+          <span class="filter-pill" data-level="intermediate"><i class="fa-solid fa-chart-line"></i> Intermediate</span>
+          <span class="filter-pill" data-level="advanced"><i class="fa-solid fa-brain"></i> Advanced</span>
+        </div>
+
+        <div class="filter-row" id="topicRow" aria-label="Topic Filters">
+          <span class="filter-pill active" data-topic="all"><i class="fa-solid fa-layer-group"></i> All Topics</span>
+          <span class="filter-pill" data-topic="basics"><i class="fa-solid fa-book"></i> Basics</span>
+          <span class="filter-pill" data-topic="technical"><i class="fa-solid fa-chart-simple"></i> Technical</span>
+          <span class="filter-pill" data-topic="fundamental"><i class="fa-solid fa-landmark"></i> Fundamental</span>
+          <span class="filter-pill" data-topic="risk"><i class="fa-solid fa-shield-halved"></i> Risk</span>
+          <span class="filter-pill" data-topic="psychology"><i class="fa-solid fa-heart-pulse"></i> Psychology</span>
+        </div>
+
+        <div class="search" aria-label="Search Lessons">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="search" placeholder="Search: leverage, support, journal, CPI, liquidity..." />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MODULES -->
+  <section class="section-sm" style="padding-top: 10px;">
+    <div class="container">
+      <div class="card" style="margin-bottom:16px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <div>
+            <h2 style="font-size: 20px; margin-bottom: 6px;">
+              <i class="fa-solid fa-gem" style="color:var(--gold); margin-right:10px;"></i>
+              Curriculum Modules
+            </h2>
+            <p style="max-width: 90ch;">
+              Click any module to view outcomes, key concepts, and a mini-checklist you can apply immediately.
+            </p>
+          </div>
+          <div class="pill"><i class="fa-solid fa-layer-group"></i> Results: <strong id="resultCount">0</strong></div>
+        </div>
+      </div>
+
+      <div class="modules" id="modules"></div>
+
+      <!-- Newsletter -->
+      <div class="card" style="margin-top:16px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <div>
+            <h3 style="font-size:18px;"><i class="fa-solid fa-envelope" style="color:var(--gold); margin-right:10px;"></i> Get notified when new lessons drop</h3>
+            <p style="margin-top:6px; max-width: 86ch;">
+              Premium notes: modules, checklists, and market reading habits. No spam — only structure.
+            </p>
+          </div>
+
+          <form id="newsletter" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+            <input
+              type="email"
+              required
+              placeholder="Your email"
+              style="min-width:min(360px, 80vw); padding:12px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background:rgba(0,0,0,.22); color:rgba(244,246,248,.92); outline:none; font-family:inherit; font-weight:800;"
+            />
+            <button class="btn btn-gold" type="submit"><i class="fa-solid fa-paper-plane"></i> Subscribe</button>
+          </form>
+        </div>
+
+        <p class="tiny" style="margin-top:10px;">
+          UbuntuFX provides educational content only. Trading involves risk. No guaranteed outcomes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Lesson Details">
+    <div class="modal-box">
+      <div class="modal-top">
+        <h3 id="mTitle">Module</h3>
+        <button class="x" id="mClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="panel">
+          <div class="tags" id="mTags"></div>
+          <p id="mDesc" style="margin-top:10px;"></p>
+
+          <div class="hr"></div>
+          <h3 style="font-size:14px; text-transform:uppercase; letter-spacing:.3px; color: rgba(255,255,255,.85);">
+            Outcomes
+          </h3>
+          <div class="list" id="mOutcomes"></div>
+
+          <div class="hr"></div>
+          <h3 style="font-size:14px; text-transform:uppercase; letter-spacing:.3px; color: rgba(255,255,255,.85);">
+            Checklist
+          </h3>
+          <div class="list" id="mChecklist"></div>
+        </div>
+
+        <aside class="panel">
+          <h3 style="font-size:14px; text-transform:uppercase; letter-spacing:.3px; color: rgba(255,255,255,.85);">
+            Recommended next step
+          </h3>
+          <div class="list" id="mNext"></div>
+
+          <div class="hr"></div>
+          <a class="btn btn-primary" href="livechart.html" style="justify-content:center;width:100%;">
+            <i class="fa-solid fa-chart-line"></i> Practice on Live Charts
+          </a>
+          <a class="btn btn-ghost" href="strategies.html" style="justify-content:center;width:100%; margin-top:10px;">
+            <i class="fa-solid fa-layer-group"></i> Apply a Strategy
+          </a>
+
+          <p class="tiny" style="margin-top:12px;">
+            <b style="color:rgba(255,255,255,.92)">Risk Disclaimer:</b> Forex trading involves risk. UbuntuFX provides educational content only.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-logo" title="UbuntuFX Logo">
+              <img src="assets/logo.png" alt="UbuntuFX Logo"
+                onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-graduation-cap&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
+            </div>
+            <div>
+              <div style="font-weight:950; letter-spacing:.2px; color:rgba(255,255,255,.92);">UbuntuFX</div>
+              <div style="color:rgba(255,255,255,.60); font-size:14px; margin-top:2px;">Structured learning for serious traders</div>
+            </div>
+          </div>
+
+          <p>
+            UbuntuFX is a premium Forex education and market intelligence platform built to help traders develop structure,
+            discipline, and repeatable decision-making.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="learn.html">Learn Forex</a></li>
+            <li><a href="market-analysis.html">Market Analysis</a></li>
+            <li><a href="strategies.html">Trading Strategies</a></li>
+            <li><a href="calendar.html">Economic Calendar</a></li>
+            <li><a href="livechart.html">Live Charts</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <div class="contact-line">
+            <i class="fa-solid fa-envelope"></i>
+            <div><a href="mailto:info@ubuntufx.com">info@ubuntufx.com</a></div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <a href="tel:+254717770557">0717770557</a><br />
+              <span style="color:rgba(255,255,255,.55); font-size:13px;">(+254 717 770 557)</span>
+            </div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>ABC Place, Westlands<br /><span style="color:rgba(255,255,255,.55); font-size:13px;">Nairobi, Kenya</span></div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-circle-info"></i>
+            <div style="color:rgba(255,255,255,.65); font-size:13.5px;">
+              Risk Disclaimer: Trading involves risk. UbuntuFX provides educational content only.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <small>© <span id="year"></span> UbuntuFX. All rights reserved.</small>
+        <small style="color:rgba(255,255,255,.55);">Designed & developed by <a href="https://sarahadevelopers.co.ke" target="_blank" rel="noopener" style="color:rgba(0,200,83,.95); font-weight:950;">Saraha Developers</a></small>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ===== Basics =====
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("updated").textContent = new Date().toLocaleString();
+
+    // ===== Mobile nav =====
+    const menuBtn = document.getElementById("menuBtn");
+    const mobilePanel = document.getElementById("mobilePanel");
+    function setMenu(open){
+      document.body.classList.toggle("mobile-open", open);
+      menuBtn.setAttribute("aria-expanded", String(open));
+      menuBtn.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    }
+    menuBtn.addEventListener("click", () => setMenu(!document.body.classList.contains("mobile-open")));
+    mobilePanel.addEventListener("click", (e) => { if (e.target.tagName === "A") setMenu(false); });
+    document.addEventListener("click", (e) => {
+      if (!document.body.classList.contains("mobile-open")) return;
+      if (!document.querySelector(".nav-wrap").contains(e.target)) setMenu(false);
+    });
+
+    // ===== Toast =====
+    const toastEl = document.getElementById("toast");
+    function toast(msg){
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      clearTimeout(toastEl._t);
+      toastEl._t = setTimeout(() => toastEl.classList.remove("show"), 2200);
+    }
+
+    // ===== Curriculum data (premium, outcome-driven) =====
+    const MODULES = [
+      // Beginner / Basics
+      {
+        id:"pips-lots-leverage",
+        icon:"fa-book",
+        level:"beginner",
+        topic:"basics",
+        title:"Forex Basics: Pips, Lots & Leverage",
+        duration:"20 min",
+        desc:"Learn how pricing works, how pip value is calculated, and why leverage magnifies both gains and losses.",
+        tags:["Beginner","Basics","Foundation"],
+        outcomes:[
+          "Calculate pip value for major pairs.",
+          "Understand lot sizing (micro/mini/standard).",
+          "Identify leverage traps and margin risk."
+        ],
+        checklist:[
+          "Do I know my pip value for this pair?",
+          "Is my lot size aligned with my stop distance?",
+          "Do I understand margin required before entry?"
+        ],
+        next:["Continue: Reading Quotes & Spreads"]
+      },
+      {
+        id:"quotes-spreads",
+        icon:"fa-scale-balanced",
+        level:"beginner",
+        topic:"basics",
+        title:"How to Read a Forex Quote (Bid/Ask & Spread)",
+        duration:"25 min",
+        desc:"Master base vs quote currency, bid/ask pricing, and how spreads affect entries, stops, and profitability.",
+        tags:["Beginner","Basics","Execution"],
+        outcomes:[
+          "Interpret quote direction correctly.",
+          "Understand spread costs and session differences.",
+          "Avoid stop placement inside spread noise."
+        ],
+        checklist:[
+          "Is spread currently normal for this session?",
+          "Is my stop beyond spread + volatility?",
+          "Am I trading a liquid pair for my level?"
+        ],
+        next:["Continue: Order Types & Execution"]
+      },
+      {
+        id:"order-types",
+        icon:"fa-bullseye",
+        level:"beginner",
+        topic:"basics",
+        title:"Order Types: Market, Limit, Stop (and When to Use Each)",
+        duration:"35 min",
+        desc:"Execution clarity: when to use market orders, when to place limits, and how stop orders behave during volatility.",
+        tags:["Beginner","Basics","Execution"],
+        outcomes:[
+          "Choose the correct order for your setup.",
+          "Avoid slippage mistakes around news.",
+          "Place orders with defined invalidation."
+        ],
+        checklist:[
+          "Am I entering on confirmation or pulling price?",
+          "Does a limit order make sense (retest)?",
+          "Is a market order safe given spreads/volatility?"
+        ],
+        next:["Continue: Risk Management Essentials"]
+      },
+      {
+        id:"beginner-plan",
+        icon:"fa-clipboard-check",
+        level:"beginner",
+        topic:"risk",
+        title:"Your First Trading Plan (Rules, Not Hopes)",
+        duration:"40 min",
+        desc:"Build a simple plan: setup definition, entry trigger, invalidation, risk per trade, and a repeatable checklist.",
+        tags:["Beginner","Risk","Discipline"],
+        outcomes:[
+          "Write a 1-page plan you can follow daily.",
+          "Define your maximum daily/weekly drawdown.",
+          "Create a pre-trade checklist to avoid impulse entries."
+        ],
+        checklist:[
+          "What is my setup and why does it work?",
+          "Where is invalidation (not discomfort)?",
+          "Is my risk fixed and acceptable?"
+        ],
+        next:["Move to Intermediate: Support & Resistance"]
+      },
+
+      // Intermediate / Technical + Risk
+      {
+        id:"sr-foundation",
+        icon:"fa-chart-simple",
+        level:"intermediate",
+        topic:"technical",
+        title:"Support & Resistance (Levels That Actually Matter)",
+        duration:"45 min",
+        desc:"Learn how to mark meaningful levels using structure, liquidity, and timeframes—not random lines.",
+        tags:["Intermediate","Technical","Structure"],
+        outcomes:[
+          "Mark HTF levels that price respects.",
+          "Identify role reversal and level quality.",
+          "Avoid clutter and overfitting."
+        ],
+        checklist:[
+          "Is this level HTF or just noise?",
+          "Has it been respected multiple times?",
+          "Is there liquidity nearby (stops/targets)?"
+        ],
+        next:["Continue: Candles & Confirmation"]
+      },
+      {
+        id:"candles-sentiment",
+        icon:"fa-fire",
+        level:"intermediate",
+        topic:"technical",
+        title:"Candlesticks & Confirmation (Momentum vs Exhaustion)",
+        duration:"40 min",
+        desc:"Interpret candles as information: rejection, absorption, momentum, and where retail patterns fail.",
+        tags:["Intermediate","Technical","Execution"],
+        outcomes:[
+          "Read rejection and momentum candles correctly.",
+          "Use confirmation without late entries.",
+          "Avoid trading ‘pretty’ patterns in bad context."
+        ],
+        checklist:[
+          "Is this candle reacting at a real level?",
+          "Does volume/impulse support the story?",
+          "Is confirmation improving my R:R or ruining it?"
+        ],
+        next:["Continue: Moving Averages & Trend Filters"]
+      },
+      {
+        id:"risk-sizing",
+        icon:"fa-shield-halved",
+        level:"intermediate",
+        topic:"risk",
+        title:"Risk Management: Position Sizing & Stop Placement",
+        duration:"35 min",
+        desc:"Professional risk foundations: fixed risk %, stop logic, and sizing based on invalidation—not emotions.",
+        tags:["Intermediate","Risk","Professional"],
+        outcomes:[
+          "Size trades based on stop distance.",
+          "Set stops beyond invalidation logically.",
+          "Build consistency through risk budgeting."
+        ],
+        checklist:[
+          "Is my stop logical (invalidation) not emotional?",
+          "Is R:R ≥ 1.5R with clean target liquidity?",
+          "Am I stacking correlated risk?"
+        ],
+        next:["Continue: Journaling Like a Pro"]
+      },
+      {
+        id:"journaling",
+        icon:"fa-pen-to-square",
+        level:"intermediate",
+        topic:"psychology",
+        title:"Trading Journal: The Fastest Way to Improve",
+        duration:"55 min",
+        desc:"Track rules followed, screenshots, mistakes, and patterns. Elite improvement is data + reflection.",
+        tags:["Intermediate","Psychology","Performance"],
+        outcomes:[
+          "Identify top mistakes and fix them systematically.",
+          "Measure rule adherence (not just wins/losses).",
+          "Build a playbook of your best setups."
+        ],
+        checklist:[
+          "Did I follow my rules?",
+          "What was the market condition (trend/range/news)?",
+          "What will I do differently next time?"
+        ],
+        next:["Move to Advanced: Structure & Liquidity"]
+      },
+
+      // Advanced / Structure + Macro
+      {
+        id:"structure-liquidity",
+        icon:"fa-chess",
+        level:"advanced",
+        topic:"technical",
+        title:"Market Structure & Liquidity Pools",
+        duration:"60 min",
+        desc:"Understand BOS/CHOCH concepts, where liquidity sits, and why price targets highs/lows before moving.",
+        tags:["Advanced","Structure","Liquidity"],
+        outcomes:[
+          "Map liquidity targets (equal highs/lows, PDH/PDL).",
+          "Recognize structure shift before entry.",
+          "Avoid chasing moves after liquidity is taken."
+        ],
+        checklist:[
+          "Where is liquidity likely to be taken next?",
+          "Do I have structure confirmation?",
+          "Is my invalidation beyond the sweep?"
+        ],
+        next:["Continue: Order Blocks & FVG"]
+      },
+      {
+        id:"macro-policy",
+        icon:"fa-landmark",
+        level:"advanced",
+        topic:"fundamental",
+        title:"Central Bank Narratives & Policy (Fed/ECB/BoJ)",
+        duration:"55 min",
+        desc:"Macro framework: rates, inflation, guidance, and how narratives drive trends—especially in FX.",
+        tags:["Advanced","Fundamental","Macro"],
+        outcomes:[
+          "Track policy direction and market expectations.",
+          "Understand why trends persist for weeks/months.",
+          "Avoid being blindsided by key macro dates."
+        ],
+        checklist:[
+          "What is the current narrative (risk-on/off)?",
+          "What does the market expect vs reality?",
+          "Are high-impact events approaching?"
+        ],
+        next:["Pair this with: Economic Calendar + Market Analysis"]
+      }
+    ];
+
+    // ===== DOM =====
+    const modulesEl = document.getElementById("modules");
+    const resultCountEl = document.getElementById("resultCount");
+    const searchEl = document.getElementById("search");
+    const levelRow = document.getElementById("levelRow");
+    const topicRow = document.getElementById("topicRow");
+
+    const state = { level:"all", topic:"all", q:"" };
+
+    function setActive(rowEl, attr, value){
+      rowEl.querySelectorAll(".filter-pill").forEach(p => p.classList.toggle("active", p.getAttribute(attr) === value));
+    }
+
+    function matches(m){
+      const q = state.q.trim().toLowerCase();
+      const hay = (m.title + " " + m.desc + " " + m.tags.join(" ") + " " + m.topic + " " + m.level).toLowerCase();
+      const okLevel = state.level === "all" || m.level === state.level;
+      const okTopic = state.topic === "all" || m.topic === state.topic;
+      const okQ = !q || hay.includes(q);
+      return okLevel && okTopic && okQ;
+    }
+
+    function lvlChip(level){
+      if (level === "beginner") return `<span class="lvl beginner"><i class="fa-solid fa-seedling"></i> BEGINNER</span>`;
+      if (level === "intermediate") return `<span class="lvl intermediate"><i class="fa-solid fa-chart-line"></i> INTERMEDIATE</span>`;
+      return `<span class="lvl advanced"><i class="fa-solid fa-brain"></i> ADVANCED</span>`;
+    }
+
+    function topicIcon(topic){
+      const map = {
+        basics: "fa-book",
+        technical: "fa-chart-simple",
+        fundamental: "fa-landmark",
+        risk: "fa-shield-halved",
+        psychology: "fa-heart-pulse"
+      };
+      return map[topic] || "fa-layer-group";
+    }
+
+    function render(){
+      const list = MODULES.filter(matches);
+      resultCountEl.textContent = list.length;
+
+      modulesEl.innerHTML = list.map((m) => `
+        <article class="module" data-id="${m.id}">
+          <div class="module-top">
+            <div>
+              <div class="meta">
+                ${lvlChip(m.level)}
+                <span class="duration"><i class="fa-regular fa-clock"></i> ${m.duration}</span>
+              </div>
+              <h3 style="margin-top:8px;">${m.title}</h3>
+            </div>
+            <div class="track-icon" title="${m.topic}">
+              <i class="fa-solid ${topicIcon(m.topic)}"></i>
+            </div>
+          </div>
+
+          <div class="tags">
+            <span class="tag"><i class="fa-solid fa-folder"></i> ${m.topic.toUpperCase()}</span>
+            ${m.tags.slice(0,3).map(t => `<span class="tag"><i class="fa-solid fa-star"></i> ${t}</span>`).join("")}
+          </div>
+
+          <p>${m.desc}</p>
+
+          <a href="#" class="learn-more" data-open="${m.id}">
+            View Module <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </article>
+      `).join("");
+
+      // handlers
+      document.querySelectorAll("[data-open]").forEach(a => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          openModal(a.getAttribute("data-open"));
+        });
+      });
+
+      // Start button opens first beginner module
+      document.getElementById("btnStart").onclick = () => openModal("pips-lots-leverage");
+
+      if (!list.length){
+        modulesEl.innerHTML = `
+          <div class="card" style="grid-column: 1 / -1;">
+            <h3 style="font-size:18px;"><i class="fa-solid fa-circle-info" style="color:var(--gold);margin-right:10px;"></i>No modules found</h3>
+            <p style="margin-top:6px;">Try removing filters or search for broader terms like <b style="color:rgba(255,255,255,.92)">risk</b>, <b style="color:rgba(255,255,255,.92)">support</b>, or <b style="color:rgba(255,255,255,.92)">journal</b>.</p>
+          </div>
+        `;
+      }
+    }
+
+    // ===== Modal =====
+    const modal = document.getElementById("modal");
+    const mClose = document.getElementById("mClose");
+    const mTitle = document.getElementById("mTitle");
+    const mTags = document.getElementById("mTags");
+    const mDesc = document.getElementById("mDesc");
+    const mOutcomes = document.getElementById("mOutcomes");
+    const mChecklist = document.getElementById("mChecklist");
+    const mNext = document.getElementById("mNext");
+
+    function li(icon, text){
+      return `<div class="li"><i class="fa-solid ${icon}"></i><div>${text}</div></div>`;
+    }
+
+    function openModal(id){
+      const m = MODULES.find(x => x.id === id);
+      if (!m) return;
+
+      mTitle.textContent = m.title;
+
+      mTags.innerHTML = `
+        <span class="tag"><i class="fa-solid ${topicIcon(m.topic)}"></i> ${m.topic.toUpperCase()}</span>
+        <span class="tag"><i class="fa-solid fa-signal"></i> ${m.level.toUpperCase()}</span>
+        <span class="tag"><i class="fa-regular fa-clock"></i> ${m.duration}</span>
+      `;
+
+      mDesc.textContent = m.desc;
+
+      mOutcomes.innerHTML = m.outcomes.map(x => li("fa-check", x)).join("");
+      mChecklist.innerHTML = m.checklist.map(x => li("fa-list-check", x)).join("");
+      mNext.innerHTML = m.next.map(x => li("fa-arrow-right", x)).join("");
+
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden","false");
+      toast("Module opened.");
+    }
+    function closeModal(){
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden","true");
+    }
+    mClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+    // ===== Filters =====
+    function wireRow(rowEl, key, attr){
+      rowEl.addEventListener("click", (e) => {
+        const pill = e.target.closest(".filter-pill");
+        if (!pill) return;
+        const v = pill.getAttribute(attr);
+        state[key] = v;
+        setActive(rowEl, attr, v);
+        render();
+      });
+    }
+    wireRow(levelRow, "level", "data-level");
+    wireRow(topicRow, "topic", "data-topic");
+
+    searchEl.addEventListener("input", (e) => {
+      state.q = e.target.value;
+      render();
+    });
+
+    // Newsletter (demo)
+    document.getElementById("newsletter").addEventListener("submit", (e) => {
+      e.preventDefault();
+      toast("Subscribed (demo). Wire this to your backend/email tool.");
+      e.target.reset();
+    });
+
+    // Init
+    render();
+  </script>
+</body>
+</html>

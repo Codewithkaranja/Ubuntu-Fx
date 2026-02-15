@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UbuntuFX – Structured Forex Education & Market Intelligence</title>
+    <!-- Jost font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ----- CSS RESET & VARIABLES ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-navy: #0A1F2F;
+            --emerald: #00C853;
+            --gold: #F9A825;
+            --slate-blue: #1E3A5F;
+            --soft-gray: #F4F6F8;
+            --black: #000000;
+            --white: #ffffff;
+            --off-white: #f8fafc;
+
+            --font-primary: 'Jost', sans-serif;
+
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 64px;
+
+            --container-max: 1280px;
+            --border-radius-card: 14px;
+            --border-radius-pill: 999px;
+            --transition: all 0.2s ease;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--deep-navy);
+            color: var(--soft-gray);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: var(--white);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem); /* 40-56px */
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem); /* 32-40px */
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h3 {
+            font-size: clamp(1.35rem, 2.5vw, 1.75rem); /* ~22-28px */
+        }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+            color: #d1d5db; /* lighter gray for readability */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* ----- BUTTONS ----- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: var(--border-radius-pill);
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--emerald);
+            color: var(--deep-navy);
+        }
+        .btn-primary:hover {
+            background-color: #00b347; /* darker emerald */
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,200,83,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--deep-navy);
+            transform: translateY(-2px);
+        }
+
+        /* ----- NAVBAR (black theme, sticky) ----- */
+        .navbar {
+            background-color: var(--black);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 40px; /* adjust as needed */
+            width: auto;
+            display: block;
+        }
+        /* fallback text logo */
+        .logo-placeholder {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+        .logo-placeholder span {
+            color: var(--emerald);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.2s;
+            font-size: 1.05rem;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta .btn {
+            padding: 10px 24px;
+            font-size: 0.95rem;
+        }
+
+        /* mobile menu toggle (hidden on desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* ----- CARDS (premium style) ----- */
+        .card {
+            background: linear-gradient(145deg, var(--slate-blue), #132a40); /* navy to slate */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--border-radius-card);
+            padding: var(--spacing-md);
+            transition: var(--transition);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 30px -8px rgba(0,200,83,0.15), 0 0 0 1px rgba(249,168,37,0.2);
+        }
+        .card i {
+            color: var(--emerald);
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        .card h3 {
+            margin-bottom: var(--spacing-xs);
+        }
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-sm);
+            flex-grow: 1;
+        }
+        .card-link {
+            color: var(--gold);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s;
+        }
+        .card-link:hover {
+            gap: 10px;
+        }
+
+        /* ----- SECTION SPACING ----- */
+        section {
+            padding: var(--spacing-xxl) 0;
+        }
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-xl) auto;
+        }
+        .section-title h2 {
+            margin-bottom: var(--spacing-xs);
+        }
+        .section-title p {
+            font-size: 1.2rem;
+            color: #b0b7c3;
+        }
+
+        /* grid helpers */
+        .grid-2, .grid-3, .grid-4 {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+        .grid-2 { grid-template-columns: repeat(2,1fr); }
+        .grid-3 { grid-template-columns: repeat(3,1fr); }
+        .grid-4 { grid-template-columns: repeat(4,1fr); }
+
+        /* ----- HERO SECTION ----- */
+        .hero {
+            padding: var(--spacing-xxl) 0;
+            background: radial-gradient(circle at 70% 30%, var(--slate-blue), var(--deep-navy));
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+        .hero-content h1 {
+            margin-bottom: var(--spacing-sm);
+        }
+        .hero-content .highlight {
+            color: var(--emerald);
+        }
+        .hero-subhead {
+            font-size: 1.3rem;
+            color: #d4dae5;
+            margin-bottom: var(--spacing-md);
+        }
+        .hero-method {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--gold);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 8px;
+            margin: var(--spacing-md) 0;
+            font-weight: 500;
+        }
+        .hero-ctas {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+        .hero-image {
+            background: rgba(255,255,255,0.02);
+            border-radius: var(--border-radius-card);
+            padding: var(--spacing-md);
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            opacity: 0.9;
+        }
+        .hero-image .chart-placeholder {
+            height: 280px;
+            background: linear-gradient(180deg, #1e3a5f 0%, #0f2a40 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            border: 1px dashed var(--gold);
+        }
+
+        /* ----- TRUST / FEATURE BADGES ----- */
+        .trust-bar {
+            background-color: #041220;
+            padding: var(--spacing-sm) 0;
+            border-top: 1px solid rgba(255,215,0,0.1);
+            border-bottom: 1px solid rgba(255,215,0,0.1);
+        }
+        .trust-logos {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            color: #a0aec0;
+            font-weight: 500;
+        }
+        .trust-logos span i {
+            color: var(--gold);
+            margin-right: 8px;
+        }
+
+        /* ----- METHODOLOGY (4 steps) ----- */
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .step-item {
+            flex: 1 1 200px;
+            background: rgba(30,58,95,0.3);
+            border-radius: var(--border-radius-card);
+            padding: var(--spacing-md);
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .step-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            border-radius: 50%;
+            background: var(--emerald);
+            color: var(--deep-navy);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* ----- LIVE SNAPSHOT / SESSIONS (example widget) ----- */
+        .live-snapshot {
+            background: var(--slate-blue);
+            border-radius: var(--border-radius-card);
+            padding: var(--spacing-md);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .session-tag {
+            background: rgba(0,0,0,0.3);
+            border-radius: var(--border-radius-pill);
+            padding: 4px 12px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ----- NEWSLETTER SECTION ----- */
+        .newsletter {
+            background: var(--slate-blue);
+            border-radius: var(--border-radius-card);
+            padding: var(--spacing-xl);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: var(--spacing-md) auto 0;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: var(--border-radius-pill) 0 0 var(--border-radius-pill);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            outline: none;
+        }
+        .newsletter-form button {
+            border-radius: 0 var(--border-radius-pill) var(--border-radius-pill) 0;
+            padding: 14px 28px;
+            background: var(--gold);
+            color: var(--deep-navy);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .newsletter-form button:hover {
+            background: #e09c1f;
+        }
+
+        /* ----- FOOTER (black theme) ----- */
+        footer {
+            background-color: var(--black);
+            color: #b0b7c3;
+            padding: var(--spacing-xl) 0 var(--spacing-md);
+            border-top: 1px solid #222;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        .footer-logo img {
+            height: 40px;
+            margin-bottom: var(--spacing-sm);
+        }
+        .footer-logo .logo-placeholder {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        .footer-contact p {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-contact i {
+            color: var(--gold);
+            width: 20px;
+        }
+        .footer-links h4, .footer-social h4 {
+            color: var(--white);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.2rem;
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        .social-icons a:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid #222;
+            font-size: 0.9rem;
+        }
+        .footer-bottom a {
+            color: var(--gold);
+        }
+        .risk-disclaimer {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: var(--spacing-md);
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 1024px) {
+            .grid-4 { grid-template-columns: repeat(2,1fr); }
+        }
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-wrap: wrap;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: var(--spacing-md) 0;
+                gap: var(--spacing-md);
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                gap: var(--spacing-sm);
+            }
+            .nav-cta {
+                width: 100%;
+            }
+            .nav-cta .btn {
+                width: 100%;
+            }
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-method {
+                text-align: left;
+            }
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .newsletter-form input, .newsletter-form button {
+                border-radius: var(--border-radius-pill);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR (black, sticky, logo image slot) -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <!-- Replace src with your logo file -->
+                <img src="https://via.placeholder.com/150x40/0A1F2F/00C853?text=UbuntuFX" alt="UbuntuFX logo" style="height:40px;">
+                <!-- fallback text if image not loaded (invisible if image present) -->
+                <span class="logo-placeholder" style="display:none;">Ubuntu<span>FX</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <div class="nav-links">
+                    <a href="#">Learn</a>
+                    <a href="market-analysis.html">Market Analysis</a>
+                    <a href="strategies.html">Strategies</a>
+                    <a href="calendar.html">Calendar</a>
+                    <a href="livechart.html">Live Charts</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="#" class="btn btn-primary">Join Newsletter</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Trade with <span class="highlight">Structure</span>, Not Hype</h1>
+                <p class="hero-subhead">Institutional-grade forex education & market intelligence — no signals, no shortcuts.</p>
+                <div class="hero-method">
+                    <i class="fas fa-arrow-right" style="color: var(--gold); margin-right: 8px;"></i>
+                    Learn a repeatable process: macro bias → structure → risk plan → execution → review.
+                </div>
+                <div class="hero-ctas">
+                    <a href="#" class="btn btn-primary">Start Learning</a>
+                    <a href="#" class="btn btn-outline">View Market Analysis</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="chart-placeholder">
+                    <i class="fas fa-chart-line" style="font-size: 3rem; opacity: 0.6;"></i>
+                    <span style="margin-left: 10px;">Live Charts Preview</span>
+                </div>
+                <!-- you can replace with actual chart image -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR (regulation, risk-first) -->
+    <div class="trust-bar">
+        <div class="container trust-logos">
+            <span><i class="fas fa-shield-alt"></i> Regulated Broker Education</span>
+            <span><i class="fas fa-lock"></i> Risk-First Approach</span>
+            <span><i class="fas fa-chart-pie"></i> Institutional Awareness</span>
+            <span><i class="fas fa-water"></i> Liquidity Concepts</span>
+        </div>
+    </div>
+
+    <!-- METHODOLOGY (4-step framework) -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Trading Framework</h2>
+                <p>We teach market structure as probability frameworks — not predictions.</p>
+            </div>
+            <div class="steps">
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <h3>Macro Bias</h3>
+                    <p>Central bank narratives, economic cycles, and sentiment.</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <h3>Market Structure</h3>
+                    <p>Liquidity, order blocks, and institutional levels.</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <h3>Risk Plan</h3>
+                    <p>Position sizing, stop placement, risk/reward discipline.</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <h3>Execution & Review</h3>
+                    <p>Trade journaling,复盘, process refinement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE OFFERINGS (cards: Learn, Analysis, Strategies, Tools) -->
+    <section style="padding-top:0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>What You Get</h2>
+                <p>Everything you need to trade with clarity and confidence.</p>
+            </div>
+            <div class="grid-4">
+                <div class="card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Learn Forex</h3>
+                    <p>Structured curriculum from basics to advanced liquidity concepts.</p>
+                    <a href="#" class="card-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-newspaper"></i>
+                    <h3>Market Analysis</h3>
+                    <p>Daily/ weekly executive summary, macro context, technical structure, risk scenarios.</p>
+                    <a href="#" class="card-link">Read <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Strategies</h3>
+                    <p>Frameworks for swing, intraday, and positional trading.</p>
+                    <a href="#" class="card-link">View library <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Tools</h3>
+                    <p>Economic calendar & live charts — real-time data.</p>
+                    <a href="#" class="card-link">Launch <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE MARKET SNAPSHOT + SESSIONS (example with cards) -->
+    <section class="live-snapshot" style="background: transparent;">
+        <div class="container">
+            <div class="grid-2" style="align-items: stretch;">
+                <div class="card" style="background: var(--slate-blue);">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Live Market Snapshot</h3>
+                    <p>Majors: EUR/USD 1.0725 (-0.12%) · USD/JPY 149.83 (+0.23%)</p>
+                    <div style="height: 120px; background: #0f2a40; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--gold);">
+                        [ Live chart widget ]
+                    </div>
+                </div>
+                <div class="card" style="background: var(--slate-blue);">
+                    <i class="fas fa-clock"></i>
+                    <h3>Session Times (UTC+3)</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                        <span class="session-tag"><i class="fas fa-circle" style="color: #FFD700;"></i> London: 10:00-19:00</span>
+                        <span class="session-tag"><i class="fas fa-circle" style="color: #00CED1;"></i> NY: 15:00-00:00</span>
+                        <span class="session-tag"><i class="fas fa-circle" style="color: #FF8C00;"></i> Asia: 02:00-11:00</span>
+                    </div>
+                    <p style="margin-top: 20px;">Trade when liquidity peaks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PSYCHOLOGY, BROKER REGULATION, INSTITUTIONAL, CORRELATIONS (grid of 4 cards) -->
+    <section>
+        <div class="container">
+            <div class="grid-4">
+                <div class="card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Psychology</h3>
+                    <p>Discipline, patience, and routine — the edge most ignore.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Broker Regulation</h3>
+                    <p>How to choose a broker, what regulators look for, and avoiding scams.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-university"></i>
+                    <h3>Institutional Structure</h3>
+                    <p>Order flow, interbank pricing, and market maker behavior.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-random"></i>
+                    <h3>Correlations</h3>
+                    <p>Equities, bonds, commodities — how they move together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER (lead magnet) -->
+    <section style="padding-top:0;">
+        <div class="container">
+            <div class="newsletter">
+                <i class="fas fa-envelope-open-text" style="font-size: 3rem; color: var(--gold); margin-bottom: var(--spacing-sm);"></i>
+                <h3>Weekly Institutional Breakdown</h3>
+                <p style="max-width: 500px; margin: 0 auto;">Every Sunday: macro bias, key levels, risk template + beginner guide. 5–7 min read.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <p style="font-size: 0.85rem; margin-top: var(--spacing-sm); color: #aaa;">No spam. Unsubscribe anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (black, uniform) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <!-- logo image slot -->
+                    <img src="https://via.placeholder.com/150x40/000000/00C853?text=UbuntuFX" alt="UbuntuFX" style="height:40px; margin-bottom: 15px;">
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> ABC Place, Westlands, Nairobi, Kenya</p>
+                        <p><i class="fas fa-phone-alt"></i> 0717 770 557  |  +254 717 770 557</p>
+                        <p><i class="fas fa-envelope"></i> info@ubuntufx.com</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Learn Forex</a></li>
+                        <li><a href="#">Market Analysis</a></li>
+                        <li><a href="#">Strategies</a></li>
+                        <li><a href="#">Economic Calendar</a></li>
+                        <li><a href="#">Live Charts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                    <p style="margin-top: 20px;">Designed & developed by <a href="https://sarahadevelopers.co.ke" target="_blank">Saraha Developers</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 UbuntuFX. All rights reserved.</p>
+                <div class="risk-disclaimer">
+                    <strong>Risk Disclaimer:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. The possibility exists that you could lose some or all of your deposited funds. UbuntuFX provides educational content and market analysis only; we do not offer financial advice or guaranteed returns.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- simple mobile menu toggle script -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
