@@ -36,8 +36,8 @@
           <a href="index.html">Home</a>
           <a href="learn.html">Learn</a>
           <a href="market-analysis.html">Market Analysis</a>
-          <a href="strategies.html">Strategies</a>
-          <a class="active" href="calendar.html">Calendar</a>
+          <!--  <a href="strategies.html">Strategies</a>
+          <a href="calendar.html">Calendar</a>-->
           <a href="livechart.html">Live Charts</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
@@ -71,34 +71,47 @@
   </div>
 
   <!-- PAGE HERO -->
-  <header class="page-hero">
-    <div class="container">
-      <div class="wrap">
-        <div>
-          <span class="eyebrow"><span class="dot"></span> Plan volatility. Protect your risk.</span>
-          <h1 style="margin-top:10px;">
-            <i class="fa-solid fa-calendar-days" style="color:var(--gold); margin-right:10px;"></i>
-            Economic Calendar
-          </h1>
-          <p style="max-width: 70ch; font-size: 1.05rem; margin-top: 10px;">
-            Track high-impact releases, central bank events, and market-moving headlines. Use the filters to focus on your pairs and
-            build a disciplined plan before volatility hits.
-          </p>
+ <header class="page-hero">
+  <div class="container">
+    <div class="hero-inner">
 
-          <div class="meta-row">
-            <span class="pill"><i class="fa-solid fa-clock"></i> Timezone: <strong>UTC+3</strong> (Nairobi)</span>
-            <span class="pill"><i class="fa-solid fa-shield-halved"></i> Rule: <strong>Reduce risk</strong> near High impact</span>
-            <span class="pill"><i class="fa-solid fa-bolt"></i> Watch: <strong>USD</strong> & <strong>Rates</strong> events</span>
-          </div>
+      <span class="eyebrow">
+        <span class="dot"></span>
+        Plan volatility. Protect your risk.
+      </span>
 
-          <div class="hero-actions">
-            <button class="btn btn-ghost" id="btnNow"><i class="fa-solid fa-location-crosshairs"></i> Jump to Next Event</button>
-            <button class="btn btn-ghost" id="btnReset"><i class="fa-solid fa-rotate-right"></i> Reset Filters</button>
-            <button class="btn btn-ghost" id="btnExport"><i class="fa-solid fa-file-arrow-down"></i> Export (CSV)</button>
-          </div>
+      <h1 class="hero-title">
+        <i class="fa-solid fa-calendar-days"></i>
+        Economic Calendar
+      </h1>
+
+      <p class="hero-sub">
+        Track high-impact events and plan your trades with clarity and discipline.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="btnNow">
+          <i class="fa-solid fa-location-crosshairs"></i>
+          Next Event
+        </button>
+
+        <div class="hero-secondary">
+          <button class="btn btn-ghost" id="btnReset">
+            <i class="fa-solid fa-rotate-right"></i>
+            Reset
+          </button>
+          <button class="btn btn-ghost" id="btnExport">
+            <i class="fa-solid fa-file-arrow-down"></i>
+            Export
+          </button>
         </div>
+      </div>
 
-        <div class="hero-card" aria-label="How to use this calendar">
+    </div>
+  </div>
+</header>
+  <section>
+     <div class="hero-card" aria-label="How to use this calendar">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
             <div style="display:flex;align-items:center;gap:12px;">
               <div class="icon-badge" style="margin:0;"><i class="fa-solid fa-compass"></i></div>
@@ -127,10 +140,7 @@
             </div>
           </div>
         </div>
-
-      </div>
-    </div>
-  </header>
+  </section>
 
   <!-- FILTERS + TABLE -->
   <section class="section-sm" style="padding-top: 10px;">

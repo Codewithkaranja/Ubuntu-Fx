@@ -12,503 +12,7 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <style>
-    /* ===== Premium Design System ===== */
-    *{margin:0;padding:0;box-sizing:border-box}
-    :root{
-      --deep-navy:#0A1F2F;
-      --emerald:#00C853;
-      --gold:#F9A825;
-      --slate-blue:#1E3A5F;
-      --soft-gray:#F4F6F8;
-      --black:#000;
-      --white:#fff;
-
-      --text: rgba(244,246,248,.92);
-      --muted: rgba(244,246,248,.72);
-      --muted2: rgba(244,246,248,.58);
-
-      --border: rgba(255,255,255,.10);
-      --border2: rgba(255,255,255,.16);
-
-      --radius: 18px;
-      --radius2: 22px;
-      --pill: 999px;
-
-      --shadow: 0 18px 50px rgba(0,0,0,.40);
-      --shadow2: 0 12px 34px rgba(0,0,0,.35);
-
-      --ease: cubic-bezier(.2,.8,.2,1);
-      --container: 1280px;
-
-      --font: "Jost", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    html{scroll-behavior:smooth}
-    body{
-      font-family: var(--font);
-      background:
-        radial-gradient(1200px 700px at 20% 10%, rgba(0,200,83,.14), transparent 55%),
-        radial-gradient(1200px 800px at 85% 15%, rgba(249,168,37,.10), transparent 60%),
-        radial-gradient(1100px 700px at 50% 105%, rgba(30,58,95,.35), transparent 60%),
-        var(--deep-navy);
-      color: var(--text);
-      line-height: 1.65;
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{width:min(var(--container),92vw);margin:0 auto}
-    h1,h2,h3{color:var(--white);letter-spacing:-.3px}
-    h1{font-size: clamp(34px, 4.3vw, 54px); line-height: 1.08}
-    h2{font-size: clamp(26px, 2.6vw, 38px); line-height: 1.15}
-    p{color: var(--muted)}
-    .section{padding: 84px 0}
-    .section-sm{padding: 64px 0}
-
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:8px 14px;border-radius:var(--pill);
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-size: 14px;
-      backdrop-filter: blur(10px);
-    }
-    .dot{
-      width:8px;height:8px;border-radius:999px;background:var(--emerald);
-      box-shadow:0 0 0 6px rgba(0,200,83,.14);
-    }
-
-    /* ===== Buttons ===== */
-    .btn{
-      border:0;cursor:pointer;border-radius:var(--pill);
-      padding: 12px 18px;
-      font-weight: 900;
-      font-size: 14.5px;
-      letter-spacing: .2px;
-      display:inline-flex;align-items:center;gap:10px;
-      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
-      user-select:none;white-space:nowrap;
-    }
-    .btn-primary{
-      color:#062016;
-      background: linear-gradient(135deg, rgba(0,200,83,1), rgba(0,200,83,.78));
-      box-shadow: 0 18px 45px rgba(0,200,83,.22);
-    }
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 52px rgba(0,200,83,.28)}
-    .btn-ghost{
-      color: var(--text);
-      background: rgba(255,255,255,.05);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-    .btn-ghost:hover{transform:translateY(-2px);border-color:var(--border2);box-shadow:var(--shadow2)}
-    .btn-gold{
-      color:#2b1b00;
-      background: linear-gradient(135deg, rgba(249,168,37,1), rgba(249,168,37,.78));
-      box-shadow: 0 18px 45px rgba(249,168,37,.18);
-    }
-    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 22px 52px rgba(249,168,37,.24)}
-
-    /* ===== Navbar (uniform + mobile dropdown) ===== */
-    .nav-wrap{
-      position: sticky; top:0; z-index:999;
-      padding: 14px 0;
-      background: rgba(0,0,0,.35);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .navbar{display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:inline-flex;align-items:center;gap:12px;min-width:200px}
-    .logo-slot{
-      width:44px;height:44px;border-radius:14px;overflow:hidden;
-      border:1px solid var(--border);
-      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      display:grid;place-items:center;
-    }
-    .logo-slot img{width:100%;height:100%;object-fit:cover}
-    .brand strong{font-weight:950;letter-spacing:.2px}
-    .brand small{display:block;color:var(--muted2);font-weight:600;margin-top:-2px}
-
-    .nav-links{display:flex;align-items:center;gap:18px}
-    .nav-links a{
-      color: var(--muted);
-      font-weight: 800;
-      font-size: 14px;
-      letter-spacing: .2px;
-      padding: 10px 12px;
-      border-radius: var(--pill);
-      transition: background .2s var(--ease), color .2s var(--ease);
-    }
-    .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
-    .nav-links a.active{
-      color: var(--white);
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(249,168,37,.25);
-    }
-
-    .nav-actions{display:flex;align-items:center;gap:10px}
-    .menu-btn{
-      display:none;
-      width:44px;height:44px;border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-      cursor:pointer;
-    }
-    .mobile-panel{
-      display:none;margin-top:12px;
-      border:1px solid var(--border);
-      background: rgba(10,31,47,.92);
-      backdrop-filter: blur(14px);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .mobile-panel .inner{padding:14px;display:grid;gap:10px}
-    .mobile-panel a{
-      padding:12px;border-radius:14px;
-      color: var(--muted);
-      font-weight: 900;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-    }
-    .mobile-panel a:hover{color:var(--text);border-color:rgba(255,255,255,.12)}
-    .mobile-open .mobile-panel{display:block}
-    @media (max-width:980px){
-      .nav-links{display:none}
-      .menu-btn{display:inline-grid;place-items:center}
-      .brand{min-width:auto}
-    }
-
-    /* ===== Page Hero ===== */
-    .page-hero{padding: 72px 0 26px}
-    .hero-grid{
-      display:grid;grid-template-columns: 1.15fr .85fr; gap: 18px; align-items: start;
-    }
-    @media (max-width:980px){ .hero-grid{grid-template-columns: 1fr} }
-    .hero-card{
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      position: relative;
-      overflow:hidden;
-    }
-    .hero-card:before{
-      content:"";position:absolute;inset:-1px;
-      background: radial-gradient(600px 220px at 20% 0%, rgba(0,200,83,.18), transparent 60%),
-                  radial-gradient(520px 240px at 95% 10%, rgba(249,168,37,.14), transparent 62%);
-      opacity:.85;pointer-events:none;
-    }
-    .hero-card > *{position:relative;z-index:1}
-
-    .pill{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 12px;border-radius:var(--pill);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: .2px;
-    }
-    .pill i{color:var(--gold)}
-    .pill strong{color:var(--white);font-weight:950}
-
-    /* ===== Layout for charts ===== */
-    .layout{
-      display:grid;
-      grid-template-columns: 320px 1fr;
-      gap: 16px;
-      align-items: start;
-    }
-    @media (max-width:1100px){
-      .layout{grid-template-columns: 1fr}
-    }
-
-    .card{
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      box-shadow: 0 10px 30px rgba(0,0,0,.28);
-      padding: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-    .card:before{
-      content:"";position:absolute;inset:-1px;
-      background:
-        radial-gradient(360px 170px at 10% 0%, rgba(0,200,83,.10), transparent 62%),
-        radial-gradient(360px 170px at 90% 0%, rgba(249,168,37,.08), transparent 62%);
-      opacity:.75;pointer-events:none;
-    }
-    .card > *{position:relative;z-index:1}
-
-    /* ===== Controls ===== */
-    .control-title{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;
-      margin-bottom: 12px;
-    }
-    .control-title h3{font-size: 16px;letter-spacing:-.2px}
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:6px 10px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.20);
-      color: var(--muted);
-      font-weight: 900;
-      font-size: 12px;
-    }
-
-    .search{
-      display:flex;align-items:center;gap:10px;
-      background: rgba(0,0,0,.22);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 10px 12px;
-      border-radius: var(--pill);
-      margin-bottom: 12px;
-    }
-    .search i{color: var(--muted2)}
-    .search input{
-      width: 100%;
-      border:0;outline:none;
-      background: transparent;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 14.5px;
-      font-weight: 700;
-    }
-    .search input::placeholder{color: rgba(244,246,248,.50)}
-
-    .pill-row{display:flex;flex-wrap:wrap;gap:8px}
-    .filter-pill{
-      display:inline-flex;align-items:center;gap:8px;
-      padding: 8px 14px;
-      border-radius: var(--pill);
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 900;
-      cursor:pointer;
-      transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
-      user-select:none;
-    }
-    .filter-pill:hover{transform:translateY(-1px);border-color: rgba(255,255,255,.16);color: var(--text)}
-    .filter-pill.active{
-      background: rgba(30,58,95,.60);
-      border-color: rgba(249,168,37,.35);
-      color: var(--white);
-    }
-
-    .toggle-row{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .switch{
-      position: relative;
-      width: 54px; height: 30px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.12);
-      cursor:pointer;
-      transition: background .2s var(--ease), border-color .2s var(--ease);
-      flex: 0 0 auto;
-    }
-    .switch::after{
-      content:"";
-      position:absolute; top: 3px; left: 3px;
-      width: 24px; height: 24px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.85);
-      transition: transform .2s var(--ease), background .2s var(--ease);
-    }
-    .switch.on{
-      background: rgba(0,200,83,.22);
-      border-color: rgba(0,200,83,.30);
-    }
-    .switch.on::after{
-      transform: translateX(24px);
-      background: rgba(0,200,83,.92);
-    }
-
-    /* ===== Chart Area ===== */
-    .chart-top{
-      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
-      margin-bottom: 12px;
-    }
-    .chart-title{
-      display:flex;align-items:center;gap:10px;
-      font-weight: 950;
-      letter-spacing: .2px;
-    }
-    .chart-title i{color: var(--gold)}
-    .submeta{display:flex;flex-wrap:wrap;gap:10px}
-    .submeta .pill{background: rgba(0,0,0,.18)}
-
-    .chart-wrap{
-      border-radius: 18px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
-      min-height: 520px;
-      position: relative;
-    }
-    .chart-loading{
-      position:absolute; inset: 0;
-      display:grid; place-items:center;
-      background: radial-gradient(600px 260px at 10% 0%, rgba(0,200,83,.10), transparent 60%),
-                  radial-gradient(600px 260px at 90% 0%, rgba(249,168,37,.08), transparent 60%),
-                  rgba(0,0,0,.30);
-      color: rgba(255,255,255,.85);
-      text-align:center;
-      padding: 16px;
-      pointer-events:none;
-      opacity: 0;
-      transition: opacity .2s var(--ease);
-    }
-    .chart-wrap.loading .chart-loading{opacity:1}
-    .chart-loading .spinner{
-      width:44px;height:44px;border-radius:999px;
-      border: 4px solid rgba(255,255,255,.18);
-      border-top-color: rgba(0,200,83,.9);
-      animation: spin 1s linear infinite;
-      margin: 0 auto 12px;
-    }
-    @keyframes spin{to{transform: rotate(360deg)}}
-
-    .tv-embed{
-      width:100%;
-      height: 520px;
-      border: 0;
-      display:block;
-      background: rgba(0,0,0,.2);
-    }
-
-    /* ===== Market Snapshot Table ===== */
-    .table{
-      width:100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-      overflow:hidden;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .table th{
-      text-align:left;
-      padding: 12px 12px;
-      font-size: 12px;
-      letter-spacing: .35px;
-      text-transform: uppercase;
-      color: rgba(249,168,37,.95);
-      background: rgba(0,0,0,.22);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .table td{
-      padding: 12px 12px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      color: rgba(244,246,248,.85);
-      font-weight: 700;
-      font-size: 14px;
-    }
-    .row-pair{
-      display:flex;align-items:center;gap:10px;font-weight:950;color:var(--white);
-    }
-    .chg{font-weight:950}
-    .pos{color:#7CFFB2}
-    .neg{color:#FF8E8E}
-    .tiny{color: var(--muted2); font-weight: 800; font-size: 12.5px}
-
-    /* ===== Trust / Compliance cards ===== */
-    .grid-3{display:grid;gap: 16px;grid-template-columns: repeat(3, minmax(0,1fr))}
-    @media (max-width:980px){ .grid-3{grid-template-columns: 1fr} }
-    .trust h3{font-size:16px;margin-bottom:8px}
-    .trust p{font-size:14.8px}
-    .trust .icon{
-      width:46px;height:46px;border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      display:grid;place-items:center;
-      color: var(--gold);
-      margin-bottom: 10px;
-      box-shadow: 0 10px 28px rgba(0,0,0,.35);
-    }
-
-    /* ===== Footer ===== */
-    footer{
-      background:#000;
-      border-top:1px solid rgba(255,255,255,.08);
-      padding: 54px 0 22px;
-      margin-top: 30px;
-    }
-    .footer-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .9fr .9fr;
-      gap: 18px;
-      align-items:start;
-    }
-    @media (max-width:980px){ .footer-grid{grid-template-columns: 1fr} }
-    .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-    .footer-logo{
-      width:46px;height:46px;border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      overflow:hidden;display:grid;place-items:center;
-    }
-    .footer-logo img{width:100%;height:100%;object-fit:cover}
-    .footer h4{
-      margin:0 0 12px;
-      font-size: 14px;
-      letter-spacing: .28px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.82);
-    }
-    .footer p,.footer a,.footer li{
-      color: rgba(255,255,255,.70);
-      font-size: 14.5px;
-      line-height: 1.75;
-    }
-    .footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-    .footer a:hover{color: rgba(255,255,255,.92)}
-    .contact-line{display:flex;gap:10px;align-items:flex-start;margin: 10px 0}
-    .contact-line i{margin-top:3px;color: var(--gold);width:18px}
-    .footer-bottom{
-      border-top:1px solid rgba(255,255,255,.08);
-      margin-top: 22px;
-      padding-top: 16px;
-      display:flex;flex-wrap:wrap;gap:10px;
-      justify-content:space-between;align-items:center;
-    }
-    .footer-bottom small{color: rgba(255,255,255,.55); line-height: 1.6}
-    .credit a{color: rgba(0,200,83,.95); font-weight: 950}
-
-    /* ===== Toast ===== */
-    .toast{
-      position:fixed;right:16px;bottom:16px;z-index:9999;
-      padding:12px 14px;border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.75);
-      backdrop-filter: blur(12px);
-      color:rgba(255,255,255,.92);
-      box-shadow:0 18px 40px rgba(0,0,0,.45);
-      transform: translateY(10px);
-      opacity:0;
-      transition: opacity .25s ease, transform .25s ease;
-      pointer-events:none;
-      font-weight: 800;
-      letter-spacing: .2px;
-      max-width: 360px;
-    }
-    .toast.show{opacity:1;transform: translateY(0)}
-  </style>
+  <link rel="stylesheet" href="livechart.css">
 </head>
 
 <body>
@@ -532,8 +36,6 @@
           <a href="index.html">Home</a>
           <a href="learn.html">Learn</a>
           <a href="market-analysis.html">Market Analysis</a>
-          <a href="strategies.html">Strategies</a>
-          <a href="calendar.html">Calendar</a>
           <a class="active" href="livechart.html">Live Charts</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
@@ -541,7 +43,7 @@
 
         <div class="nav-actions">
           <a class="btn btn-gold" href="market-analysis.html"><i class="fa-solid fa-layer-group"></i> See Analysis</a>
-          <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu" aria-expanded="false">
+          <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu" aria-controls="mobilePanel" aria-expanded="false">
             <i class="fa-solid fa-bars"></i>
           </button>
         </div>
@@ -553,8 +55,6 @@
           <a href="index.html">Home</a>
           <a href="learn.html">Learn</a>
           <a href="market-analysis.html">Market Analysis</a>
-          <a href="strategies.html">Strategies</a>
-          <a href="calendar.html">Calendar</a>
           <a href="livechart.html" style="border-color:rgba(249,168,37,.25); color: rgba(244,246,248,.95);">Live Charts</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
@@ -566,61 +66,47 @@
     </div>
   </div>
 
-  <!-- HERO -->
+  <!-- HERO (60–70vh, image background, minimal mobile) -->
   <header class="page-hero">
     <div class="container">
-      <div class="hero-grid">
-        <div>
-          <span class="eyebrow"><span class="dot"></span> Institutional-style charts • Clean UI • Risk-first</span>
-          <h1 style="margin-top:10px;">
-            <i class="fa-solid fa-chart-line" style="color:var(--gold); margin-right:10px;"></i>
-            Live Charts
-          </h1>
-          <p style="max-width: 78ch; font-size: 1.05rem; margin-top: 10px;">
-            A focused trading screen built for serious decision-making: pick your instrument, set timeframe,
-            and cross-check the snapshot table before you act.
-          </p>
+      <div class="hero-inner">
+        <span class="eyebrow"><span class="dot"></span> Live market tools • Education-first • No hype</span>
 
-          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
-            <span class="pill"><i class="fa-solid fa-clock"></i> Updated: <strong id="updatedLabel">—</strong></span>
-            <span class="pill"><i class="fa-solid fa-signal"></i> Mode: <strong id="dataMode">Demo</strong></span>
-            <span class="pill"><i class="fa-solid fa-shield-halved"></i> Risk: <strong>Always on</strong></span>
-          </div>
+        <h1 class="hero-title">
+          <i class="fa-solid fa-chart-line hero-icon"></i>
+          Live Charts
+        </h1>
 
-          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
-            <button class="btn btn-primary" id="btnOpenTV"><i class="fa-solid fa-bolt"></i> Load Interactive Chart</button>
-            <button class="btn btn-ghost" id="btnReset"><i class="fa-solid fa-rotate-right"></i> Reset</button>
-            <button class="btn btn-ghost" id="btnCopy"><i class="fa-solid fa-link"></i> Copy Chart Link</button>
-          </div>
+       <!--  <p class="hero-sub">
+          Real-time chart embeds + a currency strength view — built to connect your education and analysis to live market behavior.
+        </p>--> 
+
+        <div class="hero-meta">
+          <span class="pill"><i class="fa-solid fa-clock"></i> Updated: <strong id="updatedLabel">—</strong></span>
+          <span class="pill"><i class="fa-solid fa-location-dot"></i> TZ: <strong>Africa/Nairobi</strong></span>
+          <span class="pill"><i class="fa-solid fa-signal"></i> Mode: <strong id="dataMode">Demo</strong></span>
         </div>
 
-        <aside class="hero-card" aria-label="Trust Note">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-            <span class="pill"><i class="fa-solid fa-circle-check"></i> Transparency</span>
-            <span class="pill"><i class="fa-solid fa-location-dot"></i> Nairobi</span>
-          </div>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="btnOpenTV"><i class="fa-solid fa-bolt"></i> Load Interactive Chart</button>
+          <button class="btn btn-ghost" id="btnReset"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+          <button class="btn btn-ghost" id="btnCopy"><i class="fa-solid fa-link"></i> Copy Link</button>
+        </div>
 
-          <div style="margin-top:12px;">
-            <h3 style="font-size: 16px;">How this builds trust</h3>
-            <p style="margin-top:8px;">
-              We separate <b style="color:rgba(255,255,255,.92)">tools</b> (charts/data) from <b style="color:rgba(255,255,255,.92)">decisions</b> (risk rules).
-              Serious clients want process, consistency, and clear disclaimers—so it’s baked in.
-            </p>
-            <div style="margin-top:12px;display:grid;gap:10px;">
-              <div class="pill"><i class="fa-solid fa-book-open"></i> Pair this with <strong>Market Analysis</strong></div>
-              <div class="pill"><i class="fa-solid fa-calendar-days"></i> Avoid entries near <strong>high-impact news</strong></div>
-            </div>
-          </div>
-        </aside>
+        <!-- Mobile minimal note -->
+        <div class="hero-mini-note">
+          <i class="fa-solid fa-circle-info"></i>
+          Tools support decision-making — they don’t replace risk management.
+        </div>
       </div>
     </div>
   </header>
 
   <!-- MAIN -->
-  <section class="section-sm" style="padding-top: 10px;">
+  <section class="section-sm" style="padding-top: 14px;">
     <div class="container">
 
-      <div class="layout">
+      <div class="layout" style="margin-top:16px;">
 
         <!-- LEFT: CONTROLS -->
         <aside class="card">
@@ -636,32 +122,20 @@
 
           <div style="margin-bottom:12px;">
             <div class="tiny" style="margin-bottom:8px; font-weight:900; letter-spacing:.2px;">Instruments</div>
-            <div class="pill-row" id="pairsRow">
-              <!-- filled by JS -->
-            </div>
+            <div class="pill-row" id="pairsRow"></div>
           </div>
 
           <div style="margin-bottom:12px;">
             <div class="tiny" style="margin-bottom:8px; font-weight:900; letter-spacing:.2px;">Timeframes</div>
-            <div class="pill-row" id="tfsRow">
-              <!-- filled by JS -->
-            </div>
+            <div class="pill-row" id="tfsRow"></div>
           </div>
 
           <div class="toggle-row">
             <div>
               <div style="font-weight:950;letter-spacing:.2px;">Pro Mode</div>
-              <div class="tiny">Adds snapshot + risk panel for serious workflow.</div>
+              <div class="tiny">Adds snapshot + strength meter workflow.</div>
             </div>
             <div class="switch on" id="proSwitch" role="switch" aria-checked="true" tabindex="0"></div>
-          </div>
-
-          <div class="toggle-row">
-            <div>
-              <div style="font-weight:950;letter-spacing:.2px;">Show Risk Panel</div>
-              <div class="tiny">Disclaimers + checklist before execution.</div>
-            </div>
-            <div class="switch on" id="riskSwitch" role="switch" aria-checked="true" tabindex="0"></div>
           </div>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
@@ -673,12 +147,19 @@
             <div class="tiny" style="font-weight:900;letter-spacing:.2px;margin-bottom:8px;">Shortcut</div>
             <div class="pill"><i class="fa-solid fa-keyboard"></i> Press <strong>/</strong> to focus search</div>
           </div>
+
+          <div style="margin-top:14px;border-top:1px solid rgba(255,255,255,.08);padding-top:14px;">
+            <div class="tiny" style="font-weight:900;letter-spacing:.2px;margin-bottom:8px;">Note</div>
+            <div class="pill">
+              <i class="fa-solid fa-circle-info"></i>
+              UbuntuFX provides educational tools only — no paid signals.
+            </div>
+          </div>
         </aside>
 
-        <!-- RIGHT: CHART + PANELS -->
+        <!-- RIGHT: CHART -->
         <main style="display:grid; gap:16px;">
 
-          <!-- Chart Card -->
           <section class="card">
             <div class="chart-top">
               <div class="chart-title">
@@ -697,14 +178,13 @@
             </div>
 
             <div class="chart-wrap loading" id="chartWrap">
-              <!-- TradingView iframe will be injected here -->
               <div class="chart-loading" id="chartLoading">
                 <div>
                   <div class="spinner"></div>
                   <div style="font-weight:950;letter-spacing:.2px;">Chart not loaded yet</div>
                   <div style="margin-top:6px;color:rgba(244,246,248,.70);max-width: 52ch;">
                     Click <b style="color:rgba(255,255,255,.92)">Load Interactive Chart</b> to embed TradingView.
-                    You can also run this page in “Demo Mode” with snapshots below.
+                    Snapshot + strength meter still work in demo mode.
                   </div>
                 </div>
               </div>
@@ -716,95 +196,87 @@
               <button class="btn btn-ghost" id="btnDraw"><i class="fa-solid fa-pen-ruler"></i> Drawing (Guide)</button>
               <button class="btn btn-ghost" id="btnFullscreen"><i class="fa-solid fa-expand"></i> Fullscreen</button>
             </div>
-          </section>
 
-          <!-- Pro Mode Panels -->
-          <section class="card" id="snapshotCard">
-            <div class="control-title">
-              <h3><i class="fa-solid fa-table" style="color:var(--gold);margin-right:8px;"></i> Market Snapshot</h3>
-              <span class="badge"><i class="fa-solid fa-rotate" style="color:var(--gold)"></i> Demo refresh</span>
-            </div>
-
-            <p class="tiny" style="margin-bottom:10px;">
-              Serious clients want context. This snapshot shows example price + change + spread estimate (demo).
-              Replace with your live feed later.
+            <p class="tiny" style="margin-top:12px;">
+              <b style="color:rgba(255,255,255,.92)">Disclaimer:</b> Charts and meters are analytical tools.
+              Trading involves risk. No guaranteed outcomes.
             </p>
-
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Instrument</th>
-                  <th>Price</th>
-                  <th>Change</th>
-                  <th>Spread</th>
-                  <th>Session</th>
-                </tr>
-              </thead>
-              <tbody id="snapshotBody"></tbody>
-            </table>
-          </section>
-
-          <section class="card" id="riskCard">
-            <div class="control-title">
-              <h3><i class="fa-solid fa-shield-halved" style="color:var(--gold);margin-right:8px;"></i> Risk & Trust Panel</h3>
-              <span class="badge"><i class="fa-solid fa-circle-info" style="color:var(--gold)"></i> Mandatory</span>
-            </div>
-
-            <div class="grid-3" style="margin-top:10px;">
-              <div class="trust">
-                <div class="icon"><i class="fa-solid fa-clipboard-check"></i></div>
-                <h3>Process Driven</h3>
-                <p>Charts are tools. Decisions follow a checklist: bias → level → confirmation → invalidation → size.</p>
-              </div>
-              <div class="trust">
-                <div class="icon"><i class="fa-solid fa-lock"></i></div>
-                <h3>Transparency</h3>
-                <p>We show disclaimers, risk guidance, and we don’t promise profits. Trust is built on truth.</p>
-              </div>
-              <div class="trust">
-                <div class="icon"><i class="fa-solid fa-chart-pie"></i></div>
-                <h3>Risk First</h3>
-                <p>Size and invalidation matter more than entry. Protect capital to stay in the game long-term.</p>
-              </div>
-            </div>
-
-            <div style="margin-top:14px;border-top:1px solid rgba(255,255,255,.08);padding-top:14px;">
-              <div class="tiny" style="font-weight:900;letter-spacing:.2px;margin-bottom:10px;">Quick Checklist (before execution)</div>
-              <div style="display:grid;gap:10px;">
-                <label class="pill" style="cursor:pointer;">
-                  <input type="checkbox" id="c1" style="accent-color: var(--emerald); transform: scale(1.1);" />
-                  <span>My setup is at a level (not mid-range).</span>
-                </label>
-                <label class="pill" style="cursor:pointer;">
-                  <input type="checkbox" id="c2" style="accent-color: var(--emerald); transform: scale(1.1);" />
-                  <span>I have a clear invalidation point.</span>
-                </label>
-                <label class="pill" style="cursor:pointer;">
-                  <input type="checkbox" id="c3" style="accent-color: var(--emerald); transform: scale(1.1);" />
-                  <span>Position size fits my risk rules.</span>
-                </label>
-                <label class="pill" style="cursor:pointer;">
-                  <input type="checkbox" id="c4" style="accent-color: var(--emerald); transform: scale(1.1);" />
-                  <span>No high-impact news within 30–60 minutes.</span>
-                </label>
-              </div>
-
-              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
-                <button class="btn btn-primary" id="btnChecklist"><i class="fa-solid fa-circle-check"></i> Validate Checklist</button>
-                <a class="btn btn-ghost" href="calendar.html"><i class="fa-solid fa-calendar-days"></i> Check Calendar</a>
-              </div>
-
-              <p class="tiny" style="margin-top:12px;">
-                <b style="color:rgba(255,255,255,.92)">Risk Disclaimer:</b>
-                Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors.
-                UbuntuFX provides educational content and market tools only; we do not offer financial advice or guaranteed returns.
-              </p>
-            </div>
           </section>
 
         </main>
 
+      </div><br>
+
+      <!-- Live Market Snapshot + Strength Meter -->
+      <div class="top-grid">
+
+        <!-- Strength Meter -->
+        <section class="card" aria-label="Currency Strength Meter">
+          <div class="control-title">
+            <h3><i class="fa-solid fa-gauge-high" style="color:var(--gold);margin-right:8px;"></i> Currency Strength Meter</h3>
+            <span class="badge" id="strengthMode"><i class="fa-solid fa-wave-square" style="color:var(--gold)"></i> Live demo</span>
+          </div>
+
+          <p class="tiny" style="margin-bottom:10px;">
+            A visual view of how major currencies are performing relative to each other. Use it for better pair selection,
+            trend confirmation, and alignment with higher-timeframe bias — not as a standalone signal.
+          </p>
+
+          <div class="meter-2s" aria-label="Currency strength and weakness graph">
+  <div class="meter-head">
+    <span class="meter-side weak"><i class="fa-solid fa-arrow-trend-down"></i> Weakness</span>
+    <span class="meter-mid"><i class="fa-solid fa-grip-lines-vertical"></i> 0</span>
+    <span class="meter-side strong"><i class="fa-solid fa-arrow-trend-up"></i> Strength</span>
+  </div>
+
+  <div class="meter-grid" id="strengthMeter" role="list" aria-label="Currency lines">
+    <!-- JS fills rows -->
+  </div>
+
+  <div class="meter-legend">
+    <span class="legend-chip strong"><i class="fa-solid fa-minus"></i> Strong</span>
+    <span class="legend-chip weak"><i class="fa-solid fa-minus"></i> Weak</span>
+    <span class="legend-chip"><i class="fa-solid fa-circle-info"></i> Relative demo</span>
+  </div>
+</div>
+
+          <div class="meter-foot">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <div class="tiny" style="color:rgba(244,246,248,.68)">
+              Purpose: supporting analytical tool. It does not provide trade signals or guarantee outcomes.
+            </div>
+          </div>
+        </section>
+
+        <!-- Live Market (Snapshot) -->
+        <section class="card" id="snapshotCard" aria-label="Live Market Snapshot">
+          <div class="control-title">
+            <h3><i class="fa-solid fa-table" style="color:var(--gold);margin-right:8px;"></i> Live Market Snapshot</h3>
+            <span class="badge"><i class="fa-solid fa-rotate" style="color:var(--gold)"></i> Demo refresh</span>
+          </div>
+
+          <p class="tiny" style="margin-bottom:10px;">
+            Real-time snapshot is shown as demo data for now. Replace with your live feed later.
+            Purpose: connect analysis to live behavior.
+          </p>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Instrument</th>
+                <th>Price</th>
+                <th>Change</th>
+                <th>Spread</th>
+                <th>Session</th>
+              </tr>
+            </thead>
+            <tbody id="snapshotBody"></tbody>
+          </table>
+        </section>
+
       </div>
+
+      
     </div>
   </section>
 
@@ -819,8 +291,8 @@
                 onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-chart-line&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
             </div>
             <div>
-              <div style="font-weight:950; letter-spacing:.2px; color:rgba(255,255,255,.92);">UbuntuFX</div>
-              <div style="color:rgba(255,255,255,.60); font-size:14px; margin-top:2px;">Deep clarity for serious traders</div>
+              <div style="font-weight:950; letter-spacing:.2px; color:rgba(244,246,248,.92);">UbuntuFX</div>
+              <div style="color:rgba(244,246,248,.60); font-size:14px; margin-top:2px;">Deep clarity for serious traders</div>
             </div>
           </div>
 
@@ -835,7 +307,6 @@
           <ul>
             <li><a href="learn.html">Learn Forex</a></li>
             <li><a href="market-analysis.html">Market Analysis</a></li>
-            <li><a href="strategies.html">Trading Strategies</a></li>
             <li><a href="calendar.html">Economic Calendar</a></li>
             <li><a href="livechart.html">Live Charts</a></li>
           </ul>
@@ -850,8 +321,8 @@
           <div class="contact-line">
             <i class="fa-solid fa-phone"></i>
             <div>
-              <a href="tel:+254717770557">0717770557</a><br />
-              <span style="color:rgba(255,255,255,.55); font-size:13px;">(+254 717 770 557)</span>
+              <a href="tel:+254717770557">+254 717 770 557</a><br />
+              
             </div>
           </div>
           <div class="contact-line">
@@ -861,7 +332,7 @@
           <div class="contact-line">
             <i class="fa-solid fa-circle-info"></i>
             <div style="color:rgba(255,255,255,.65); font-size:13.5px;">
-              Risk Disclaimer: Forex trading involves risk. UbuntuFX provides educational content only. No guaranteed outcomes.
+              Risk Disclaimer: Educational tools only. Trading involves risk. No guaranteed outcomes.
             </div>
           </div>
         </div>
@@ -878,407 +349,6 @@
 
   <div class="toast" id="toast"></div>
 
-  <script>
-    // ===== Year + Updated =====
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("updatedLabel").textContent = new Date().toLocaleString();
-
-    // ===== Mobile nav =====
-    const menuBtn = document.getElementById("menuBtn");
-    const mobilePanel = document.getElementById("mobilePanel");
-    function setMenu(open){
-      document.body.classList.toggle("mobile-open", open);
-      menuBtn.setAttribute("aria-expanded", String(open));
-      menuBtn.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
-    }
-    menuBtn.addEventListener("click", () => {
-      const isOpen = document.body.classList.contains("mobile-open");
-      setMenu(!isOpen);
-    });
-    mobilePanel.addEventListener("click", (e) => { if (e.target.tagName === "A") setMenu(false); });
-    document.addEventListener("click", (e) => {
-      const isOpen = document.body.classList.contains("mobile-open");
-      if (!isOpen) return;
-      const navWrap = document.querySelector(".nav-wrap");
-      if (!navWrap.contains(e.target)) setMenu(false);
-    });
-
-    // ===== Toast =====
-    const toastEl = document.getElementById("toast");
-    function toast(msg){
-      toastEl.textContent = msg;
-      toastEl.classList.add("show");
-      clearTimeout(toastEl._t);
-      toastEl._t = setTimeout(() => toastEl.classList.remove("show"), 2200);
-    }
-
-    // ===== Instruments + Timeframes =====
-    // NOTE: This page can run in DEMO mode (no external scripts).
-    // When you want real interactive charts, enable TradingView embed via iframe injection below.
-    const instruments = [
-      { key:"FX:EURUSD", name:"EUR/USD", asset:"FX" },
-      { key:"FX:GBPUSD", name:"GBP/USD", asset:"FX" },
-      { key:"FX:USDJPY", name:"USD/JPY", asset:"FX" },
-      { key:"FX:AUDUSD", name:"AUD/USD", asset:"FX" },
-      { key:"FX:USDCAD", name:"USD/CAD", asset:"FX" },
-      { key:"OANDA:XAUUSD", name:"XAU/USD (Gold)", asset:"Gold" },
-      { key:"NASDAQ:NDX", name:"NAS100 (NDX)", asset:"Indices" },
-      { key:"BINANCE:BTCUSDT", name:"BTC/USDT", asset:"Crypto" }
-    ];
-    const timeframes = ["1","5","15","30","60","240","D"]; // minutes or "D"
-    const tfLabels = { "1":"1m","5":"5m","15":"15m","30":"30m","60":"1h","240":"4h","D":"1D" };
-
-    // ===== State (with persistence) =====
-    const LS_VIEW = "ubuntufx_chart_view";
-    let state = {
-      symbol: "FX:EURUSD",
-      tf: "15",
-      pro: true,
-      risk: true,
-      loaded: false
-    };
-
-    // restore if exists
-    try{
-      const saved = JSON.parse(localStorage.getItem(LS_VIEW) || "null");
-      if (saved && saved.symbol && saved.tf) state = { ...state, ...saved };
-    }catch(e){}
-
-    // ===== Render pills =====
-    const pairsRow = document.getElementById("pairsRow");
-    const tfsRow = document.getElementById("tfsRow");
-    const pairSearch = document.getElementById("pairSearch");
-
-    function renderPairs(filterText=""){
-      const q = (filterText || "").trim().toLowerCase();
-      const filtered = instruments.filter(x => {
-        if (!q) return true;
-        return (x.name + " " + x.key).toLowerCase().includes(q);
-      });
-
-      pairsRow.innerHTML = filtered.map(x => {
-        const active = x.key === state.symbol ? "active" : "";
-        return `<span class="filter-pill ${active}" data-symbol="${x.key}">
-          <i class="fa-solid fa-tag" style="color:rgba(249,168,37,.92)"></i> ${x.name}
-        </span>`;
-      }).join("");
-
-      // attach click
-      pairsRow.querySelectorAll("[data-symbol]").forEach(el => {
-        el.addEventListener("click", () => {
-          state.symbol = el.getAttribute("data-symbol");
-          state.loaded = false; // require reload
-          updateHeader();
-          renderPairs(pairSearch.value);
-          updateChart();
-          toast("Instrument updated.");
-        });
-      });
-    }
-
-    function renderTFs(){
-      tfsRow.innerHTML = timeframes.map(tf => {
-        const active = tf === state.tf ? "active" : "";
-        return `<span class="filter-pill ${active}" data-tf="${tf}">
-          <i class="fa-solid fa-clock" style="color:rgba(249,168,37,.92)"></i> ${tfLabels[tf]}
-        </span>`;
-      }).join("");
-
-      tfsRow.querySelectorAll("[data-tf]").forEach(el => {
-        el.addEventListener("click", () => {
-          state.tf = el.getAttribute("data-tf");
-          state.loaded = false;
-          updateHeader();
-          renderTFs();
-          updateChart();
-          toast("Timeframe updated.");
-        });
-      });
-    }
-
-    pairSearch.addEventListener("input", (e) => renderPairs(e.target.value));
-
-    // keyboard shortcut
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "/"){
-        e.preventDefault();
-        pairSearch.focus();
-      }
-    });
-
-    // ===== Switches =====
-    const proSwitch = document.getElementById("proSwitch");
-    const riskSwitch = document.getElementById("riskSwitch");
-    const snapshotCard = document.getElementById("snapshotCard");
-    const riskCard = document.getElementById("riskCard");
-
-    function setSwitch(el, on){
-      el.classList.toggle("on", on);
-      el.setAttribute("aria-checked", String(on));
-    }
-    function updateSwitchUI(){
-      setSwitch(proSwitch, state.pro);
-      setSwitch(riskSwitch, state.risk);
-
-      snapshotCard.style.display = state.pro ? "block" : "none";
-      // risk panel can be toggled independent
-      riskCard.style.display = state.risk ? "block" : "none";
-    }
-
-    function switchClick(which){
-      if (which === "pro") state.pro = !state.pro;
-      if (which === "risk") state.risk = !state.risk;
-      updateSwitchUI();
-      persistView();
-      toast("Layout updated.");
-    }
-    proSwitch.addEventListener("click", () => switchClick("pro"));
-    riskSwitch.addEventListener("click", () => switchClick("risk"));
-    proSwitch.addEventListener("keydown", (e) => { if (e.key==="Enter"||e.key===" "){ e.preventDefault(); switchClick("pro"); }});
-    riskSwitch.addEventListener("keydown", (e) => { if (e.key==="Enter"||e.key===" "){ e.preventDefault(); switchClick("risk"); }});
-
-    // ===== Header + badges =====
-    const selectedBadge = document.getElementById("selectedBadge");
-    const chartName = document.getElementById("chartName");
-    const assetLabel = document.getElementById("assetLabel");
-    const tfLabel = document.getElementById("tfLabel");
-    const feedLabel = document.getElementById("feedLabel");
-    const dataMode = document.getElementById("dataMode");
-
-    function getInstrument(){
-      return instruments.find(x => x.key === state.symbol) || instruments[0];
-    }
-    function updateHeader(){
-      const ins = getInstrument();
-      chartName.textContent = ins.name;
-      assetLabel.textContent = ins.asset;
-      tfLabel.textContent = tfLabels[state.tf];
-      selectedBadge.innerHTML = `<i class="fa-solid fa-tag" style="color:var(--gold)"></i> ${ins.name} • ${tfLabels[state.tf]}`;
-    }
-
-    // ===== Snapshot (demo feed) =====
-    const snapshotBody = document.getElementById("snapshotBody");
-
-    function rand(n, spread=0.01){ // deterministic-ish small changes per refresh
-      return (n + (Math.random() - 0.5) * spread);
-    }
-    // base demo prices
-    let demo = [
-      { name:"EUR/USD", price:1.0725, chg: +0.12, spr: 0.7, ses:"London" },
-      { name:"GBP/USD", price:1.2648, chg: -0.08, spr: 0.9, ses:"London" },
-      { name:"USD/JPY", price:149.83, chg: +0.23, spr: 1.1, ses:"Tokyo" },
-      { name:"XAU/USD", price:2158.30, chg: +0.35, spr: 2.6, ses:"NY" },
-      { name:"NAS100",  price:17820,  chg: -0.14, spr: 1.9, ses:"NY" },
-      { name:"BTC/USDT",price:68940,  chg: -1.20, spr: 0.0, ses:"24/7" },
-    ];
-
-    function renderSnapshot(){
-      // simulate tiny movements
-      demo = demo.map(x => {
-        const p = (typeof x.price === "number") ? x.price : Number(x.price);
-        const newP = rand(p, p < 10 ? 0.0018 : (p < 1000 ? 2.2 : 60));
-        const newChg = rand(x.chg, 0.18);
-
-        return { ...x, price: newP, chg: newChg };
-      });
-
-      snapshotBody.innerHTML = demo.map(x => {
-        const pos = x.chg >= 0;
-        const cls = pos ? "pos" : "neg";
-        const sign = pos ? "+" : "";
-        const priceFmt = (x.price < 10) ? x.price.toFixed(4) : (x.price < 1000 ? x.price.toFixed(2) : Math.round(x.price).toString());
-
-        return `
-          <tr>
-            <td>
-              <div class="row-pair">
-                <i class="fa-solid fa-chart-line" style="color:rgba(249,168,37,.95)"></i>
-                ${x.name}
-              </div>
-            </td>
-            <td>${priceFmt}</td>
-            <td class="chg ${cls}">${sign}${x.chg.toFixed(2)}%</td>
-            <td>${x.spr ? x.spr.toFixed(1) + " pips" : "—"}</td>
-            <td><span class="tiny">${x.ses}</span></td>
-          </tr>
-        `;
-      }).join("");
-    }
-
-    // ===== TradingView Embed (iframe, no external scripts) =====
-    // For real production: replace the iframe with TV official widget script or your data feed.
-    const chartWrap = document.getElementById("chartWrap");
-    const chartHost = document.getElementById("chartHost");
-    const btnOpenTV = document.getElementById("btnOpenTV");
-
-    function buildTVUrl(symbol, interval){
-      // TradingView embeddable "widgetembed" URL
-      // interval: 1,5,15,30,60,240,D
-      const theme = "dark";
-      const params = new URLSearchParams({
-        symbol,
-        interval,
-        hidetoptoolbar: "0",
-        hidelegend: "0",
-        saveimage: "1",
-        toolbarbg: "rgba(0,0,0,1)",
-        studies: "",
-        theme,
-        style: "1",
-        timezone: "Africa/Nairobi",
-        withdateranges: "1",
-        allow_symbol_change: "1",
-        details: "1",
-        hotlist: "0",
-        calendar: "0",
-      });
-      return "https://s.tradingview.com/widgetembed/?" + params.toString();
-    }
-
-    function updateChart(){
-      // if not loaded, show overlay only
-      if (!state.loaded){
-        chartHost.innerHTML = "";
-        chartWrap.classList.add("loading");
-        feedLabel.textContent = "Demo";
-        dataMode.textContent = "Demo";
-        return;
-      }
-
-      // load iframe
-      chartWrap.classList.add("loading");
-      const url = buildTVUrl(state.symbol, state.tf);
-      chartHost.innerHTML = `
-        <iframe class="tv-embed" title="TradingView Chart" src="${url}" loading="lazy"></iframe>
-      `;
-
-      const iframe = chartHost.querySelector("iframe");
-      // remove loading overlay once iframe has loaded
-      iframe.addEventListener("load", () => {
-        chartWrap.classList.remove("loading");
-        feedLabel.textContent = "TradingView";
-        dataMode.textContent = "Live (Embed)";
-      });
-    }
-
-    btnOpenTV.addEventListener("click", () => {
-      state.loaded = true;
-      persistView();
-      updateChart();
-      toast("Loading interactive chart...");
-    });
-
-    // ===== Fullscreen =====
-    document.getElementById("btnFullscreen").addEventListener("click", async () => {
-      const target = document.querySelector(".chart-wrap");
-      if (!document.fullscreenElement){
-        await target.requestFullscreen?.();
-        toast("Fullscreen enabled.");
-      }else{
-        await document.exitFullscreen?.();
-      }
-    });
-
-    // Guides
-    document.getElementById("btnIndicators").addEventListener("click", () => {
-      toast("Tip: Use 1–2 indicators max. Price + structure first.");
-    });
-    document.getElementById("btnDraw").addEventListener("click", () => {
-      toast("Tip: Mark HTF levels → wait for LTF confirmation.");
-    });
-
-    // ===== Checklist validation =====
-    document.getElementById("btnChecklist").addEventListener("click", () => {
-      const ok = ["c1","c2","c3","c4"].every(id => document.getElementById(id).checked);
-      toast(ok ? "Checklist validated. Trade only if rules match." : "Checklist incomplete. Slow down.");
-    });
-
-    // ===== Save / Restore View =====
-    function persistView(){
-      localStorage.setItem(LS_VIEW, JSON.stringify({
-        symbol: state.symbol,
-        tf: state.tf,
-        pro: state.pro,
-        risk: state.risk,
-        loaded: state.loaded
-      }));
-    }
-    document.getElementById("btnSaveView").addEventListener("click", () => {
-      persistView();
-      toast("View saved.");
-    });
-    document.getElementById("btnRestoreView").addEventListener("click", () => {
-      try{
-        const saved = JSON.parse(localStorage.getItem(LS_VIEW) || "null");
-        if (!saved){ toast("No saved view found."); return; }
-        state = { ...state, ...saved };
-        renderPairs(pairSearch.value);
-        renderTFs();
-        updateHeader();
-        updateSwitchUI();
-        updateChart();
-        toast("View restored.");
-      }catch(e){
-        toast("Failed to restore view.");
-      }
-    });
-
-    // Reset
-    document.getElementById("btnReset").addEventListener("click", () => {
-      state.symbol = "FX:EURUSD";
-      state.tf = "15";
-      state.pro = true;
-      state.risk = true;
-      state.loaded = false;
-      pairSearch.value = "";
-      renderPairs("");
-      renderTFs();
-      updateHeader();
-      updateSwitchUI();
-      updateChart();
-      persistView();
-      toast("Reset complete.");
-    });
-
-    // Copy link (deep link via hash)
-    document.getElementById("btnCopy").addEventListener("click", () => {
-      const hash = `#symbol=${encodeURIComponent(state.symbol)}&tf=${encodeURIComponent(state.tf)}`;
-      const url = location.origin + location.pathname + hash;
-      navigator.clipboard?.writeText(url).then(() => toast("Link copied."));
-    });
-
-    // deep link support
-    function readHash(){
-      const h = location.hash.replace("#","");
-      if (!h) return;
-      const p = new URLSearchParams(h);
-      const sym = p.get("symbol");
-      const tf = p.get("tf");
-      if (sym && instruments.some(x => x.key === sym)) state.symbol = sym;
-      if (tf && timeframes.includes(tf)) state.tf = tf;
-    }
-    window.addEventListener("hashchange", () => {
-      readHash();
-      renderPairs(pairSearch.value);
-      renderTFs();
-      updateHeader();
-      updateChart();
-      toast("Link loaded.");
-    });
-
-    // ===== Init =====
-    readHash();
-    renderPairs("");
-    renderTFs();
-    updateHeader();
-    updateSwitchUI();
-    updateChart();
-    renderSnapshot();
-
-    // demo snapshot refresh every 10s (only if pro mode)
-    setInterval(() => {
-      if (state.pro) renderSnapshot();
-    }, 10000);
-  </script>
+  <script src="livechart.js"></script>
 </body>
 </html>

@@ -13,600 +13,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <style>
-    /* ===== Premium Design System (aligned to your palette) ===== */
-    *{margin:0;padding:0;box-sizing:border-box}
-    :root{
-      --bg:#0A1F2F;
-      --accent:#00C853;
-      --gold:#F9A825;
-      --secondary:#1E3A5F;
-      --soft:#F4F6F8;
-      --black:#000;
-      --white:#fff;
-
-      --text: rgba(244,246,248,.92);
-      --muted: rgba(244,246,248,.72);
-      --muted2: rgba(244,246,248,.58);
-
-      --border: rgba(255,255,255,.10);
-      --border2: rgba(255,255,255,.16);
-
-      --radius: 18px;
-      --radius2: 22px;
-      --pill: 999px;
-
-      --shadow: 0 18px 50px rgba(0,0,0,.40);
-      --shadow2: 0 12px 34px rgba(0,0,0,.35);
-
-      --ease: cubic-bezier(.2,.8,.2,1);
-      --container: 1280px;
-
-      --font: "Jost", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    html{scroll-behavior:smooth}
-    body{
-      font-family: var(--font);
-      background:
-        radial-gradient(1200px 700px at 20% 10%, rgba(0,200,83,.16), transparent 55%),
-        radial-gradient(1200px 800px at 85% 15%, rgba(249,168,37,.12), transparent 60%),
-        radial-gradient(1100px 700px at 50% 105%, rgba(30,58,95,.35), transparent 60%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{width:min(var(--container),92vw);margin:0 auto}
-
-    h1,h2,h3{color:var(--white);letter-spacing:-.3px}
-    h1{font-size: clamp(34px, 4vw, 54px); line-height: 1.08}
-    h2{font-size: clamp(26px, 2.6vw, 38px); line-height: 1.15}
-    p{color: var(--muted)}
-
-    .section{padding: 84px 0}
-    .section-sm{padding: 64px 0}
-
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:8px 14px;border-radius:var(--pill);
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-size: 14px;
-      backdrop-filter: blur(10px);
-    }
-    .dot{
-      width:8px;height:8px;border-radius:999px;background:var(--accent);
-      box-shadow:0 0 0 6px rgba(0,200,83,.14);
-    }
-
-    /* ===== Buttons ===== */
-    .btn{
-      border:0;cursor:pointer;border-radius:var(--pill);
-      padding: 12px 18px;
-      font-weight: 800;
-      font-size: 14.5px;
-      letter-spacing: .2px;
-      display:inline-flex;align-items:center;gap:10px;
-      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
-      user-select:none;white-space:nowrap;
-    }
-    .btn-primary{
-      color:#062016;
-      background: linear-gradient(135deg, rgba(0,200,83,1), rgba(0,200,83,.78));
-      box-shadow: 0 18px 45px rgba(0,200,83,.22);
-    }
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 52px rgba(0,200,83,.28)}
-    .btn-ghost{
-      color: var(--text);
-      background: rgba(255,255,255,.05);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-    .btn-ghost:hover{transform:translateY(-2px);border-color:var(--border2);box-shadow:var(--shadow2)}
-    .btn-gold{
-      color:#2b1b00;
-      background: linear-gradient(135deg, rgba(249,168,37,1), rgba(249,168,37,.78));
-      box-shadow: 0 18px 45px rgba(249,168,37,.18);
-    }
-    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 22px 52px rgba(249,168,37,.24)}
-
-    /* ===== Navbar (uniform, logo slot, mobile dropdown) ===== */
-    .nav-wrap{
-      position: sticky; top:0; z-index:999;
-      padding: 14px 0;
-      background: rgba(0,0,0,.35);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .navbar{display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:inline-flex;align-items:center;gap:12px;min-width:200px}
-    .logo-slot{
-      width:44px;height:44px;border-radius:14px;overflow:hidden;
-      border:1px solid var(--border);
-      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      display:grid;place-items:center;
-    }
-    .logo-slot img{width:100%;height:100%;object-fit:cover}
-    .brand strong{font-weight:900;letter-spacing:.2px}
-    .brand small{display:block;color:var(--muted2);font-weight:500;margin-top:-2px}
-
-    .nav-links{display:flex;align-items:center;gap:18px}
-    .nav-links a{
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: .2px;
-      padding: 10px 12px;
-      border-radius: var(--pill);
-      transition: background .2s var(--ease), color .2s var(--ease);
-    }
-    .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
-    .nav-links a.active{
-      color: var(--white);
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(249,168,37,.25);
-    }
-
-    .nav-actions{display:flex;align-items:center;gap:10px}
-    .menu-btn{
-      display:none;
-      width:44px;height:44px;border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-      cursor:pointer;
-    }
-    .mobile-panel{
-      display:none;margin-top:12px;
-      border:1px solid var(--border);
-      background: rgba(10,31,47,.92);
-      backdrop-filter: blur(14px);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .mobile-panel .inner{padding:14px;display:grid;gap:10px}
-    .mobile-panel a{
-      padding:12px;border-radius:14px;
-      color: var(--muted);
-      font-weight: 800;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-    }
-    .mobile-panel a:hover{color:var(--text);border-color:rgba(255,255,255,.12)}
-    .mobile-open .mobile-panel{display:block}
-    @media (max-width:980px){
-      .nav-links{display:none}
-      .menu-btn{display:inline-grid;place-items:center}
-      .brand{min-width:auto}
-    }
-
-    /* ===== Page Hero ===== */
-    .page-hero{padding: 72px 0 26px}
-    .hero-grid{
-      display:grid;grid-template-columns: 1.25fr .75fr; gap: 18px; align-items: start;
-    }
-    @media (max-width:980px){ .hero-grid{grid-template-columns: 1fr} }
-
-    .hero-card{
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      overflow: hidden;
-      position: relative;
-    }
-    .hero-card:before{
-      content:"";position:absolute;inset:-1px;
-      background: radial-gradient(600px 220px at 20% 0%, rgba(0,200,83,.22), transparent 60%),
-                  radial-gradient(520px 240px at 95% 10%, rgba(249,168,37,.18), transparent 62%);
-      opacity:.8;pointer-events:none;
-    }
-    .hero-card > *{position:relative;z-index:1}
-
-    .pill{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 12px;border-radius:var(--pill);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .2px;
-    }
-    .pill i{color:var(--gold)}
-    .pill strong{color:var(--white);font-weight:900}
-    .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-
-    /* ===== Toolbar (filters + search + sort) ===== */
-    .toolbar{
-      display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
-      margin: 18px 0 14px;
-    }
-    .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-    .group{
-      display:flex;flex-wrap:wrap;gap:8px;align-items:center;
-      background: rgba(0,0,0,.22);
-      border: 1px solid rgba(255,255,255,.06);
-      padding: 10px 10px;
-      border-radius: var(--pill);
-      backdrop-filter: blur(10px);
-    }
-    .filter-pill{
-      display:inline-flex;align-items:center;gap:8px;
-      padding: 8px 14px;
-      border-radius: var(--pill);
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 800;
-      cursor:pointer;
-      transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
-      user-select:none;
-    }
-    .filter-pill:hover{transform:translateY(-1px);border-color: rgba(255,255,255,.16);color: var(--text)}
-    .filter-pill.active{
-      background: rgba(30,58,95,.60);
-      border-color: rgba(249,168,37,.35);
-      color: var(--white);
-    }
-
-    .search{
-      display:flex;align-items:center;gap:10px;
-      background: rgba(0,0,0,.22);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 10px 12px;
-      border-radius: var(--pill);
-      min-width: 280px;
-    }
-    .search i{color: var(--muted2)}
-    .search input{
-      width: 100%;
-      border:0;outline:none;
-      background: transparent;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 14.5px;
-    }
-    .search input::placeholder{color: rgba(244,246,248,.50)}
-
-    .select{
-      background: rgba(0,0,0,.22);
-      border: 1px solid rgba(255,255,255,.10);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: var(--pill);
-      font-family: inherit;
-      font-weight: 800;
-      font-size: 13px;
-      outline: none;
-      cursor: pointer;
-    }
-    @media (max-width:980px){
-      .search{min-width: 100%}
-      .select{width: 100%}
-    }
-
-    /* ===== Featured Analysis (dynamic) ===== */
-    .featured{
-      border: 1px solid var(--border);
-      border-radius: var(--radius2);
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      background: rgba(255,255,255,.04);
-      position: relative;
-    }
-    .featured:before{
-      content:"";position:absolute;inset:-1px;
-      background:
-        radial-gradient(700px 300px at 10% 0%, rgba(0,200,83,.18), transparent 60%),
-        radial-gradient(700px 300px at 90% 0%, rgba(249,168,37,.14), transparent 60%);
-      opacity:.85;pointer-events:none;
-    }
-    .featured > *{position:relative;z-index:1}
-    .featured-inner{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 0;
-      align-items: stretch;
-    }
-    @media (max-width:980px){ .featured-inner{grid-template-columns: 1fr} }
-    .featured-content{padding: 18px}
-    .featured-side{
-      border-left: 1px solid rgba(255,255,255,.08);
-      background: rgba(0,0,0,.18);
-      padding: 18px;
-      display:grid;
-      align-content: start;
-      gap: 10px;
-    }
-    @media (max-width:980px){ .featured-side{border-left:0;border-top:1px solid rgba(255,255,255,.08)} }
-
-    .tag{
-      display:inline-flex;align-items:center;gap:8px;
-      padding: 6px 10px;border-radius: var(--pill);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: .25px;
-      width: fit-content;
-    }
-    .tag i{color: var(--gold)}
-    .title-lg{font-size: clamp(20px, 2.2vw, 30px); line-height: 1.15; margin-top: 10px}
-    .meta{
-      display:flex;flex-wrap:wrap;gap: 10px;
-      color: var(--muted2);
-      font-size: 13px;
-      font-weight: 800;
-      margin-top: 10px;
-    }
-    .meta span{display:inline-flex;align-items:center;gap:8px}
-    .meta i{color: rgba(249,168,37,.95)}
-    .summary{
-      margin-top: 12px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 15px;
-      max-width: 82ch;
-    }
-
-    .key-levels{
-      display:grid;
-      gap: 10px;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      margin-top: 10px;
-    }
-    .kv{
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      border-radius: 16px;
-      padding: 12px;
-    }
-    .kv .k{color: var(--muted2); font-size: 12px; text-transform: uppercase; letter-spacing:.35px; font-weight: 900}
-    .kv .v{margin-top:6px;font-weight:900;color:var(--white);font-size:14px}
-    .kv .v span{color: var(--muted); font-weight: 800; font-size: 12.5px}
-    @media (max-width:980px){ .key-levels{grid-template-columns:1fr} }
-
-    /* ===== Grid Cards ===== */
-    .grid{display:grid;gap: 16px}
-    .grid-3{grid-template-columns: repeat(3, minmax(0,1fr))}
-    @media (max-width:980px){ .grid-3{grid-template-columns: 1fr} }
-
-    .card{
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      box-shadow: 0 10px 30px rgba(0,0,0,.28);
-      padding: 18px;
-      transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
-      position: relative;
-      overflow: hidden;
-      display:flex;
-      flex-direction: column;
-      min-height: 220px;
-    }
-    .card:before{
-      content:"";position:absolute;inset:-1px;
-      background:
-        radial-gradient(360px 170px at 10% 0%, rgba(0,200,83,.10), transparent 62%),
-        radial-gradient(360px 170px at 90% 0%, rgba(249,168,37,.08), transparent 62%);
-      opacity:.7;pointer-events:none;
-    }
-    .card > *{position:relative;z-index:1}
-    .card:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:0 18px 44px rgba(0,0,0,.38)}
-
-    .card-top{
-      display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
-    }
-    .pair{
-      font-weight: 950;
-      letter-spacing: .2px;
-      font-size: 13px;
-      display:inline-flex;align-items:center;gap:8px;
-      padding: 6px 10px;
-      border-radius: var(--pill);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.20);
-    }
-    .pair i{color: var(--gold)}
-    .when{
-      color: var(--muted2);
-      font-weight: 850;
-      font-size: 12.5px;
-      display:inline-flex;align-items:center;gap:8px;
-    }
-    .card h3{
-      margin: 10px 0 10px;
-      font-size: 18px;
-      letter-spacing: -0.25px;
-      line-height: 1.25;
-    }
-    .card p{
-      margin:0;
-      color: var(--muted);
-      font-size: 14.8px;
-      line-height: 1.75;
-    }
-    .chips{
-      display:flex;flex-wrap:wrap;gap:8px;
-      margin-top: 12px;
-    }
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;
-      padding: 6px 10px;
-      border-radius: var(--pill);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-weight: 850;
-      font-size: 12px;
-      letter-spacing: .2px;
-    }
-    .chip i{color: rgba(249,168,37,.95)}
-    .card-actions{
-      margin-top:auto;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      padding-top: 14px;
-    }
-    .link{
-      display:inline-flex;align-items:center;gap:10px;
-      color: rgba(0,200,83,.95);
-      font-weight: 900;
-      font-size: 13.5px;
-      letter-spacing: .2px;
-    }
-    .link i{font-size: 12px}
-
-    /* ===== Drawer Modal (full article view) ===== */
-    .overlay{
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,.62);
-      backdrop-filter: blur(10px);
-      display:none;
-      z-index: 2000;
-    }
-    .overlay.show{display:block}
-
-    .drawer{
-      position: fixed;
-      right: 0; top: 0;
-      height: 100%;
-      width: min(720px, 94vw);
-      background: rgba(10,31,47,.94);
-      border-left: 1px solid rgba(255,255,255,.10);
-      box-shadow: -20px 0 70px rgba(0,0,0,.55);
-      transform: translateX(102%);
-      transition: transform .28s var(--ease);
-      z-index: 2100;
-      display:flex;
-      flex-direction: column;
-    }
-    .drawer.show{transform: translateX(0)}
-    .drawer-head{
-      padding: 16px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      display:flex;
-      align-items:flex-start;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .drawer-head h3{margin:0;font-size: 18px;line-height:1.25}
-    .drawer-head .close{
-      width: 44px; height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-      cursor:pointer;
-    }
-    .drawer-body{
-      padding: 16px;
-      overflow:auto;
-    }
-    .drawer-block{
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.20);
-      border-radius: 18px;
-      padding: 14px;
-      margin-bottom: 12px;
-    }
-    .drawer-block h4{
-      margin:0 0 8px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .35px;
-      color: rgba(249,168,37,.95);
-      display:flex;
-      align-items:center;
-      gap: 10px;
-    }
-    .drawer-block p{margin:0;color: var(--muted);font-size: 14.5px;line-height: 1.75}
-    .bullets{margin-top:10px;display:grid;gap:8px}
-    .bullet{
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-      border-radius: 16px;
-      padding: 10px 12px;
-      color: rgba(244,246,248,.86);
-      font-weight: 800;
-      font-size: 13.5px;
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-    }
-    .bullet i{color: var(--accent); margin-top: 2px}
-    .riskbox{
-      border: 1px solid rgba(255,255,255,.10);
-      background: radial-gradient(700px 260px at 10% 0%, rgba(0,200,83,.14), transparent 60%),
-                  radial-gradient(700px 260px at 90% 0%, rgba(249,168,37,.10), transparent 60%),
-                  rgba(0,0,0,.18);
-      border-radius: 18px;
-      padding: 14px;
-      margin-top: 12px;
-    }
-    .riskbox strong{color: var(--white)}
-
-    /* ===== Footer (uniform black + Saraha credit + contacts) ===== */
-    footer{
-      background:#000;
-      border-top:1px solid rgba(255,255,255,.08);
-      padding: 54px 0 22px;
-      margin-top: 30px;
-    }
-    .footer-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .9fr .9fr;
-      gap: 18px;
-      align-items:start;
-    }
-    @media (max-width:980px){ .footer-grid{grid-template-columns: 1fr} }
-    .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-    .footer-logo{
-      width:46px;height:46px;border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      overflow:hidden;display:grid;place-items:center;
-    }
-    .footer-logo img{width:100%;height:100%;object-fit:cover}
-    .footer h4{
-      margin:0 0 12px;
-      font-size: 14px;
-      letter-spacing: .28px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.82);
-    }
-    .footer p,.footer a,.footer li{
-      color: rgba(255,255,255,.70);
-      font-size: 14.5px;
-      line-height: 1.75;
-    }
-    .footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-    .footer a:hover{color: rgba(255,255,255,.92)}
-    .contact-line{display:flex;gap:10px;align-items:flex-start;margin: 10px 0}
-    .contact-line i{margin-top:3px;color: var(--gold);width:18px}
-    .footer-bottom{
-      border-top:1px solid rgba(255,255,255,.08);
-      margin-top: 22px;
-      padding-top: 16px;
-      display:flex;flex-wrap:wrap;gap:10px;
-      justify-content:space-between;align-items:center;
-    }
-    .footer-bottom small{color: rgba(255,255,255,.55); line-height: 1.6}
-    .credit a{color: rgba(0,200,83,.95); font-weight: 900}
-  </style>
+  <link rel="stylesheet" href="market-analysis.css">
 </head>
 
 <body>
@@ -618,7 +25,7 @@
         <a class="brand" href="index.html" aria-label="UbuntuFX Home">
           <div class="logo-slot" title="UbuntuFX Logo">
             <img src="assets/logo.png" alt="UbuntuFX Logo"
-              onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-chart-line&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
+              onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-chart-line&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';"/>
           </div>
           <div>
             <strong>UbuntuFX</strong>
@@ -630,16 +37,16 @@
           <a href="index.html">Home</a>
           <a href="learn.html">Learn</a>
           <a class="active" href="market-analysis.html">Market Analysis</a>
-          <a href="strategies.html">Strategies</a>
-          <a href="calendar.html">Calendar</a>
-          <a href="livechart.html">Live Charts</a>
+          <!--  <a href="strategies.html">Strategies</a>
+          <a href="calendar.html">Calendar</a>-->
+          <a href="livechart.html">Charts</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
         </nav>
 
         <div class="nav-actions">
-          <a class="btn btn-gold" href="#subscribe"><i class="fa-solid fa-envelope"></i> Weekly Breakdown</a>
-          <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu" aria-expanded="false">
+          <a class="btn btn-gold" href="#subscribe"><i class="fa-solid fa-envelope"></i> Weekly</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu" aria-controls="mobilePanel" aria-expanded="false">
             <i class="fa-solid fa-bars"></i>
           </button>
         </div>
@@ -651,13 +58,13 @@
           <a href="index.html">Home</a>
           <a href="learn.html">Learn</a>
           <a href="market-analysis.html" style="border-color:rgba(249,168,37,.25); color: rgba(244,246,248,.95);">Market Analysis</a>
-          <a href="strategies.html">Strategies</a>
-          <a href="calendar.html">Calendar</a>
-          <a href="livechart.html">Live Charts</a>
+          <!--  <a href="strategies.html">Strategies</a>
+          <a href="calendar.html">Calendar</a>-->
+          <a href="livechart.html">Charts</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
           <a href="#subscribe" style="border-color:rgba(0,200,83,.25); color: rgba(244,246,248,.95);">
-            <i class="fa-solid fa-envelope"></i> Weekly Breakdown
+            <i class="fa-solid fa-envelope"></i> Weekly
           </a>
         </div>
       </div>
@@ -667,182 +74,419 @@
   <!-- HERO -->
   <header class="page-hero">
     <div class="container">
-      <div class="hero-grid">
-        <div>
-          <span class="eyebrow"><span class="dot"></span> Executive summary • Macro • Structure • Scenarios</span>
-          <h1 style="margin-top:10px;">
-            <i class="fa-solid fa-chart-line" style="color:var(--gold); margin-right:10px;"></i>
-            Market Analysis
-          </h1>
-          <p style="max-width: 78ch; font-size: 1.05rem; margin-top: 10px;">
-            A premium, repeatable analysis format: macro bias → structure → key levels → scenarios → risk plan.
-            Use filters to find what matters to your watchlist.
-          </p>
+      <span class="eyebrow"><span class="dot"></span> Preparation over prediction • Clarity over noise</span>
 
-          <div class="meta-row">
-            <span class="pill"><i class="fa-solid fa-clock"></i> Updated: <strong id="updatedLabel">Today</strong></span>
-            <span class="pill"><i class="fa-solid fa-layer-group"></i> Coverage: <strong>FX • Gold • Indices • Crypto</strong></span>
-            <span class="pill"><i class="fa-solid fa-shield-halved"></i> Rule: <strong>Risk first</strong></span>
-          </div>
+      <h1 style="margin-top:12px;">Market Analysis</h1>
+      <!--  <p style="margin-top:10px;">
+        A simple, repeatable way to read markets: <strong>macro context</strong>, <strong>structure</strong>,
+        <strong>key levels</strong>, and <strong>scenarios</strong> — with risk first.
+      </p>-->
 
-          <div class="hero-actions">
-            <button class="btn btn-ghost" id="btnLatest"><i class="fa-solid fa-bolt"></i> Open Latest</button>
-            <button class="btn btn-ghost" id="btnReset"><i class="fa-solid fa-rotate-right"></i> Reset Filters</button>
-            <button class="btn btn-ghost" id="btnBookmark"><i class="fa-solid fa-bookmark"></i> View Bookmarks</button>
-          </div>
-        </div>
+      <div class="meta-row">
+        <span class="pill"><i class="fa-solid fa-circle-info"></i> <strong>Educational analysis</strong></span>
+        <span class="pill"><i class="fa-solid fa-shield-halved"></i> <strong>Risk-first framework</strong></span>
+        <span class="pill"><i class="fa-solid fa-layer-group"></i> <strong>FX • Gold • Indices • Crypto</strong></span>
+      </div>
 
-        <aside class="hero-card" aria-label="Quick Market Snapshot (demo)">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <div class="pill" style="border-color: rgba(0,200,83,.22); background: rgba(0,0,0,.18);">
-                <i class="fa-solid fa-signal"></i> Live Mode (Demo)
-              </div>
-            </div>
-            <span class="pill"><i class="fa-solid fa-location-dot"></i> Nairobi</span>
-          </div>
-
-          <div class="key-levels" style="margin-top: 12px;">
-            <div class="kv">
-              <div class="k">USD Tone</div>
-              <div class="v">Balanced <span>• waiting on data</span></div>
-            </div>
-            <div class="kv">
-              <div class="k">Risk Environment</div>
-              <div class="v">Cautious <span>• volatility pockets</span></div>
-            </div>
-            <div class="kv">
-              <div class="k">Focus Today</div>
-              <div class="v">EUR/USD <span>• structure</span></div>
-            </div>
-            <div class="kv">
-              <div class="k">Key Event</div>
-              <div class="v">Rates Speech <span>• headlines</span></div>
-            </div>
-          </div>
-
-          <div style="margin-top: 12px; color: var(--muted2); font-weight: 800; font-size: 13px;">
-            Tip: build scenarios before news → trade the reaction after structure confirms.
-          </div>
-        </aside>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#resources"><i class="fa-solid fa-compass"></i> Start Here</a>
+        <a class="btn btn-ghost" href="#insights"><i class="fa-solid fa-chart-simple"></i> Market Insights</a>
+        <a class="btn btn-ghost" href="#glossary"><i class="fa-solid fa-book"></i> Glossary</a>
       </div>
     </div>
   </header>
 
-  <!-- TOOLBAR -->
-  <section class="section-sm" style="padding-top: 10px;">
-    <div class="container">
+  <!-- CONTENT -->
+  <main>
 
-      <div class="toolbar">
-        <div class="filters">
-          <div class="group" aria-label="Asset Class">
-            <span class="filter-pill active" data-asset="ALL"><i class="fa-solid fa-globe"></i> All</span>
-            <span class="filter-pill" data-asset="FX">FX</span>
-            <span class="filter-pill" data-asset="GOLD">Gold</span>
-            <span class="filter-pill" data-asset="INDICES">Indices</span>
-            <span class="filter-pill" data-asset="CRYPTO">Crypto</span>
-          </div>
+    <!-- QUICK START -->
+   
 
-          <div class="group" aria-label="Pairs">
-            <span class="filter-pill active" data-pair="ALL"><i class="fa-solid fa-list"></i> Any</span>
-            <span class="filter-pill" data-pair="EURUSD">EUR/USD</span>
-            <span class="filter-pill" data-pair="GBPUSD">GBP/USD</span>
-            <span class="filter-pill" data-pair="USDJPY">USD/JPY</span>
-            <span class="filter-pill" data-pair="XAUUSD">XAU/USD</span>
-            <span class="filter-pill" data-pair="NAS100">NAS100</span>
-            <span class="filter-pill" data-pair="BTCUSD">BTC/USD</span>
-          </div>
+    <!-- RESOURCES -->
+    <section class="section" id="resources">
+      <div class="container">
+        <span class="eyebrow"><span class="dot"></span><h2>Resources</h2></span>
+        <h3 style="margin-top:12px;">Tools that keep you consistent</h3>
+        <p style="margin-top:10px; max-width:85ch;">
+          These are the building blocks for disciplined trading. If you do nothing else, do these three things each week.
+        </p>
+
+        <div class="grid grid-3 resources-grid" style="margin-top:18px;">
+          <article class="card resource-card">
+            <div class="card-top">
+              <div class="pair"><i class="fa-solid fa-calendar-days"></i> Economic Calendar</div>
+              <div class="when"><i class="fa-solid fa-bolt"></i> High impact first</div>
+            </div>
+            <h3>Economic Calendar</h3>
+            <p>
+              Track major events that can shift volatility and invalidate setups. Always note the currency impacted
+              and the timing before you plan entries.
+            </p>
+            <div class="chips">
+              <span class="chip"><i class="fa-solid fa-circle"></i> CPI / Inflation</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> NFP / Jobs</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> Rates / FOMC</span>
+            </div>
+            <div class="card-actions">
+              <a class="link" href="calendar.html"><i class="fa-solid fa-arrow-right"></i> Open Calendar</a>
+              <a class="link" href="#insights"><i class="fa-solid fa-arrow-right"></i> Use in Outlook</a>
+            </div>
+          </article>
+
+          <article class="card resource-card">
+            <div class="card-top">
+              <div class="pair"><i class="fa-solid fa-globe"></i> Trading Sessions</div>
+              <div class="when"><i class="fa-solid fa-clock"></i> Time zones</div>
+            </div>
+            <h3>Trading Sessions</h3>
+            <p>
+              Liquidity changes through the day. Sessions help you time entries around real participation — not quiet hours.
+            </p>
+            <div class="chips">
+              <span class="chip"><i class="fa-solid fa-circle"></i> Asia</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> London</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> New York</span>
+            </div>
+            <div class="card-actions">
+              <a class="link" href="#sessions"><i class="fa-solid fa-arrow-right"></i> See Session Table</a>
+              <a class="link" href="#sessions-map"><i class="fa-solid fa-arrow-right"></i> View Map</a>
+            </div>
+          </article>
+
+          <article class="card resource-card">
+            <div class="card-top">
+              <div class="pair"><i class="fa-solid fa-book"></i> Glossary</div>
+              <div class="when"><i class="fa-solid fa-graduation-cap"></i> Beginner-safe</div>
+            </div>
+            <h3>Glossary of Terms</h3>
+            <p>
+              Clear definitions for common trading terms you’ll see in our outlooks — so you can follow confidently
+              without guessing.
+            </p>
+            <div class="chips">
+              <span class="chip"><i class="fa-solid fa-circle"></i> Structure</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> Liquidity</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> BOS / CHOCH</span>
+            </div>
+            <div class="card-actions">
+              <a class="link" href="#glossary"><i class="fa-solid fa-arrow-right"></i> Open Glossary</a>
+              <a class="link" href="learn.html"><i class="fa-solid fa-arrow-right"></i> Learn More</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SESSIONS -->
+   <!-- SESSIONS (REAL-TIME EAT CONVERTER) -->
+<section class="section-sm" id="sessions">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="tag"><i class="fa-solid fa-clock"></i><h2>Trading Sessions</h2> </span>
+        <h3 style="margin-top:10px;">Real-time EAT (Nairobi) Session Converter</h3>
+        <p style="margin-top:10px; max-width:85ch;">
+          Live session timings in <strong>EAT (Africa/Nairobi)</strong>, including status and countdowns.
+          Use this to plan entries when liquidity is strongest.
+        </p>
+      </div>
+
+      <div class="hint">
+        <i class="fa-solid fa-lightbulb"></i>
+        <div>
+          <strong>Tip:</strong> The London–NY overlap often brings the most volatility.
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Clock + Small Controls -->
+    <div class="panel" style="margin-top:16px;">
+      <div class="clock-row">
+        <div class="clock-box">
+          <div class="clock-kicker"><i class="fa-solid fa-location-dot"></i> Current time (EAT • Nairobi)</div>
+          <div class="clock-time" id="eatClock">--:--:--</div>
+          <div class="clock-sub" id="eatDate">—</div>
         </div>
 
-        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-          <div class="search" aria-label="Search analysis">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input id="searchInput" type="text" placeholder="Search: CPI, liquidity, order block, BOS..." />
+        <div class="clock-box">
+          <div class="clock-kicker"><i class="fa-solid fa-circle-info"></i> Notes</div>
+          <div class="clock-sub" style="margin-top:8px;">
+            Times below are a practical reference. Always confirm with your platform and the economic calendar.
           </div>
-
-          <select class="select" id="sortSelect" aria-label="Sort">
-            <option value="newest" selected>Sort: Newest</option>
-            <option value="oldest">Sort: Oldest</option>
-            <option value="impact">Sort: Highest impact</option>
-            <option value="pair">Sort: Pair A→Z</option>
-          </select>
+          <div class="clock-mini">
+            <span class="mini-pill"><i class="fa-solid fa-shield-halved"></i> Risk first</span>
+            <span class="mini-pill"><i class="fa-solid fa-bolt"></i> Avoid chasing</span>
+            <span class="mini-pill"><i class="fa-solid fa-calendar-days"></i> Watch news</span>
+          </div>
         </div>
       </div>
 
-      <!-- FEATURED -->
-      <div class="featured" id="featuredCard">
-        <div class="featured-inner">
-          <div class="featured-content">
-            <span class="tag"><i class="fa-solid fa-star"></i> Featured Analysis</span>
-            <h2 class="title-lg" id="featTitle">—</h2>
+      <!-- Session Cards -->
+      <div class="session-grid" id="sessionGrid" aria-label="Trading sessions in EAT">
+        <!-- JS fills cards -->
+      </div>
 
-            <div class="meta" id="featMeta"></div>
-            <p class="summary" id="featSummary">—</p>
+      <!-- Footnote -->
+      <div class="session-foot">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <div>
+          <strong>Reminder:</strong> Sessions don’t “guarantee” setups — they only tell you when liquidity is more likely.
+          Wait for structure confirmation + respect invalidation.
+        </div>
+      </div>
+    </div>
 
-            <div class="key-levels" id="featLevels"></div>
+    <!-- Keep your map section if you want -->
+    <div class="panel" id="sessions-map" style="margin-top:16px;">
+      <span class="tag"><i class="fa-solid fa-earth-africa"></i> World Map (Sessions Overview)</span>
+      <p style="margin-top:10px;">
+        This is a visual guide to where sessions “come from”. You can replace this with a real image later if you want.
+      </p>
 
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px;">
-              <button class="btn btn-primary" id="featOpen"><i class="fa-solid fa-book-open"></i> Read Full Analysis</button>
-              <button class="btn btn-ghost" id="featSave"><i class="fa-solid fa-bookmark"></i> Bookmark</button>
-              <button class="btn btn-ghost" id="featShare"><i class="fa-solid fa-link"></i> Copy Link</button>
+      <div class="map-box" aria-label="World map showing trading sessions and time zones">
+        <div class="map-grid">
+          <div class="zone">
+            <div class="zone-title"><i class="fa-solid fa-moon"></i> Asia</div>
+            <div class="zone-text">Often forms ranges + sets early levels</div>
+            <div class="zone-pill">Tokyo • Sydney</div>
+          </div>
+          <div class="zone">
+            <div class="zone-title"><i class="fa-solid fa-sun"></i> London</div>
+            <div class="zone-text">Liquidity surge + directional delivery</div>
+            <div class="zone-pill">London • Frankfurt</div>
+          </div>
+          <div class="zone">
+            <div class="zone-title"><i class="fa-solid fa-sun"></i> New York</div>
+            <div class="zone-text">News reaction + continuation/reversal</div>
+            <div class="zone-pill">New York</div>
+          </div>
+          <div class="zone">
+            <div class="zone-title"><i class="fa-solid fa-arrows-left-right"></i> Overlap</div>
+            <div class="zone-text">Peak volume + clean execution windows</div>
+            <div class="zone-pill">London ↔ NY</div>
+          </div>
+        </div>
+
+        <div class="map-foot">
+          <i class="fa-solid fa-circle-info"></i>
+          The converter above updates live in EAT. Keep your routine consistent — same hours daily.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- MARKET INSIGHTS -->
+    <section class="section" id="insights">
+      <div class="container">
+        <span class="eyebrow"><span class="dot"></span><h2>Market Insights</h2></span>
+        <h3 style="margin-top:12px;">Weekly / Monthly outlook (free)</h3>
+        <p style="margin-top:10px; max-width:90ch;">
+          Regular market outlook is provided to give our traders updated information. Each outlook is structured so a new trader can follow,
+          while still being useful for experienced traders.
+        </p>
+
+        <div class="grid grid-3 insights-grid" style="margin-top:18px;">
+          <div class="card insight">
+            <div class="pair"><i class="fa-solid fa-globe"></i> Macro Context</div>
+            <h3>What environment are we in?</h3>
+            <p>
+              Identify the bigger picture: rates, inflation, risk-on / risk-off, and the key catalysts on the calendar.
+              This prevents trading “random moves” without context.
+            </p>
+            <div class="chips">
+              <span class="chip"><i class="fa-solid fa-circle"></i> Rates</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> Inflation</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> Risk sentiment</span>
             </div>
           </div>
 
-          <div class="featured-side">
-            <div class="tag"><i class="fa-solid fa-layer-group"></i> Analysis Framework</div>
-            <div class="bullet"><i class="fa-solid fa-check"></i> Executive Summary → bias + key level</div>
-            <div class="bullet"><i class="fa-solid fa-check"></i> Macro Context → drivers + calendar risks</div>
-            <div class="bullet"><i class="fa-solid fa-check"></i> Technical Structure → BOS/CHOCH + zones</div>
-            <div class="bullet"><i class="fa-solid fa-check"></i> Scenarios → Plan A / Plan B</div>
-            <div class="bullet"><i class="fa-solid fa-check"></i> Risk → invalidation + size rules</div>
+          <div class="card insight">
+            <div class="pair"><i class="fa-solid fa-bullseye"></i> Key Themes</div>
+            <h3>What’s driving price action?</h3>
+            <p>
+              Outline the main themes moving markets (USD strength, commodities flows, tech risk, geopolitical risk, etc.).
+              You’ll know what to watch — and what to ignore.
+            </p>
+            <div class="chips">
+              <span class="chip"><i class="fa-solid fa-circle"></i> USD flows</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> Liquidity</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> Volatility</span>
+            </div>
+          </div>
 
-            <div class="riskbox">
-              <strong style="display:block;margin-bottom:6px;color:var(--white);">
-                Risk Reminder
-              </strong>
-              <div style="color:var(--muted);font-size:14.5px;line-height:1.7;">
-                Do not increase size to “make back losses”. Protect risk first—especially near news.
+          <div class="card insight">
+            <div class="pair"><i class="fa-solid fa-route"></i> Scenarios</div>
+            <h3>Plan A / Plan B</h3>
+            <p>
+              We prepare multiple outcomes, not one “prediction.” Each scenario includes what confirms it,
+              what invalidates it, and what risk adjustment is needed.
+            </p>
+            <div class="chips">
+              <span class="chip"><i class="fa-solid fa-circle"></i> Confirmation</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> Invalidation</span>
+              <span class="chip"><i class="fa-solid fa-circle"></i> Risk sizing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-wide" style="margin-top:16px;">
+          <div>
+            <span class="tag"><i class="fa-solid fa-shield"></i> Risk Considerations</span>
+            <h3 style="margin-top:10px;">Risk comes before entry</h3>
+            <p style="margin-top:10px; max-width:95ch;">
+              Every outlook includes risk notes so traders don’t overtrade volatility or size up emotionally.
+              The goal is consistency: protect capital and execute only when structure confirms.
+            </p>
+
+            <div class="bullets" style="margin-top:12px;">
+              <div class="bullet"><i class="fa-solid fa-check"></i> Avoid trading into high-impact news without a plan</div>
+              <div class="bullet"><i class="fa-solid fa-check"></i> Don’t chase moves — wait for structure confirmation</div>
+              <div class="bullet"><i class="fa-solid fa-check"></i> Use invalidation and position size that matches your risk</div>
+              <div class="bullet"><i class="fa-solid fa-check"></i> Journal outcomes: what you saw, what you did, what you learned</div>
+            </div>
+          </div>
+
+          <div class="riskbox" style="margin-top:0;">
+            <strong style="display:block;margin-bottom:6px;color:var(--white);">Remember</strong>
+            <div style="color:var(--muted);font-size:14.5px;line-height:1.7;">
+              Outlooks focus on preparation, not prediction.
+              We don’t sell signals — we build traders.
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+              <a class="btn btn-primary" href="#subscribe"><i class="fa-solid fa-envelope"></i> Get Weekly</a>
+              <a class="btn btn-ghost" href="contact.html"><i class="fa-solid fa-paper-plane"></i> Ask a Question</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GLOSSARY -->
+    <section class="section-sm" id="glossary">
+      <div class="container">
+        <span class="eyebrow"><span class="dot"></span><h2>Glossary</h2></span>
+        <h3 style="margin-top:12px;">Terms we use (simple definitions)</h3>
+        <p style="margin-top:10px; max-width:90ch;">
+          If you’re new, don’t stress the jargon. Use these definitions to follow the outlook step-by-step.
+        </p>
+
+        <div class="glossary-grid" style="margin-top:18px;">
+          <div class="panel glossary-panel">
+            <div class="glossary-head">
+              <i class="fa-solid fa-layer-group"></i>
+              <strong>Structure & Market Behavior</strong>
+            </div>
+
+            <dl class="glossary">
+              <div class="term">
+                <dt>Market Structure</dt>
+                <dd>The pattern of highs/lows that shows trend or range. Helps you trade with direction, not emotion.</dd>
+              </div>
+              <div class="term">
+                <dt>BOS (Break of Structure)</dt>
+                <dd>A clear break of a prior swing that supports continuation (trend strength).</dd>
+              </div>
+              <div class="term">
+                <dt>CHOCH (Change of Character)</dt>
+                <dd>A shift in behavior that suggests a possible reversal or transition from trend to range (or vice versa).</dd>
+              </div>
+              <div class="term">
+                <dt>Liquidity</dt>
+                <dd>Areas where orders are likely sitting (often around obvious highs/lows). Price may “grab” these areas.</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="panel glossary-panel">
+            <div class="glossary-head">
+              <i class="fa-solid fa-bullseye"></i>
+              <strong>Levels & Planning</strong>
+            </div>
+
+            <dl class="glossary">
+              <div class="term">
+                <dt>Key Level</dt>
+                <dd>A price zone that matters (support/resistance, prior high/low, equilibrium). Used for reactions and invalidation.</dd>
+              </div>
+              <div class="term">
+                <dt>Scenario</dt>
+                <dd>A “if this happens, then we do this” plan. We prepare multiple outcomes.</dd>
+              </div>
+              <div class="term">
+                <dt>Invalidation</dt>
+                <dd>The point where your idea is proven wrong. It protects you from hope-trading.</dd>
+              </div>
+              <div class="term">
+                <dt>Risk Management</dt>
+                <dd>How you size and protect capital (position size, stop placement, max daily loss). Non-negotiable.</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:16px;">
+          <div class="faq">
+            <div class="faq-item">
+              <button class="faq-q" type="button">
+                <span><i class="fa-solid fa-circle-question"></i> Do you offer paid signals?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="faq-a">
+                No. UbuntuFX does not sell paid signals. Our analysis is educational — meant to help you build independent decision-making skills.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" type="button">
+                <span><i class="fa-solid fa-circle-question"></i> Is this analysis a prediction?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="faq-a">
+                No. Outlooks focus on preparation: macro context, themes, scenarios, and risk considerations — so you react with a plan.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" type="button">
+                <span><i class="fa-solid fa-circle-question"></i> How often do you share outlooks?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="faq-a">
+                Weekly and monthly outlooks (free). Subscribe to receive the breakdown in a short, clear format.
               </div>
             </div>
           </div>
         </div>
+
       </div>
+    </section>
 
-      <!-- LIST -->
-      <div style="margin-top: 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-        <h3 style="font-size: 18px; letter-spacing:-.2px;">Latest Reports</h3>
-        <div class="pill"><i class="fa-solid fa-filter"></i> Showing <strong id="resultsCount">0</strong> reports</div>
-      </div>
-
-      <div class="grid grid-3" id="cardsGrid" style="margin-top: 14px;"></div>
-
-      <div style="text-align:center; margin-top: 22px;">
-        <button class="btn btn-ghost" id="btnLoadMore"><i class="fa-solid fa-plus"></i> Load More</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SUBSCRIBE -->
-  <section class="section-sm" id="subscribe">
-    <div class="container">
-      <div class="hero-card">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-          <div>
-            <span class="eyebrow"><span class="dot"></span> Weekly (5–7 minutes)</span>
-            <h2 style="margin-top:10px;">Get the Weekly Market Breakdown</h2>
-            <p style="margin-top:10px;max-width: 78ch;">
-              Macro bias, key levels, and a risk-first checklist delivered weekly. No spam. Unsubscribe anytime.
-            </p>
-          </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a class="btn btn-primary" href="contact.html"><i class="fa-solid fa-envelope"></i> Subscribe via Contact</a>
-            <a class="btn btn-ghost" href="calendar.html"><i class="fa-solid fa-calendar-days"></i> Check Calendar</a>
+    <!-- SUBSCRIBE -->
+    <section class="section-sm" id="subscribe">
+      <div class="container">
+        <div class="hero-card">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+            <div style="max-width: 70ch;">
+              <span class="eyebrow"><span class="dot"></span> Weekly (5–7 minutes)</span>
+              <h2 style="margin-top:10px;">Weekly Breakdown</h2>
+              <p style="margin-top:10px;">
+                Macro context, key themes, scenarios, and a risk checklist — once a week. No noise.
+              </p>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a class="btn btn-primary" href="contact.html"><i class="fa-solid fa-envelope"></i> Subscribe</a>
+              <a class="btn btn-ghost" href="calendar.html"><i class="fa-solid fa-calendar-days"></i> Calendar</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -852,28 +496,26 @@
           <div class="footer-brand">
             <div class="footer-logo" title="UbuntuFX Logo">
               <img src="assets/logo.png" alt="UbuntuFX Logo"
-                onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-chart-line&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
+                onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-chart-line&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';"/>
             </div>
             <div>
               <div style="font-weight:900; letter-spacing:.2px; color:rgba(255,255,255,.92);">UbuntuFX</div>
               <div style="color:rgba(255,255,255,.60); font-size:14px; margin-top:2px;">Structure • Discipline • Edge</div>
             </div>
           </div>
-
           <p>
-            UbuntuFX is a premium Forex education and market intelligence platform built to help traders develop structure, discipline,
-            and repeatable decision-making.
+            Premium market education and repeatable analysis — built for clarity, discipline, and execution.
           </p>
         </div>
 
         <div>
-          <h4>Quick Links</h4>
+          <h4>Links</h4>
           <ul>
-            <li><a href="learn.html">Learn Forex</a></li>
-            <li><a href="market-analysis.html">Market Analysis</a></li>
-            <li><a href="strategies.html">Trading Strategies</a></li>
-            <li><a href="calendar.html">Economic Calendar</a></li>
-            <li><a href="livechart.html">Live Charts</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="market-analysis.html">Market</a></li>
+            <li><a href="strategies.html">Strategies</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="livechart.html">Charts</a></li>
           </ul>
         </div>
 
@@ -885,10 +527,7 @@
           </div>
           <div class="contact-line">
             <i class="fa-solid fa-phone"></i>
-            <div>
-              <a href="tel:+254717770557">0717770557</a><br />
-              <span style="color:rgba(255,255,255,.55); font-size:13px;">(+254 717 770 557)</span>
-            </div>
+            <div><a href="tel:+254717770557">+254 717 770 557</a></div>
           </div>
           <div class="contact-line">
             <i class="fa-solid fa-location-dot"></i>
@@ -897,7 +536,7 @@
           <div class="contact-line">
             <i class="fa-solid fa-circle-info"></i>
             <div style="color:rgba(255,255,255,.65); font-size:13.5px;">
-              Risk Disclaimer: Forex trading involves risk. UbuntuFX provides educational content only. No guaranteed outcomes.
+              Risk Disclaimer: Educational content only. Trading involves risk.
             </div>
           </div>
         </div>
@@ -912,661 +551,6 @@
     </div>
   </footer>
 
-  <!-- Overlay + Drawer -->
-  <div class="overlay" id="overlay"></div>
-  <aside class="drawer" id="drawer" aria-label="Full analysis view">
-    <div class="drawer-head">
-      <div style="min-width:0;">
-        <div class="tag" id="drawerTag"><i class="fa-solid fa-layer-group"></i> Analysis</div>
-        <h3 id="drawerTitle" style="margin-top:10px;">—</h3>
-        <div class="meta" id="drawerMeta" style="margin-top:10px;"></div>
-      </div>
-      <button class="close" id="drawerClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div class="drawer-body" id="drawerBody"></div>
-  </aside>
-
-  <script>
-    // ===== Year =====
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("updatedLabel").textContent = new Date().toLocaleDateString();
-
-    // ===== Mobile nav =====
-    const menuBtn = document.getElementById("menuBtn");
-    const mobilePanel = document.getElementById("mobilePanel");
-    function setMenu(open){
-      document.body.classList.toggle("mobile-open", open);
-      menuBtn.setAttribute("aria-expanded", String(open));
-      menuBtn.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
-    }
-    menuBtn.addEventListener("click", () => {
-      const isOpen = document.body.classList.contains("mobile-open");
-      setMenu(!isOpen);
-    });
-    mobilePanel.addEventListener("click", (e) => {
-      if (e.target.tagName === "A") setMenu(false);
-    });
-    document.addEventListener("click", (e) => {
-      const isOpen = document.body.classList.contains("mobile-open");
-      if (!isOpen) return;
-      const navWrap = document.querySelector(".nav-wrap");
-      if (!navWrap.contains(e.target)) setMenu(false);
-    });
-
-    // ===== Demo Analysis Data (replace later with CMS/API) =====
-    // Fields: id, date, asset, pairKey, pairLabel, title, executive, macro, structure, levels, scenarios, risk, tags, impactScore
-    const analyses = [
-      {
-        id: "gbpusd-boe-fed",
-        date: "2026-02-15",
-        asset: "FX",
-        pairKey: "GBPUSD",
-        pairLabel: "GBP/USD",
-        title: "GBP/USD: BoE vs Fed — Who blinks first?",
-        executive: "GBP remains supported above key demand, but upside is capped until a clean break above resistance. Bias is bullish only after confirmation.",
-        macro: "Main driver is rate path divergence. Watch UK inflation prints and Fed guidance. Risk: headline volatility during speeches and data.",
-        structure: "Higher timeframe structure is mixed. Intraday: wait for liquidity sweep then BOS above the last swing high to confirm continuation.",
-        levels: [
-          {k:"Key Resistance", v:"1.2850", s:"Break & hold → continuation"},
-          {k:"Key Support", v:"1.2700", s:"Loss → bearish scenario"},
-          {k:"Liquidity Zone", v:"1.2770–1.2790", s:"Sweep zone"},
-          {k:"Invalidation", v:"Below 1.2685", s:"Bias invalid"}
-        ],
-        scenarios: [
-          {name:"Plan A (Bull)", text:"Liquidity sweep → BOS → retest demand. Target next resistance while protecting risk."},
-          {name:"Plan B (Bear)", text:"Failure to reclaim resistance + breakdown below support. Look for pullback entries with strict invalidation."}
-        ],
-        risk: "News risk is elevated. If trading within 30–60 minutes of high-impact events, reduce size and avoid tight stops. Max 1–2 quality attempts, no revenge trades.",
-        tags: ["Exec Summary","Macro","Structure","Scenarios","Risk Plan"],
-        impactScore: 92
-      },
-      {
-        id: "eurusd-ecb-bias",
-        date: "2026-02-14",
-        asset: "FX",
-        pairKey: "EURUSD",
-        pairLabel: "EUR/USD",
-        title: "EUR/USD: Testing upper range — clarity comes after confirmation",
-        executive: "EUR/USD is pressing a key ceiling. Avoid buying highs. Wait for breakout confirmation or rejection structure.",
-        macro: "EUR is sensitive to inflation and ECB tone; USD to rates and risk sentiment. Watch calendar for CPI/PMIs and Fed speakers.",
-        structure: "Range environment: trade edges only. If breakout occurs, wait for retest (don’t chase the first candle).",
-        levels: [
-          {k:"Range High", v:"1.0950", s:"Break → bullish continuation"},
-          {k:"Midpoint", v:"1.0880", s:"Decision zone"},
-          {k:"Range Low", v:"1.0790", s:"Rejection → bounce zone"},
-          {k:"Invalidation", v:"Below 1.0765", s:"Range break down"}
-        ],
-        scenarios: [
-          {name:"Plan A (Breakout)", text:"Clean break above range high → retest → continuation targets."},
-          {name:"Plan B (Rejection)", text:"Rejection + bearish shift in structure → target midpoint then range low."}
-        ],
-        risk: "Range markets punish impatience. Reduce frequency. Only take A+ setups with clear invalidation.",
-        tags: ["Exec Summary","Macro","Structure","Scenarios","Risk Plan"],
-        impactScore: 85
-      },
-      {
-        id: "usdjpy-boj-risk",
-        date: "2026-02-14",
-        asset: "FX",
-        pairKey: "USDJPY",
-        pairLabel: "USD/JPY",
-        title: "USD/JPY: Intervention risk caps upside — trade structure, not fear",
-        executive: "USD/JPY remains sensitive to intervention headlines. Bias depends on whether price holds above key structure support.",
-        macro: "Japan policy normalization narrative vs US yields. Watch rate differentials and BoJ communication.",
-        structure: "Volatility spikes possible. Let price show direction after liquidity sweeps.",
-        levels: [
-          {k:"Resistance", v:"149.80", s:"Above → continuation"},
-          {k:"Support", v:"148.20", s:"Hold → bullish bias"},
-          {k:"Risk Zone", v:"149.30–149.60", s:"Headline sweep area"},
-          {k:"Invalidation", v:"Below 147.80", s:"Bull bias invalid"}
-        ],
-        scenarios: [
-          {name:"Plan A (Continuation)", text:"Hold support → BOS → retest → continuation toward resistance."},
-          {name:"Plan B (Reversal)", text:"Break support → retest → sell rallies with strict invalidation."}
-        ],
-        risk: "Headlines can invalidate technicals. Keep size smaller than usual and avoid holding through major speeches.",
-        tags: ["Exec Summary","Macro","Structure","Scenarios","Risk Plan"],
-        impactScore: 80
-      },
-      {
-        id: "xauusd-ath-watch",
-        date: "2026-02-13",
-        asset: "GOLD",
-        pairKey: "XAUUSD",
-        pairLabel: "XAU/USD",
-        title: "XAU/USD: Momentum remains strong — manage risk near highs",
-        executive: "Gold is strong, but highs attract sharp pullbacks. Prefer pullback entries over breakout chasing.",
-        macro: "Driver: real yields, USD tone, risk aversion. Watch CPI/rates for volatility.",
-        structure: "Trend intact; focus on continuation after pullbacks and confirmation on lower timeframes.",
-        levels: [
-          {k:"Resistance", v:"2180", s:"Profit-taking zone"},
-          {k:"Support", v:"2145", s:"Key trend support"},
-          {k:"Demand", v:"2125–2135", s:"Pullback zone"},
-          {k:"Invalidation", v:"Below 2118", s:"Trend risk"}
-        ],
-        scenarios: [
-          {name:"Plan A (Pullback Buy)", text:"Pullback into demand → confirmation → continuation."},
-          {name:"Plan B (Deep Retrace)", text:"Break below support → wait for reclaim or trend pause."}
-        ],
-        risk: "At highs, spreads and wicks expand. Lower size, take partials, and don’t widen stops emotionally.",
-        tags: ["Exec Summary","Macro","Structure","Scenarios","Risk Plan"],
-        impactScore: 78
-      },
-      {
-        id: "nas100-risk-on",
-        date: "2026-02-12",
-        asset: "INDICES",
-        pairKey: "NAS100",
-        pairLabel: "NAS100",
-        title: "NAS100: Risk sentiment vs yields — trade the reaction, not the rumor",
-        executive: "Index bias depends on yields. If yields rise sharply, risk assets can pull back.",
-        macro: "Key driver: rates expectations, earnings headlines, and macro data. Watch Fed speakers and CPI.",
-        structure: "Look for trend continuation only after confirmation; avoid entering mid-range.",
-        levels: [
-          {k:"Resistance", v:"17850", s:"Break → continuation"},
-          {k:"Support", v:"17520", s:"Hold → bullish bias"},
-          {k:"Demand", v:"17440–17490", s:"Pullback area"},
-          {k:"Invalidation", v:"Below 17380", s:"Bull invalid"}
-        ],
-        scenarios: [
-          {name:"Plan A (Continuation)", text:"Hold support → BOS → retest → continuation."},
-          {name:"Plan B (Pullback)", text:"Break support → wait for reclaim or lower demand."}
-        ],
-        risk: "Avoid holding through major data if your setup is fragile. Tighten risk rules on high-volatility days.",
-        tags: ["Exec Summary","Macro","Structure","Scenarios","Risk Plan"],
-        impactScore: 70
-      },
-      {
-        id: "btcusd-volatility",
-        date: "2026-02-11",
-        asset: "CRYPTO",
-        pairKey: "BTCUSD",
-        pairLabel: "BTC/USD",
-        title: "BTC/USD: Volatility pockets — structure first, hype last",
-        executive: "BTC is range-bound. Expect fakeouts. Only trade edges with clear invalidation.",
-        macro: "Risk sentiment and liquidity conditions. Watch USD strength and broader risk environment.",
-        structure: "Range logic: buy low/sell high only with confirmation. Avoid mid-range entries.",
-        levels: [
-          {k:"Range High", v:"72,000", s:"Break → expansion"},
-          {k:"Midpoint", v:"70,000", s:"Chop zone"},
-          {k:"Range Low", v:"68,000", s:"Demand edge"},
-          {k:"Invalidation", v:"Below 67,400", s:"Breakdown risk"}
-        ],
-        scenarios: [
-          {name:"Plan A (Range Edge)", text:"Sweep lows → reclaim → target midpoint then highs."},
-          {name:"Plan B (Breakout)", text:"Break and retest above highs → continuation (only after confirmation)."}
-        ],
-        risk: "Crypto can wick hard. Reduce leverage and don’t average down.",
-        tags: ["Exec Summary","Macro","Structure","Scenarios","Risk Plan"],
-        impactScore: 68
-      }
-    ];
-
-    // ===== State =====
-    let activeAsset = "ALL";
-    let activePair = "ALL";
-    let query = "";
-    let sort = "newest";
-    let visibleCount = 6;
-
-    // bookmarks in localStorage
-    const LS_KEY = "ubuntufx_bookmarks";
-    function getBookmarks(){
-      try { return JSON.parse(localStorage.getItem(LS_KEY) || "[]"); } catch { return []; }
-    }
-    function setBookmarks(arr){
-      localStorage.setItem(LS_KEY, JSON.stringify(arr));
-    }
-
-    // ===== UI refs =====
-    const gridEl = document.getElementById("cardsGrid");
-    const countEl = document.getElementById("resultsCount");
-    const searchInput = document.getElementById("searchInput");
-    const sortSelect = document.getElementById("sortSelect");
-
-    // featured refs
-    const featTitle = document.getElementById("featTitle");
-    const featMeta = document.getElementById("featMeta");
-    const featSummary = document.getElementById("featSummary");
-    const featLevels = document.getElementById("featLevels");
-    const featOpen = document.getElementById("featOpen");
-    const featSave = document.getElementById("featSave");
-    const featShare = document.getElementById("featShare");
-
-    // drawer refs
-    const overlay = document.getElementById("overlay");
-    const drawer = document.getElementById("drawer");
-    const drawerTitle = document.getElementById("drawerTitle");
-    const drawerMeta = document.getElementById("drawerMeta");
-    const drawerBody = document.getElementById("drawerBody");
-    const drawerClose = document.getElementById("drawerClose");
-
-    // ===== Helpers =====
-    function fmtDate(iso){
-      const d = new Date(iso + "T00:00:00");
-      return d.toLocaleDateString(undefined, {year:"numeric", month:"short", day:"2-digit"});
-    }
-    function impactLabel(score){
-      if (score >= 85) return {txt:"High", icon:"fa-triangle-exclamation", color:"rgba(244,67,54,.22)", border:"rgba(244,67,54,.35)", text:"#ffd1d1"};
-      if (score >= 70) return {txt:"Medium", icon:"fa-bolt", color:"rgba(255,193,7,.18)", border:"rgba(255,193,7,.32)", text:"#ffe9a8"};
-      return {txt:"Low", icon:"fa-circle", color:"rgba(76,175,80,.18)", border:"rgba(76,175,80,.30)", text:"#bff0c2"};
-    }
-    function matches(a){
-      if (activeAsset !== "ALL" && a.asset !== activeAsset) return false;
-      if (activePair !== "ALL" && a.pairKey !== activePair) return false;
-
-      if (query.trim()){
-        const q = query.trim().toLowerCase();
-        const hay = `${a.pairLabel} ${a.title} ${a.executive} ${a.macro} ${a.structure}`.toLowerCase();
-        if (!hay.includes(q)) return false;
-      }
-      return true;
-    }
-    function sortList(list){
-      const arr = [...list];
-      if (sort === "newest") arr.sort((x,y) => y.date.localeCompare(x.date));
-      if (sort === "oldest") arr.sort((x,y) => x.date.localeCompare(y.date));
-      if (sort === "impact") arr.sort((x,y) => (y.impactScore - x.impactScore) || y.date.localeCompare(x.date));
-      if (sort === "pair") arr.sort((x,y) => x.pairLabel.localeCompare(y.pairLabel));
-      return arr;
-    }
-
-    // ===== Render Featured =====
-    let featuredId = analyses[0].id;
-
-    function renderFeatured(){
-      const a = analyses.find(x => x.id === featuredId) || analyses[0];
-      const imp = impactLabel(a.impactScore);
-      featTitle.textContent = a.title;
-
-      featMeta.innerHTML = `
-        <span><i class="fa-regular fa-calendar"></i> ${fmtDate(a.date)}</span>
-        <span><i class="fa-solid fa-layer-group"></i> ${a.asset}</span>
-        <span><i class="fa-solid fa-tag"></i> ${a.pairLabel}</span>
-        <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;
-          border:1px solid ${imp.border}; background:${imp.color}; color:${imp.text}; font-weight:900; font-size:12px;">
-          <i class="fa-solid ${imp.icon}"></i> ${imp.txt} Impact
-        </span>
-      `;
-
-      featSummary.textContent = a.executive;
-
-      featLevels.innerHTML = a.levels.slice(0,4).map(l => `
-        <div class="kv">
-          <div class="k">${l.k}</div>
-          <div class="v">${l.v} <span>• ${l.s}</span></div>
-        </div>
-      `).join("");
-
-      featOpen.onclick = () => openDrawer(a.id);
-      featSave.onclick = () => toggleBookmark(a.id);
-      featShare.onclick = () => copyLink("#analysis=" + a.id);
-
-      // update save btn icon
-      syncBookmarkBtn(featSave, a.id);
-    }
-
-    function syncBookmarkBtn(btn, id){
-      const saved = getBookmarks().includes(id);
-      btn.innerHTML = saved
-        ? '<i class="fa-solid fa-bookmark"></i> Bookmarked'
-        : '<i class="fa-regular fa-bookmark"></i> Bookmark';
-    }
-
-    // ===== Render Cards =====
-    function renderCards(){
-      const filtered = sortList(analyses.filter(matches));
-      countEl.textContent = String(filtered.length);
-
-      const slice = filtered.slice(0, visibleCount);
-
-      gridEl.innerHTML = slice.map(a => {
-        const imp = impactLabel(a.impactScore);
-        const saved = getBookmarks().includes(a.id);
-
-        return `
-          <article class="card">
-            <div class="card-top">
-              <span class="pair"><i class="fa-solid fa-tag"></i> ${a.pairLabel}</span>
-              <span class="when"><i class="fa-regular fa-calendar"></i> ${fmtDate(a.date)}</span>
-            </div>
-
-            <h3>${a.title}</h3>
-            <p>${a.executive}</p>
-
-            <div class="chips">
-              <span class="chip"><i class="fa-solid fa-layer-group"></i> ${a.asset}</span>
-              <span class="chip" style="border-color:${imp.border}; background:${imp.color}; color:${imp.text};">
-                <i class="fa-solid ${imp.icon}"></i> ${imp.txt}
-              </span>
-              <span class="chip"><i class="fa-solid fa-sitemap"></i> Structure</span>
-              <span class="chip"><i class="fa-solid fa-shield-halved"></i> Risk</span>
-            </div>
-
-            <div class="card-actions">
-              <a class="link" href="javascript:void(0)" data-open="${a.id}">
-                Read <i class="fa-solid fa-arrow-right"></i>
-              </a>
-              <a class="link" href="javascript:void(0)" data-bookmark="${a.id}">
-                ${saved ? 'Saved' : 'Save'} <i class="fa-solid fa-bookmark"></i>
-              </a>
-              <a class="link" href="javascript:void(0)" data-setfeatured="${a.id}">
-                Feature <i class="fa-solid fa-star"></i>
-              </a>
-            </div>
-          </article>
-        `;
-      }).join("");
-
-      document.getElementById("btnLoadMore").style.display =
-        (visibleCount < filtered.length) ? "inline-flex" : "none";
-    }
-
-    // ===== Drawer (full view) =====
-    function openDrawer(id){
-      const a = analyses.find(x => x.id === id);
-      if (!a) return;
-
-      const imp = impactLabel(a.impactScore);
-
-      drawerTitle.textContent = a.title;
-      drawerMeta.innerHTML = `
-        <span><i class="fa-regular fa-calendar"></i> ${fmtDate(a.date)}</span>
-        <span><i class="fa-solid fa-layer-group"></i> ${a.asset}</span>
-        <span><i class="fa-solid fa-tag"></i> ${a.pairLabel}</span>
-        <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;
-          border:1px solid ${imp.border}; background:${imp.color}; color:${imp.text}; font-weight:900; font-size:12px;">
-          <i class="fa-solid ${imp.icon}"></i> ${imp.txt} Impact
-        </span>
-      `;
-
-      drawerBody.innerHTML = `
-        <div class="drawer-block">
-          <h4><i class="fa-solid fa-file-lines"></i> Executive Summary</h4>
-          <p>${a.executive}</p>
-        </div>
-
-        <div class="drawer-block">
-          <h4><i class="fa-solid fa-globe"></i> Macro Context</h4>
-          <p>${a.macro}</p>
-          <div class="bullets">
-            <div class="bullet"><i class="fa-solid fa-check"></i> Identify the main driver (rates, CPI, risk sentiment).</div>
-            <div class="bullet"><i class="fa-solid fa-check"></i> Map calendar risks (speeches, CPI, NFP, GDP).</div>
-          </div>
-        </div>
-
-        <div class="drawer-block">
-          <h4><i class="fa-solid fa-chart-simple"></i> Technical Structure</h4>
-          <p>${a.structure}</p>
-          <div class="bullets">
-            <div class="bullet"><i class="fa-solid fa-check"></i> Wait for liquidity sweep → BOS/CHOCH → retest.</div>
-            <div class="bullet"><i class="fa-solid fa-check"></i> Avoid mid-range entries. Trade at levels only.</div>
-          </div>
-        </div>
-
-        <div class="drawer-block">
-          <h4><i class="fa-solid fa-bullseye"></i> Key Levels</h4>
-          <div class="bullets">
-            ${a.levels.map(l => `
-              <div class="bullet">
-                <i class="fa-solid fa-crosshairs"></i>
-                <div>
-                  <div style="font-weight:900;color:var(--white)">${l.k}: <span class="num">${l.v}</span></div>
-                  <div style="color:var(--muted2);font-weight:800;margin-top:2px">${l.s}</div>
-                </div>
-              </div>
-            `).join("")}
-          </div>
-        </div>
-
-        <div class="drawer-block">
-          <h4><i class="fa-solid fa-route"></i> Scenarios</h4>
-          <div class="bullets">
-            ${a.scenarios.map(s => `
-              <div class="bullet">
-                <i class="fa-solid fa-diagram-project"></i>
-                <div>
-                  <div style="font-weight:900;color:var(--white)">${s.name}</div>
-                  <div style="color:var(--muted);font-weight:800;margin-top:2px">${s.text}</div>
-                </div>
-              </div>
-            `).join("")}
-          </div>
-
-          <div class="riskbox">
-            <strong><i class="fa-solid fa-shield-halved" style="color:var(--gold);margin-right:8px;"></i> Risk Plan</strong>
-            <div style="margin-top:8px;color:var(--muted);font-size:14.5px;line-height:1.75;">
-              ${a.risk}
-            </div>
-          </div>
-
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
-            <button class="btn btn-ghost" onclick="copyLink('#analysis=${a.id}')"><i class="fa-solid fa-link"></i> Copy Link</button>
-            <button class="btn btn-primary" onclick="toggleBookmark('${a.id}')"><i class="fa-solid fa-bookmark"></i> Toggle Bookmark</button>
-          </div>
-        </div>
-      `;
-
-      overlay.classList.add("show");
-      drawer.classList.add("show");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeDrawer(){
-      overlay.classList.remove("show");
-      drawer.classList.remove("show");
-      document.body.style.overflow = "";
-    }
-    overlay.addEventListener("click", closeDrawer);
-    drawerClose.addEventListener("click", closeDrawer);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeDrawer();
-    });
-
-    // ===== Actions =====
-    function toggleBookmark(id){
-      const cur = getBookmarks();
-      const idx = cur.indexOf(id);
-      if (idx >= 0) cur.splice(idx, 1);
-      else cur.push(id);
-      setBookmarks(cur);
-
-      renderCards();
-      renderFeatured();
-      toast(idx >= 0 ? "Removed bookmark." : "Saved to bookmarks.");
-    }
-    window.toggleBookmark = toggleBookmark;
-
-    function copyLink(hash){
-      const url = location.origin + location.pathname + hash;
-      navigator.clipboard?.writeText(url).then(() => toast("Link copied."));
-      // fallback (still ok if clipboard blocked)
-      if (!navigator.clipboard) toast("Copy not supported in this browser.");
-    }
-    window.copyLink = copyLink;
-
-    // ===== Filter UI wiring =====
-    document.querySelectorAll("[data-asset]").forEach(p => {
-      p.addEventListener("click", () => {
-        activeAsset = p.getAttribute("data-asset");
-        document.querySelectorAll('[aria-label="Asset Class"] .filter-pill').forEach(x => x.classList.remove("active"));
-        p.classList.add("active");
-        visibleCount = 6;
-        renderCards();
-      });
-    });
-
-    document.querySelectorAll("[data-pair]").forEach(p => {
-      p.addEventListener("click", () => {
-        activePair = p.getAttribute("data-pair");
-        document.querySelectorAll('[aria-label="Pairs"] .filter-pill').forEach(x => x.classList.remove("active"));
-        p.classList.add("active");
-        visibleCount = 6;
-        renderCards();
-      });
-    });
-
-    searchInput.addEventListener("input", (e) => {
-      query = e.target.value;
-      visibleCount = 6;
-      renderCards();
-    });
-
-    sortSelect.addEventListener("change", (e) => {
-      sort = e.target.value;
-      visibleCount = 6;
-      renderCards();
-    });
-
-    // card actions delegation
-    document.addEventListener("click", (e) => {
-      const open = e.target.closest("[data-open]");
-      const bm = e.target.closest("[data-bookmark]");
-      const setf = e.target.closest("[data-setfeatured]");
-
-      if (open){
-        openDrawer(open.getAttribute("data-open"));
-      }
-      if (bm){
-        toggleBookmark(bm.getAttribute("data-bookmark"));
-      }
-      if (setf){
-        featuredId = setf.getAttribute("data-setfeatured");
-        renderFeatured();
-        toast("Featured updated.");
-        document.getElementById("featuredCard").scrollIntoView({behavior:"smooth", block:"start"});
-      }
-    });
-
-    // Top buttons
-    document.getElementById("btnLoadMore").addEventListener("click", () => {
-      visibleCount += 6;
-      renderCards();
-    });
-
-    document.getElementById("btnReset").addEventListener("click", () => {
-      activeAsset = "ALL";
-      activePair = "ALL";
-      query = "";
-      sort = "newest";
-      visibleCount = 6;
-
-      searchInput.value = "";
-      sortSelect.value = "newest";
-
-      // reset pills
-      document.querySelectorAll('[aria-label="Asset Class"] .filter-pill').forEach(x => x.classList.remove("active"));
-      document.querySelector('[data-asset="ALL"]').classList.add("active");
-
-      document.querySelectorAll('[aria-label="Pairs"] .filter-pill').forEach(x => x.classList.remove("active"));
-      document.querySelector('[data-pair="ALL"]').classList.add("active");
-
-      renderCards();
-      toast("Filters reset.");
-    });
-
-    document.getElementById("btnLatest").addEventListener("click", () => {
-      // open newest based on date
-      const newest = sortList([...analyses]).sort((a,b)=>b.date.localeCompare(a.date))[0];
-      openDrawer(newest.id);
-    });
-
-    document.getElementById("btnBookmark").addEventListener("click", () => {
-      const saved = getBookmarks();
-      if (!saved.length){ toast("No bookmarks yet."); return; }
-      // show only bookmarks
-      query = "";
-      searchInput.value = "";
-      activeAsset = "ALL";
-      activePair = "ALL";
-
-      // reset pills
-      document.querySelectorAll('[aria-label="Asset Class"] .filter-pill').forEach(x => x.classList.remove("active"));
-      document.querySelector('[data-asset="ALL"]').classList.add("active");
-      document.querySelectorAll('[aria-label="Pairs"] .filter-pill').forEach(x => x.classList.remove("active"));
-      document.querySelector('[data-pair="ALL"]').classList.add("active");
-
-      // temporary filter: override matches
-      const temp = analyses.filter(a => saved.includes(a.id));
-      countEl.textContent = String(temp.length);
-      visibleCount = 999;
-
-      gridEl.innerHTML = temp.map(a => {
-        const imp = impactLabel(a.impactScore);
-        return `
-          <article class="card">
-            <div class="card-top">
-              <span class="pair"><i class="fa-solid fa-tag"></i> ${a.pairLabel}</span>
-              <span class="when"><i class="fa-regular fa-calendar"></i> ${fmtDate(a.date)}</span>
-            </div>
-            <h3>${a.title}</h3>
-            <p>${a.executive}</p>
-            <div class="chips">
-              <span class="chip"><i class="fa-solid fa-layer-group"></i> ${a.asset}</span>
-              <span class="chip" style="border-color:${imp.border}; background:${imp.color}; color:${imp.text};">
-                <i class="fa-solid ${imp.icon}"></i> ${imp.txt}
-              </span>
-            </div>
-            <div class="card-actions">
-              <a class="link" href="javascript:void(0)" data-open="${a.id}">Read <i class="fa-solid fa-arrow-right"></i></a>
-              <a class="link" href="javascript:void(0)" data-bookmark="${a.id}">Remove <i class="fa-solid fa-bookmark"></i></a>
-            </div>
-          </article>
-        `;
-      }).join("");
-
-      toast("Showing bookmarks.");
-    });
-
-    // ===== Hash deep link (#analysis=ID) =====
-    function checkHash(){
-      const h = location.hash || "";
-      const match = h.match(/analysis=([^&]+)/);
-      if (match && match[1]){
-        const id = decodeURIComponent(match[1]);
-        const found = analyses.find(a => a.id === id);
-        if (found) openDrawer(found.id);
-      }
-    }
-    window.addEventListener("hashchange", checkHash);
-
-    // ===== Initial render =====
-    renderFeatured();
-    renderCards();
-    checkHash();
-
-    // ===== Toast =====
-    function toast(msg){
-      const t = document.createElement("div");
-      t.textContent = msg;
-      t.style.position = "fixed";
-      t.style.right = "16px";
-      t.style.bottom = "16px";
-      t.style.zIndex = "9999";
-      t.style.padding = "12px 14px";
-      t.style.borderRadius = "14px";
-      t.style.border = "1px solid rgba(255,255,255,.14)";
-      t.style.background = "rgba(0,0,0,.75)";
-      t.style.backdropFilter = "blur(12px)";
-      t.style.color = "rgba(255,255,255,.92)";
-      t.style.fontFamily = '"Jost", sans-serif';
-      t.style.boxShadow = "0 18px 40px rgba(0,0,0,.45)";
-      t.style.transform = "translateY(10px)";
-      t.style.opacity = "0";
-      t.style.transition = "opacity .25s ease, transform .25s ease";
-      document.body.appendChild(t);
-
-      requestAnimationFrame(() => {
-        t.style.opacity = "1";
-        t.style.transform = "translateY(0)";
-      });
-
-      setTimeout(() => {
-        t.style.opacity = "0";
-        t.style.transform = "translateY(10px)";
-        setTimeout(() => t.remove(), 260);
-      }, 2200);
-    }
-  </script>
+  <script src="market-analysis.js"></script>
 </body>
 </html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UbuntuFX · structure, not noise</title>
+  <!-- Primary SEO (minimal) -->
+  <meta name="description" content="Forex education with institutional structure. Risk-first, session timing, market analysis." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* --- root + base (preserved, with additions) --- */
+    :root{
+      --bg: #0A1F2F;          /* Deep Navy */
+      --accent: #00C853;      /* Emerald Green */
+      --gold: #F9A825;        /* Gold */
+      --secondary: #1E3A5F;   /* Slate Blue */
+      --soft: #F4F6F8;        /* Soft Gray */
+      --light-bg: #F0F8FF;    /* AliceBlue */
+
+      --text: rgba(244,246,248,.92);
+      --muted: rgba(244,246,248,.72);
+      --muted2: rgba(244,246,248,.58);
+      --card: rgba(10,31,47,0.95);  /* solid navy for cards (opaque) */
+      --card2: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.10);
+      --border2: rgba(255,255,255,.14);
+      --shadow: 0 18px 50px rgba(0,0,0,.40);
+      --shadow2: 0 12px 34px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 22px;
+      --container: 1200px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html { scroll-behavior: smooth; }
+    body{
+      font-family: "Jost", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    a{ color: inherit; text-decoration: none; }
+    img{ max-width: 100%; display: block; }
+
+    .container{
+      width: min(var(--container), 92vw);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* sections with alternating backgrounds */
+    .section-dark {
+      background: var(--bg);
+      color: var(--text);
+    }
+    .section-light {
+      background: var(--light-bg);
+      color: #0A1F2F;
+    }
+    .section-light .eyebrow {
+      border-color: rgba(10,31,47,0.15);
+      background: rgba(10,31,47,0.03);
+      color: #1e3a5f;
+    }
+    .section-light .eyebrow .dot {
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(0,200,83,0.2);
+    }
+    .section-light h2, .section-light h3:not(.card h3) {
+      color: #0A1F2F;
+    }
+    .section-light p:not(.card p) {
+      color: #1e3a5f;
+    }
+    .section-light .btn-ghost {
+      background: rgba(10,31,47,0.08);
+      border-color: rgba(10,31,47,0.2);
+      color: #0A1F2F;
+    }
+    .section-light .btn-ghost:hover {
+      background: rgba(10,31,47,0.15);
+    }
+    /* cards stay dark navy even in light sections */
+    .section-light .card {
+      background: var(--card);
+      color: var(--text);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .section-light .card p {
+      color: var(--muted);
+    }
+    .section-light .card h3 {
+      color: var(--text);
+    }
+    .section-light .card .link {
+      color: var(--accent);
+    }
+
+    .section, .section-sm {
+      padding: 80px 0;
+      position: relative;
+    }
+    .section-sm { padding: 60px 0; }
+
+    .eyebrow{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: .2px;
+      backdrop-filter: blur(10px);
+    }
+    .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(0,200,83,.14);
+    }
+    .h1{
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 20px 0 16px;
+      font-weight: 700;
+    }
+    .lead{
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 0 30px;
+      max-width: 60ch;
+    }
+    .btn-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+    .btn{
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-weight: 600;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all .25s var(--ease);
+      white-space: nowrap;
+    }
+    .btn-primary{
+      color: #062016;
+      background: linear-gradient(135deg, #00C853, #00a844);
+      box-shadow: 0 18px 40px rgba(0,200,83,0.25);
+    }
+    .btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 22px 50px rgba(0,200,83,0.35); }
+    .btn-ghost{
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    .btn-ghost:hover{ transform: translateY(-3px); border-color: var(--border2); }
+    .btn-gold{
+      color: #2b1b00;
+      background: linear-gradient(135deg, #F9A825, #e09213);
+      box-shadow: 0 18px 40px rgba(249,168,37,0.2);
+    }
+
+    /* ----- NAVBAR (unchanged structure, slight brand tweak) ----- */
+    .nav-wrap{
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 12px 0;
+      background: rgba(0,0,0,.3);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .navbar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand .logo-slot{
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+    .brand .logo-slot img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .brand span{
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+      color: white;
+    }
+    .nav-links{
+      display: flex;
+      gap: 18px;
+    }
+    .nav-links a{
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: 0.2s;
+    }
+    .nav-links a:hover{ color: white; background: rgba(255,255,255,.06); }
+    .nav-actions{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .menu-btn{
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color: white;
+      cursor: pointer;
+    }
+    @media (max-width: 980px){
+      .nav-links{ display: none; }
+      .menu-btn{ display: inline-grid; place-items: center; }
+    }
+    .mobile-panel{
+      display: none;
+      margin-top: 12px;
+      border: 1px solid var(--border);
+      background: rgba(10,31,47,.95);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+    .mobile-panel .inner{
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+    }
+    .mobile-panel a{
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      color: var(--muted);
+    }
+    .mobile-open .mobile-panel{ display: block; }
+
+    /* ----- HERO (video background, minimal content) ----- */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background-color: var(--bg); /* fallback */
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.25;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content {
+      max-width: 750px;
+    }
+
+    /* fixed live snapshot (bottom left) */
+    .live-snapshot-fixed {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 1000;
+      background: rgba(10,31,47,0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 28px;
+      padding: 18px 20px;
+      box-shadow: 0 25px 50px -8px black;
+      width: 300px;
+      color: white;
+      transition: 0.2s;
+    }
+    .live-snapshot-fixed .snap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .live-snapshot-fixed .metric {
+      background: rgba(0,0,0,0.3);
+      border-radius: 16px;
+      padding: 10px 8px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .live-snapshot-fixed .metric .k {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      font-weight: 600;
+    }
+    .live-snapshot-fixed .metric .v {
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+    .live-snapshot-fixed .up { color: #00C853; }
+    .live-snapshot-fixed .down { color: #ff6b6b; }
+    .live-snapshot-fixed .flat { color: #F9A825; }
+    .live-snapshot-fixed .snap-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+      margin-bottom: 8px;
+    }
+    .live-snapshot-fixed .snap-title i {
+      color: var(--accent);
+    }
+    @media (max-width: 640px){
+      .live-snapshot-fixed {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        width: auto;
+        max-width: none;
+        padding: 14px;
+      }
+      .live-snapshot-fixed .snap-grid {
+        gap: 8px;
+      }
+    }
+
+    /* ----- cards (premium, kept from original but with solid navy) ----- */
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+      padding: 24px;
+      transition: transform .25s var(--ease), border-color .25s var(--ease);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(4px);
+    }
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background: radial-gradient(360px 170px at 10% 0%, rgba(0,200,83,.08), transparent 62%),
+                  radial-gradient(360px 170px at 90% 0%, rgba(249,168,37,.06), transparent 62%);
+      pointer-events:none;
+    }
+    .card > *{ position: relative; z-index:1; }
+    .card:hover{
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.2);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.5);
+    }
+    .icon-badge{
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.12);
+      margin-bottom: 16px;
+    }
+    .icon-badge i{ font-size: 22px; color: var(--gold); }
+    .card h3{ margin: 0 0 12px; font-size: 22px; }
+    .card p{ color: var(--muted); line-height: 1.7; }
+    .card .link{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* grid utilities */
+    .grid{
+      display: grid;
+      gap: 24px;
+    }
+    .grid-3{ grid-template-columns: repeat(3,1fr); }
+    .grid-2{ grid-template-columns: repeat(2,1fr); }
+    @media (max-width: 980px){
+      .grid-3, .grid-2{ grid-template-columns: 1fr; }
+    }
+
+    /* sec-head minimal */
+    .sec-head{
+      margin-bottom: 40px;
+    }
+    .sec-head h2{
+      font-size: clamp(28px,3vw,42px);
+      margin: 12px 0 8px;
+      line-height: 1.2;
+    }
+    .sec-head p{
+      font-size: 18px;
+      opacity: 0.8;
+      max-width: 70ch;
+    }
+
+    /* newsletter (light version handled by section-light) */
+    .newsletter{
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    .news-form{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 24px 0 12px;
+    }
+    .input{
+      flex: 1 1 260px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(0,0,0,.3);
+      color: white;
+      padding: 14px 18px;
+      font-size: 16px;
+      outline: none;
+    }
+    .section-light .input {
+      background: white;
+      border-color: rgba(10,31,47,0.2);
+      color: #0A1F2F;
+    }
+    .fineprint{ font-size: 13px; opacity: 0.6; }
+
+    /* footer unchanged (black) */
+    footer{
+      background: #000;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 54px 0 22px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .9fr .9fr;
+      gap: 30px;
+    }
+    @media (max-width: 980px){ .footer-grid{ grid-template-columns:1fr; } }
+    .footer-brand{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .footer-logo{
+      width: 46px; height: 46px; border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      display:grid; place-items:center;
+    }
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:22px; padding-top:16px;
+      display:flex; justify-content:space-between; flex-wrap:wrap;
+    }
+    .credit a{ color:#00C853; font-weight:700; }
+
+    /* reveal animation (unchanged) */
+    .reveal{ opacity:0; transform:translateY(14px); transition: .6s var(--ease); }
+    .reveal.show{ opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR (identical structure) -->
+  <div class="nav-wrap" id="top">
+    <div class="container">
+      <div class="navbar">
+        <a class="brand" href="index.html">
+          <div class="logo-slot">
+            <img src="ubuntu-favicon.webp" alt="" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-chart-line\' style=\'color:#F9A825;font-size:22px\'></i>';">
+          </div>
+          <span>UbuntuFX</span>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="learn.html">Learn</a>
+          <a href="market-analysis.html">Analysis</a>
+          <a href="strategies.html">Strategies</a>
+          <a href="economic-calendar.html">Calendar</a>
+          <a href="livechart.html">Charts</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-gold" href="#newsletter"><i class="fa-solid fa-envelope"></i> Weekly</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+      </div>
+      <div class="mobile-panel" id="mobilePanel">
+        <div class="inner">
+          <a href="learn.html">Learn</a>
+          <a href="market-analysis.html">Market Analysis</a>
+          <a href="strategies.html">Strategies</a>
+          <a href="economic-calendar.html">Economic Calendar</a>
+          <a href="livechart.html">Live Charts</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="#newsletter"><i class="fa-solid fa-envelope"></i> Weekly Breakdown</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO (video background, minimal punch) -->
+  <section class="hero">
+    <!-- video from mixkit (abstract trading graph, small file) -->
+    <video class="hero-video" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/0A1F2F/00C853?text=Forex">
+      <source src="https://assets.mixkit.co/videos/32401/32401-720.mp4" type="video/mp4">
+      <!-- fallback: Mixkit digital graph, ~1.8MB -->
+    </video>
+    <div class="container">
+      <div class="hero-content reveal">
+        <span class="eyebrow"><span class="dot"></span> process over prediction</span>
+        <h1 class="h1">Trade with structure,<br>not noise.</h1>
+        <p class="lead">Institutional framework · macro first · risk always defined.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="learn.html"><i class="fa-solid fa-graduation-cap"></i> Start Learning</a>
+          <a class="btn btn-ghost" href="market-analysis.html"><i class="fa-solid fa-chart-column"></i> Latest Analysis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIXED LIVE MARKET SNAPSHOT (bottom left) -->
+  <div class="live-snapshot-fixed">
+    <div class="snap-title">
+      <i class="fa-solid fa-wave-square"></i>
+      <span style="font-weight:600;">live fx snapshot</span>
+      <span style="margin-left:auto; font-size:11px; opacity:0.6;">updating</span>
+    </div>
+    <div class="snap-grid">
+      <div class="metric">
+        <div class="k">EUR/USD</div>
+        <div class="v"><span id="eurusd">1.0864</span> <span class="up" id="eurusdChg">+0.12%</span></div>
+      </div>
+      <div class="metric">
+        <div class="k">GBP/USD</div>
+        <div class="v"><span id="gbpusd">1.2749</span> <span class="down" id="gbpusdChg">-0.08%</span></div>
+      </div>
+      <div class="metric">
+        <div class="k">USD/JPY</div>
+        <div class="v"><span id="usdjpy">148.22</span> <span class="flat" id="usdjpyChg">+0.00%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- alternating sections: light / dark / light ... -->
+
+  <!-- VALUE PILLARS (light) -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span> three pillars</span>
+        <h2>Education, analysis, tools —<br>no fluff.</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h3>Learn structure</h3>
+          <p>From market mechanics to institutional order flow — a repeatable curriculum.</p>
+          <a class="link" href="learn.html">Explore <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-chart-column"></i></div>
+          <h3>Disciplined analysis</h3>
+          <p>Macro context, technical levels, risk scenarios — no hype.</p>
+          <a class="link" href="market-analysis.html">Read <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-clock"></i></div>
+          <h3>Session tools</h3>
+          <p>Timing, economic data, live charts — trade when liquidity flows.</p>
+          <a class="link" href="livechart.html">Open tools <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SESSIONS (dark) -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span> sessions & liquidity</span>
+        <h2>Know when the market moves.</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-sun"></i></div>
+          <h3>Tokyo</h3>
+          <p>00:00–09:00 GMT — range behaviour, early positioning.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-landmark"></i></div>
+          <h3>London</h3>
+          <p>08:00–17:00 GMT — high liquidity, directional moves.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-flag-usa"></i></div>
+          <h3>New York</h3>
+          <p>13:00–22:00 GMT — reversals, macro releases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PSYCHOLOGY & RISK (light) -->
+  <section class="section-sm section-light">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span> psychology & risk</span>
+        <h2>Consistency = discipline.</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Risk-first execution</h3>
+          <p>Define invalidation, avoid over-leverage. Edge survives drawdowns.</p>
+          <a class="link" href="learn.html#risk">Learn risk <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-brain"></i></div>
+          <h3>Trader psychology</h3>
+          <p>Routines, journaling, emotional control — the real edge.</p>
+          <a class="link" href="learn.html#psychology">Master it <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST & BROKERS (dark) -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span> trust</span>
+        <h2>Regulated brokers only.</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-certificate"></i></div>
+          <h3>Regulation checks</h3>
+          <p>Verify licensing, jurisdiction — non-negotiable.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h3>Fair conditions</h3>
+          <p>Transparent spreads, execution, withdrawal policies.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-user-shield"></i></div>
+          <h3>Protect capital</h3>
+          <p>Risk mgmt + trustworthy brokers = compound.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTITUTIONAL CONCEPTS (light) -->
+  <section class="section-sm section-light">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span> institutional</span>
+        <h2>Structure, liquidity, macro.</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-sitemap"></i></div>
+          <h3>Market structure</h3>
+          <p>Trend, consolidation, BOS — context matters.</p>
+          <a class="link" href="strategies.html">Explore <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-water"></i></div>
+          <h3>Liquidity & sweeps</h3>
+          <p>Where stops sit, why price hunts levels.</p>
+          <a class="link" href="strategies.html#liquidity">Study <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-link"></i></div>
+          <h3>Correlations</h3>
+          <p>USD, risk on/off, news impact — see the matrix.</p>
+          <a class="link" href="economic-calendar.html">Track <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST ANALYSIS (dark) -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span> latest notes</span>
+        <h2>Recent structured analysis.</h2>
+      </div>
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-file-lines"></i></div>
+          <h3>EUR/USD — weekly</h3>
+          <p>Key levels, macro catalysts, strict invalidation.</p>
+          <a class="link" href="market-analysis.html">Read <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+        <article class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-file-lines"></i></div>
+          <h3>GBP/USD — session plan</h3>
+          <p>London liquidity, sweeps, execution rules.</p>
+          <a class="link" href="market-analysis.html">Read <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+        <article class="card reveal">
+          <div class="icon-badge"><i class="fa-solid fa-file-lines"></i></div>
+          <h3>USD/JPY — macro & rates</h3>
+          <p>Yield expectations, avoiding news traps.</p>
+          <a class="link" href="market-analysis.html">Read <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER (light) -->
+  <section class="section-sm section-light" id="newsletter">
+    <div class="container">
+      <div class="newsletter reveal">
+        <span class="eyebrow"><span class="dot"></span> weekly 5‑min read</span>
+        <h2 style="font-size:32px; margin:12px 0 6px;">The Breakdown</h2>
+        <p>Macro context, key levels, risk reminders — no spam.</p>
+        <form class="news-form" onsubmit="event.preventDefault(); toast('Thanks! (demo)');">
+          <input class="input" type="email" placeholder="Your email" required>
+          <button class="btn btn-primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Subscribe</button>
+          <a class="btn btn-ghost" href="contact.html">Ask a question</a>
+        </form>
+        <div class="fineprint">We never share your data.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (unchanged) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-logo"><img src="ubuntu-favicon.webp" alt="" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-chart-line\' style=\'color:#F9A825;font-size:22px\'></i>';"></div>
+            <span style="font-weight:700;">UbuntuFX</span>
+          </div>
+          <p>Education & market intelligence for serious traders.</p>
+        </div>
+        <div>
+          <h4>Quick</h4>
+          <ul>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="market-analysis.html">Analysis</a></li>
+            <li><a href="strategies.html">Strategies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <div class="contact-line"><i class="fa-solid fa-envelope"></i> <a href="mailto:info@ubuntufx.com">info@ubuntufx.com</a></div>
+          <div class="contact-line"><i class="fa-solid fa-phone"></i> <a href="tel:+254717770557">0717770557</a></div>
+          <div class="contact-line"><i class="fa-solid fa-location-dot"></i> Nairobi, Kenya</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>© <span id="year"></span> UbuntuFX</small>
+        <small class="credit">Built by <a href="https://sarahadevelopers.co.ke" target="_blank">Saraha Developers</a></small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const mobilePanel = document.getElementById("mobilePanel");
+
+    function setMenu(open) {
+      document.body.classList.toggle("mobile-open", open);
+      menuBtn.setAttribute("aria-expanded", String(open));
+      menuBtn.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    }
+
+    menuBtn.addEventListener("click", () => setMenu(!document.body.classList.contains("mobile-open")));
+    mobilePanel.addEventListener("click", (e) => { if (e.target.tagName === "A") setMenu(false); });
+    document.addEventListener("click", (e) => {
+      if (document.body.classList.contains("mobile-open") && !e.target.closest(".nav-wrap"))
+        setMenu(false);
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => e.isIntersecting && e.target.classList.add("show"));
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Demo toast
+    function toast(msg) {
+      const t = document.createElement("div");
+      t.textContent = msg;
+      Object.assign(t.style, {
+        position:"fixed", right:"16px", bottom:"16px", zIndex:"9999",
+        padding:"12px 18px", borderRadius:"14px", background:"rgba(0,0,0,0.8)",
+        backdropFilter:"blur(12px)", color:"white", fontFamily:"Jost, sans-serif",
+        boxShadow:"0 18px 40px black", transition:"0.25s", opacity:"0", transform:"translateY(10px)"
+      });
+      document.body.appendChild(t);
+      requestAnimationFrame(() => { t.style.opacity = "1"; t.style.transform = "translateY(0)"; });
+      setTimeout(() => { t.style.opacity = "0"; t.style.transform = "translateY(10px)"; setTimeout(() => t.remove(), 260); }, 2000);
+    }
+
+    // Simulated market jitter
+    function jitter(val, step) {
+      let n = Number(val);
+      return (n + (Math.random() - 0.5) * step).toFixed(val.includes('.') ? 4 : 2);
+    }
+    setInterval(() => {
+      document.getElementById("eurusd").textContent = jitter("1.0864", 0.0006);
+      document.getElementById("gbpusd").textContent = jitter("1.2749", 0.0007);
+      document.getElementById("usdjpy").textContent = jitter("148.22", 0.08);
+    }, 3200);
+  </script>
+</body>
+</html>
