@@ -48,9 +48,9 @@
     img { max-width: 100%; display: block; }
     .container{ width: min(var(--container), 92vw); margin: 0 auto; }
 
-    h1,h2,h3,h4{ color: var(--emerald); letter-spacing: -.3px; }
-    h1{ font-size: clamp(34px, 4.3vw, 54px); line-height: 1.08; }
-    h2{ font-size: clamp(22px, 2.4vw, 34px); line-height: 1.15; }
+    h1,h2,h3,h4{ color: var(--emerald); letter-spacing: -.3px;font-weight: 500; }
+    h1{ font-size: clamp(34px, 4.3vw, 54px); line-height: 1.08;font-weight: 500; }
+    h2{ font-size: clamp(22px, 2.4vw, 34px); line-height: 1.15;font-weight: 500; }
     p{ color: var(--muted); }
 
     /* ===== Buttons ===== */
@@ -299,34 +299,87 @@
     details p{ margin-top: 8px; color: rgba(244,246,248,.66); font-size: 14px; }
 
     /* ===== Map embed / placeholder ===== */
-    .map{
-      border-radius: 18px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      box-shadow: 0 18px 50px rgba(0,0,0,.38);
-      margin-top: 12px;
-      min-height: 260px;
-      position: relative;
-      display:grid;
-      place-items:center;
-    }
-    .map .badge{
-      position:absolute;
-      top: 12px; left: 12px;
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 12px;
-      border-radius: var(--pill);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(10,31,47,.82);
-      backdrop-filter: blur(10px);
-      font-weight: 950;
-      font-size: 12.5px;
-      color: rgba(244,246,248,.88);
-    }
-    .map i{ font-size: 44px; color: rgba(249,168,37,.70); }
-    .map p{ margin-top: 10px; font-size: 14px; color: rgba(244,246,248,.62); text-align:center; max-width: 48ch; }
+    /* =========================
+   PREMIUM MAP SECTION
+========================= */
 
+.map{
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  margin-top: 18px;
+
+  border: 1px solid rgba(255,255,255,.10);
+
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 20px 60px -25px rgba(0,0,0,.75),
+    0 0 0 1px rgba(0,0,0,.22) inset;
+}
+
+/* responsive map sizing */
+.map iframe{
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  display: block;
+  border: 0;
+}
+
+/* adjust height on smaller screens */
+@media (max-width: 768px){
+  .map iframe{
+    min-height: 300px;
+  }
+}
+
+/* subtle glass overlay */
+.map::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,.18),
+    rgba(255,255,255,.05) 40%,
+    rgba(0,0,0,.25) 100%);
+  mix-blend-mode: overlay;
+}
+
+/* floating badge */
+.map .badge{
+  position:absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(10,31,47,.75);
+  backdrop-filter: blur(10px);
+
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: .02em;
+
+  color: rgba(244,246,248,.92);
+}
+
+/* icon styling */
+.map .badge i{
+  font-size: 14px;
+  color: var(--accent);
+}
     /* ===== Footer ===== */
     footer{
       background:#000;

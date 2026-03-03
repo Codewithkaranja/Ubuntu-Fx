@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =========================================
+       Core Meta
+  ========================================== -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =========================================
+       Primary SEO
+  ========================================== -->
+  <title>Privacy Policy | UbuntuFX</title>
+  <meta
+    name="description"
+    content="UbuntuFX Privacy Policy describing how we collect, use, store, and protect personal information."
+  />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Fonts + Icons (optional: keep consistent with your site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <style>
+    /* =========================
+       UBUNTUFX — THEME (NAVY + GLASS)
+    ========================= */
+    :root{
+      --bg: #070E18;
+      --panel: rgba(255,255,255,.06);
+      --panel-2: rgba(255,255,255,.04);
+      --text: rgba(244,246,248,.92);
+      --muted: rgba(244,246,248,.66);
+      --muted-2: rgba(244,246,248,.52);
+
+      --accent: #00C853;   /* green */
+      --gold: #F9A825;     /* gold */
+
+      --radius: 22px;
+      --pill: 999px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+
+      --shadow: 0 22px 65px -35px rgba(0,0,0,.75);
+      --shadow-soft: 0 14px 44px -26px rgba(0,0,0,.65);
+      --ring: 0 0 0 4px rgba(0,200,83,.12);
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: "Jost", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ opacity:.9; }
+
+    /* background glow */
+    .page{
+      min-height: 100vh;
+      position: relative;
+      isolation: isolate;
+      background:
+        radial-gradient(1100px 520px at 18% 18%, rgba(0, 200, 83, 0.14), transparent 62%),
+        radial-gradient(900px 420px at 88% 72%, rgba(249, 168, 37, 0.10), transparent 66%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.10));
+    }
+
+    .container{
+      width: min(1140px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* top bar (simple, optional) */
+    .topbar{
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+    .brand .logo-dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(0,200,83,.12);
+    }
+    .navlinks{
+      display:flex;
+      gap: 14px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: .98rem;
+    }
+    .navlinks a{
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .navlinks a:hover{
+      background: rgba(255,255,255,.04);
+      border-color: rgba(255,255,255,.10);
+    }
+
+    /* hero */
+    .hero{
+      padding: 54px 0 22px;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: var(--pill);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: rgba(244,246,248,.82);
+      font-weight: 850;
+      font-size: 12.5px;
+      letter-spacing: .02em;
+    }
+    .eyebrow .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(249,168,37,.12);
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-size: clamp(2rem, 3.4vw, 3rem);
+    }
+
+    .lede{
+      color: var(--muted);
+      max-width: 70ch;
+      margin: 0 0 18px;
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .meta-row{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .meta-pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 9px;
+      padding: 10px 12px;
+      border-radius: var(--pill);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      color: rgba(244,246,248,.80);
+      font-weight: 750;
+      font-size: .95rem;
+    }
+    .meta-pill i{ color: var(--accent); }
+
+    /* layout */
+    .layout{
+      display:grid;
+      grid-template-columns: 0.75fr 1.85fr;
+      gap: 22px;
+      padding: 18px 0 54px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .layout{ grid-template-columns: 1fr; }
+    }
+
+    /* glass card */
+    .card{
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px) saturate(120%);
+      -webkit-backdrop-filter: blur(14px) saturate(120%);
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset: 1px;
+      border-radius: calc(var(--radius) - 1px);
+      pointer-events:none;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,.20),
+        rgba(255,255,255,.06) 45%,
+        rgba(255,255,255,.02) 100%);
+      opacity: .55;
+      mix-blend-mode: screen;
+    }
+    .card-body{
+      position: relative;
+      z-index: 2;
+      padding: 18px 16px;
+    }
+
+    /* toc */
+    .toc-title{
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      margin: 0 0 10px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .toc-title i{ color: var(--gold); }
+
+    .toc{
+      display:grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .toc a{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.14);
+      color: rgba(244,246,248,.86);
+      font-weight: 780;
+      transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .toc a:hover{
+      transform: translateY(-2px);
+      border-color: rgba(0,200,83,.22);
+      background: rgba(255,255,255,.04);
+    }
+    .toc a span{
+      color: var(--muted);
+      font-weight: 800;
+      font-size: .95rem;
+    }
+
+    /* policy content */
+    .policy h2{
+      margin: 0;
+      padding-top: 10px;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+    }
+    .policy h3{
+      margin: 18px 0 6px;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      color: rgba(244,246,248,.92);
+    }
+    .policy p{
+      margin: 10px 0;
+      color: rgba(244,246,248,.76);
+    }
+
+    .policy .callout{
+      margin: 14px 0 18px;
+      padding: 14px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(800px 220px at 15% 0%, rgba(0,200,83,.12), transparent 60%),
+        rgba(0,0,0,.16);
+      color: rgba(244,246,248,.82);
+      display:flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .policy .callout i{
+      margin-top: 2px;
+      color: var(--accent);
+      font-size: 1.05rem;
+    }
+
+    .policy ul{
+      margin: 10px 0 14px;
+      padding-left: 18px;
+      color: rgba(244,246,248,.74);
+    }
+    .policy li{ margin: 6px 0; }
+
+    .policy code{
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      color: rgba(244,246,248,.86);
+      font-weight: 800;
+      font-size: .92rem;
+      white-space: nowrap;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(255,255,255,.08);
+      margin: 18px 0;
+    }
+
+    /* data table */
+    .table-wrap{
+      overflow:auto;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+    }
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+    }
+    th, td{
+      text-align: left;
+      padding: 12px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: rgba(244,246,248,.78);
+      vertical-align: top;
+    }
+    th{
+      color: rgba(244,246,248,.92);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      background: rgba(255,255,255,.04);
+    }
+    tr:last-child td{ border-bottom: 0; }
+
+    /* buttons */
+    .btn-row{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(244,246,248,.90);
+      font-weight: 900;
+      letter-spacing: .01em;
+      transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(0,200,83,.22);
+      background: rgba(255,255,255,.08);
+    }
+    .btn-primary{
+      border-color: rgba(0,200,83,.25);
+      background: linear-gradient(135deg, rgba(0,200,83,.22), rgba(255,255,255,.06));
+      box-shadow: 0 18px 44px -28px rgba(0,200,83,.55);
+    }
+    .btn-primary i{ color: var(--accent); }
+
+    /* footer */
+    footer{
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 22px 0;
+      color: var(--muted-2);
+      background: rgba(0,0,0,.10);
+    }
+    .footer-row{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content: space-between;
+    }
+
+    /* smooth anchors */
+    html{ scroll-behavior: smooth; }
+
+    /* focus */
+    :focus-visible{
+      outline: none;
+      box-shadow: var(--ring);
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="container">
+        <div class="topbar-inner">
+          <a class="brand" href="/">
+            <span class="logo-dot" aria-hidden="true"></span>
+            <span>UbuntuFX</span>
+          </a>
+
+          <nav class="navlinks" aria-label="Primary">
+            <a href="/">Home</a>
+            <a href="/contact.html">Contact</a>
+            <a href="#contact">Privacy Help</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow"><span class="dot"></span> Legal</span>
+        <h1>Privacy Policy</h1>
+        <p class="lede">
+          This Privacy Policy explains how UbuntuFX (“we”, “us”, “our”) collects, uses, shares,
+          and protects your personal information when you visit <strong>ubuntufx.com</strong>,
+          subscribe to our newsletter, download resources, or interact with our services.
+        </p>
+
+        <div class="meta-row">
+          <span class="meta-pill"><i class="fa-solid fa-calendar"></i> Last updated: <strong>March 3, 2026</strong></span>
+          <span class="meta-pill"><i class="fa-solid fa-shield-halved"></i> Built for clarity, not legal tricks</span>
+          <span class="meta-pill"><i class="fa-solid fa-lock"></i> Privacy-first by design</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layout -->
+    <section>
+      <div class="container">
+        <div class="layout">
+
+          <!-- TOC -->
+          <aside class="card">
+            <div class="card-body">
+              <div class="toc-title"><i class="fa-solid fa-list"></i> On this page</div>
+              <ul class="toc">
+                <li><a href="#who-we-are">Who we are <span>01</span></a></li>
+                <li><a href="#info-we-collect">Information we collect <span>02</span></a></li>
+                <li><a href="#how-we-use">How we use information <span>03</span></a></li>
+                <li><a href="#sharing">When we share information <span>04</span></a></li>
+                <li><a href="#cookies">Cookies & analytics <span>05</span></a></li>
+                <li><a href="#email">Email & newsletters <span>06</span></a></li>
+                <li><a href="#security">Security <span>07</span></a></li>
+                <li><a href="#retention">Data retention <span>08</span></a></li>
+                <li><a href="#rights">Your rights & choices <span>09</span></a></li>
+                <li><a href="#children">Children’s privacy <span>10</span></a></li>
+                <li><a href="#international">International transfers <span>11</span></a></li>
+                <li><a href="#changes">Changes to this policy <span>12</span></a></li>
+                <li><a href="#contact">Contact us <span>13</span></a></li>
+              </ul>
+
+              <div class="divider"></div>
+
+              <div class="btn-row">
+                <a class="btn btn-primary" href="#rights"><i class="fa-solid fa-user-shield"></i> Your choices</a>
+                <a class="btn" href="/terms.html"><i class="fa-solid fa-file-contract"></i> Terms</a>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Policy -->
+          <main class="card policy" aria-label="Privacy Policy Content">
+            <div class="card-body">
+
+              <section id="who-we-are">
+                <h2>1) Who we are</h2>
+                <p>
+                  UbuntuFX is an education-focused brand providing trading-related learning resources,
+                  newsletters, market commentary, templates, and digital products. This Privacy Policy
+                  applies to our website and related services that link to it.
+                </p>
+                <div class="callout">
+                  <i class="fa-solid fa-circle-info"></i>
+                  <div>
+                    <strong>Quick note:</strong> We do not ask for sensitive personal information
+                    as a condition to access free educational content. If you ever see a request that
+                    looks suspicious, contact us using the details in the <a href="#contact" style="color: var(--accent); font-weight:900;">Contact</a> section.
+                  </div>
+                </div>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="info-we-collect">
+                <h2>2) Information we collect</h2>
+                <p>We collect information in three main ways: (a) information you provide, (b) information collected automatically, and (c) information from service providers.</p>
+
+                <h3>A. Information you provide</h3>
+                <ul>
+                  <li><strong>Contact details:</strong> such as your email address when you subscribe to our newsletter or contact us.</li>
+                  <li><strong>Messages:</strong> information you include when you email us or submit a form (for example, questions or feedback).</li>
+                  <li><strong>Optional details:</strong> any additional information you choose to share, like your name or trading interests.</li>
+                </ul>
+
+                <h3>B. Information collected automatically</h3>
+                <ul>
+                  <li><strong>Device & usage data:</strong> IP address, browser type, device identifiers, pages viewed, and timestamps.</li>
+                  <li><strong>Approximate location:</strong> derived from your IP address (city/region level, not precise GPS).</li>
+                  <li><strong>Cookies & similar tech:</strong> to remember preferences and help us understand site usage.</li>
+                </ul>
+
+                <h3>C. Information from service providers</h3>
+                <p>
+                  If we use tools for forms, email delivery, analytics, or website hosting, those providers may
+                  process data on our behalf. We only use providers we believe are reputable and necessary for delivering the service.
+                </p>
+
+                <div class="table-wrap" aria-label="Data Categories Table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Category</th>
+                        <th>Examples</th>
+                        <th>Why we collect it</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Account & contact</td>
+                        <td>Email address, name (optional)</td>
+                        <td>Send newsletters, respond to requests, deliver downloads</td>
+                      </tr>
+                      <tr>
+                        <td>Communications</td>
+                        <td>Support emails, messages you send us</td>
+                        <td>Customer service, troubleshooting, feedback</td>
+                      </tr>
+                      <tr>
+                        <td>Usage & device</td>
+                        <td>IP, browser type, pages viewed</td>
+                        <td>Security, performance, analytics, improve content</td>
+                      </tr>
+                      <tr>
+                        <td>Cookies</td>
+                        <td>Session cookies, preference cookies</td>
+                        <td>Site functionality, remembering settings, analytics</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="how-we-use">
+                <h2>3) How we use information</h2>
+                <p>We use your information to operate UbuntuFX and provide a better experience. Typical uses include:</p>
+                <ul>
+                  <li>Delivering newsletters, updates, and educational content.</li>
+                  <li>Responding to questions, support requests, or feedback.</li>
+                  <li>Improving site performance, design, and content quality.</li>
+                  <li>Protecting against fraud, spam, and abuse.</li>
+                  <li>Complying with legal obligations when applicable.</li>
+                </ul>
+
+                <div class="callout">
+                  <i class="fa-solid fa-shield"></i>
+                  <div>
+                    <strong>Risk-first principle:</strong> We aim to collect only what we need.
+                    If we don’t need it to run the service, we avoid collecting it.
+                  </div>
+                </div>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="sharing">
+                <h2>4) When we share information</h2>
+                <p>We do not sell your personal information. We may share information only in limited cases:</p>
+
+                <h3>A. Service providers</h3>
+                <p>
+                  We may share data with vendors who help us run the site or deliver services (e.g., hosting, email delivery, analytics).
+                  They are permitted to process data only to provide services to us.
+                </p>
+
+                <h3>B. Legal and safety</h3>
+                <p>
+                  We may disclose information if required by law, to respond to lawful requests, or to protect the rights,
+                  safety, and security of UbuntuFX, our users, or the public.
+                </p>
+
+                <h3>C. Business changes</h3>
+                <p>
+                  If UbuntuFX is involved in a merger, acquisition, or asset sale, your information may be transferred as part of that transaction.
+                  If this happens, we will take reasonable steps to notify users where required.
+                </p>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="cookies">
+                <h2>5) Cookies & analytics</h2>
+                <p>
+                  Cookies are small files stored on your device. We may use cookies and similar technologies to:
+                </p>
+                <ul>
+                  <li>Keep the site working properly (security and core features).</li>
+                  <li>Remember preferences (like theme or consent choices, where implemented).</li>
+                  <li>Understand which pages are useful, so we can improve content.</li>
+                </ul>
+                <p>
+                  You can control cookies through your browser settings. If you disable certain cookies, some parts of the site may not work as intended.
+                </p>
+                <p>
+                  If you want to opt out of analytics tracking (where applicable), you can also use browser add-ons or privacy tools that block trackers.
+                </p>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="email">
+                <h2>6) Email & newsletters</h2>
+                <p>
+                  If you subscribe, we send a weekly email briefing and occasional important updates.
+                  You can unsubscribe at any time by using the unsubscribe link in our emails, or by contacting us.
+                </p>
+                <ul>
+                  <li><strong>What we send:</strong> educational insights, market context, key levels, risk reminders, and product/resource updates.</li>
+                  <li><strong>What we avoid:</strong> spam, selling your email, or sending unrelated marketing blasts.</li>
+                </ul>
+                <p>
+                  Please note: email delivery is handled by service providers and may include basic delivery metrics
+                  (e.g., whether an email was delivered or opened) depending on the provider settings.
+                </p>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="security">
+                <h2>7) Security</h2>
+                <p>
+                  We use reasonable administrative, technical, and organizational safeguards to protect your information.
+                  However, no internet-based service can be 100% secure. If you believe your interaction with us is no longer secure,
+                  contact us immediately.
+                </p>
+                <ul>
+                  <li>Access controls and limited permissions for internal tools.</li>
+                  <li>Monitoring and spam protection on forms where available.</li>
+                  <li>Best-effort data minimization and retention practices.</li>
+                </ul>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="retention">
+                <h2>8) Data retention</h2>
+                <p>
+                  We retain personal information only as long as necessary for the purposes described in this policy,
+                  including legal, accounting, or reporting requirements.
+                </p>
+                <ul>
+                  <li>Newsletter subscription data is kept until you unsubscribe or request deletion.</li>
+                  <li>Support messages may be retained to improve support quality and maintain records of issues.</li>
+                  <li>Basic logs may be retained for security and performance analysis.</li>
+                </ul>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="rights">
+                <h2>9) Your rights & choices</h2>
+                <p>
+                  Depending on your location, you may have rights regarding your personal information. These may include:
+                </p>
+                <ul>
+                  <li><strong>Access:</strong> request a copy of the personal information we hold about you.</li>
+                  <li><strong>Correction:</strong> request updates to inaccurate or incomplete information.</li>
+                  <li><strong>Deletion:</strong> request deletion of your information (where legally allowed).</li>
+                  <li><strong>Objection / restriction:</strong> object to certain processing or request limitations.</li>
+                  <li><strong>Unsubscribe:</strong> opt out of marketing emails anytime.</li>
+                </ul>
+
+                <p>
+                  To exercise these rights, contact us using the details in the <a href="#contact" style="color: var(--accent); font-weight:900;">Contact</a> section.
+                  We may need to verify your request to protect your privacy.
+                </p>
+
+                <div class="btn-row">
+                  <a class="btn btn-primary" href="#contact"><i class="fa-solid fa-envelope"></i> Request help</a>
+                  <a class="btn" href="#cookies"><i class="fa-solid fa-cookie-bite"></i> Cookie info</a>
+                </div>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="children">
+                <h2>10) Children’s privacy</h2>
+                <p>
+                  UbuntuFX is intended for a general audience and is not designed to knowingly collect personal information from children.
+                  If you believe a child has provided personal information to us, please contact us and we will take appropriate steps to address it.
+                </p>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="international">
+                <h2>11) International transfers</h2>
+                <p>
+                  If you access UbuntuFX from outside the country where our service providers are located, your information may be processed
+                  in other countries. We take reasonable steps to ensure appropriate safeguards are in place when using vendors and hosting providers.
+                </p>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="changes">
+                <h2>12) Changes to this policy</h2>
+                <p>
+                  We may update this Privacy Policy from time to time. When we do, we will revise the “Last updated” date above.
+                  If changes are significant, we may provide additional notice where appropriate.
+                </p>
+              </section>
+
+              <div class="divider"></div>
+
+              <section id="contact">
+                <h2>13) Contact us</h2>
+                <p>
+                  If you have questions about this Privacy Policy or your data, contact us:
+                </p>
+
+                <div class="callout">
+                  <i class="fa-solid fa-headset"></i>
+                  <div>
+                    <strong>Email:</strong> <a href="mailto:info@ubuntufx.com" style="color: var(--accent); font-weight: 900;">info@ubuntufx.com</a><br>
+                    <strong>Website:</strong> <span style="color: rgba(244,246,248,.88); font-weight: 800;">ubuntufx.com</span><br>
+                    <strong>Subject line suggestion:</strong> <code>Privacy Request</code>
+                  </div>
+                </div>
+
+                <p style="color: var(--muted);">
+                  We aim to respond within a reasonable timeframe. For security reasons, we may ask you to verify ownership of the email address before completing certain requests.
+                </p>
+              </section>
+
+            </div>
+          </main>
+
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-row">
+          <div>© <span id="year"></span> UbuntuFX. All rights reserved.</div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="/privacy.html" style="color: rgba(244,246,248,.78); font-weight:800;">Privacy</a>
+            <a href="/terms.html" style="color: rgba(244,246,248,.78); font-weight:800;">Terms</a>
+            <a href="/contact.html" style="color: rgba(244,246,248,.78); font-weight:800;">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

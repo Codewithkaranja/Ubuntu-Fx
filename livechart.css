@@ -46,7 +46,7 @@
     img{max-width:100%;display:block}
     .container{width:min(var(--container),92vw);margin:0 auto}
     h1,h2,h3{color:var(--emerald);letter-spacing:-.3px}
-    h1{font-size: clamp(34px, 4.3vw, 54px); line-height: 1.08}
+    h1{font-size: clamp(34px, 4.3vw, 54px); line-height: 1.08; font-weight: 500}
     h2{font-size: clamp(26px, 2.6vw, 38px); line-height: 1.15}
     p{color: var(--muted)}
     .section{padding: 84px 0}

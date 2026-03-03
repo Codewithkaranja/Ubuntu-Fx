@@ -1,6 +1,8 @@
-// learn.js (clean + mobile toggle works even after scroll)
+// learn.js – streamlined for current HTML
 
 (() => {
+  "use strict";
+
   // ===== Basics =====
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -25,7 +27,6 @@
   }
 
   if (menuBtn && mobilePanel) {
-    // Use pointer events for best mobile reliability
     menuBtn.addEventListener(
       "pointerup",
       (e) => {
@@ -36,12 +37,10 @@
       { passive: false }
     );
 
-    // Close when clicking any link in the mobile panel
     mobilePanel.addEventListener("click", (e) => {
       if (e.target.closest("a")) setMenu(false);
     });
 
-    // Close when tapping outside (capture phase avoids conflicts)
     document.addEventListener(
       "pointerdown",
       (e) => {
@@ -52,12 +51,9 @@
       true
     );
 
-    // Close on ESC
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") setMenu(false);
     });
-
-    // IMPORTANT: We DO NOT close on scroll (so it still toggles after scrolling)
   }
 
   // ===== Toast =====
@@ -71,19 +67,18 @@
     clearTimeout(toastEl._t);
     toastEl._t = setTimeout(() => toastEl.classList.remove("show"), 2200);
   }
-  window.toast = toast; // optional: keep callable
+  window.toast = toast;
 
-  // ===== Curriculum data =====
+  // ===== Curriculum data (used by modal) =====
   const MODULES = [
     {
       id: "pips-lots-leverage",
-      icon: "fa-book",
-      level: "beginner",
-      topic: "basics",
       title: "Forex Basics: Pips, Lots & Leverage",
       duration: "20 min",
       desc: "Learn how pricing works, how pip value is calculated, and why leverage magnifies both gains and losses.",
       tags: ["Beginner", "Basics", "Foundation"],
+      topic: "basics",
+      level: "beginner",
       outcomes: [
         "Calculate pip value for major pairs.",
         "Understand lot sizing (micro/mini/standard).",
@@ -98,13 +93,12 @@
     },
     {
       id: "quotes-spreads",
-      icon: "fa-scale-balanced",
-      level: "beginner",
-      topic: "basics",
       title: "How to Read a Forex Quote (Bid/Ask & Spread)",
       duration: "25 min",
       desc: "Master base vs quote currency, bid/ask pricing, and how spreads affect entries, stops, and profitability.",
       tags: ["Beginner", "Basics", "Execution"],
+      topic: "basics",
+      level: "beginner",
       outcomes: [
         "Interpret quote direction correctly.",
         "Understand spread costs and session differences.",
@@ -119,13 +113,12 @@
     },
     {
       id: "order-types",
-      icon: "fa-bullseye",
-      level: "beginner",
-      topic: "basics",
       title: "Order Types: Market, Limit, Stop (and When to Use Each)",
       duration: "35 min",
       desc: "Execution clarity: when to use market orders, when to place limits, and how stop orders behave during volatility.",
       tags: ["Beginner", "Basics", "Execution"],
+      topic: "basics",
+      level: "beginner",
       outcomes: [
         "Choose the correct order for your setup.",
         "Avoid slippage mistakes around news.",
@@ -140,13 +133,12 @@
     },
     {
       id: "beginner-plan",
-      icon: "fa-clipboard-check",
-      level: "beginner",
-      topic: "risk",
       title: "Your First Trading Plan (Rules, Not Hopes)",
       duration: "40 min",
       desc: "Build a simple plan: setup definition, entry trigger, invalidation, risk per trade, and a repeatable checklist.",
       tags: ["Beginner", "Risk", "Discipline"],
+      topic: "risk",
+      level: "beginner",
       outcomes: [
         "Write a 1-page plan you can follow daily.",
         "Define your maximum daily/weekly drawdown.",
@@ -161,13 +153,12 @@
     },
     {
       id: "sr-foundation",
-      icon: "fa-chart-simple",
-      level: "intermediate",
-      topic: "technical",
       title: "Support & Resistance (Levels That Actually Matter)",
       duration: "45 min",
       desc: "Learn how to mark meaningful levels using structure, liquidity, and timeframes—not random lines.",
       tags: ["Intermediate", "Technical", "Structure"],
+      topic: "technical",
+      level: "intermediate",
       outcomes: [
         "Mark HTF levels that price respects.",
         "Identify role reversal and level quality.",
@@ -182,13 +173,12 @@
     },
     {
       id: "candles-sentiment",
-      icon: "fa-fire",
-      level: "intermediate",
-      topic: "technical",
       title: "Candlesticks & Confirmation (Momentum vs Exhaustion)",
       duration: "40 min",
       desc: "Interpret candles as information: rejection, absorption, momentum, and where retail patterns fail.",
       tags: ["Intermediate", "Technical", "Execution"],
+      topic: "technical",
+      level: "intermediate",
       outcomes: [
         "Read rejection and momentum candles correctly.",
         "Use confirmation without late entries.",
@@ -203,13 +193,12 @@
     },
     {
       id: "risk-sizing",
-      icon: "fa-shield-halved",
-      level: "intermediate",
-      topic: "risk",
       title: "Risk Management: Position Sizing & Stop Placement",
       duration: "35 min",
       desc: "Professional risk foundations: fixed risk %, stop logic, and sizing based on invalidation—not emotions.",
       tags: ["Intermediate", "Risk", "Professional"],
+      topic: "risk",
+      level: "intermediate",
       outcomes: [
         "Size trades based on stop distance.",
         "Set stops beyond invalidation logically.",
@@ -224,13 +213,12 @@
     },
     {
       id: "journaling",
-      icon: "fa-pen-to-square",
-      level: "intermediate",
-      topic: "psychology",
       title: "Trading Journal: The Fastest Way to Improve",
       duration: "55 min",
       desc: "Track rules followed, screenshots, mistakes, and patterns. Elite improvement is data + reflection.",
       tags: ["Intermediate", "Psychology", "Performance"],
+      topic: "psychology",
+      level: "intermediate",
       outcomes: [
         "Identify top mistakes and fix them systematically.",
         "Measure rule adherence (not just wins/losses).",
@@ -245,13 +233,12 @@
     },
     {
       id: "structure-liquidity",
-      icon: "fa-chess",
-      level: "advanced",
-      topic: "technical",
       title: "Market Structure & Liquidity Pools",
       duration: "60 min",
       desc: "Understand BOS/CHOCH concepts, where liquidity sits, and why price targets highs/lows before moving.",
       tags: ["Advanced", "Structure", "Liquidity"],
+      topic: "technical",
+      level: "advanced",
       outcomes: [
         "Map liquidity targets (equal highs/lows, PDH/PDL).",
         "Recognize structure shift before entry.",
@@ -266,13 +253,12 @@
     },
     {
       id: "macro-policy",
-      icon: "fa-landmark",
-      level: "advanced",
-      topic: "fundamental",
       title: "Central Bank Narratives & Policy (Fed/ECB/BoJ)",
       duration: "55 min",
       desc: "Macro framework: rates, inflation, guidance, and how narratives drive trends—especially in FX.",
       tags: ["Advanced", "Fundamental", "Macro"],
+      topic: "fundamental",
+      level: "advanced",
       outcomes: [
         "Track policy direction and market expectations.",
         "Understand why trends persist for weeks/months.",
@@ -287,50 +273,15 @@
     },
   ];
 
-  // ===== DOM references =====
-  // IMPORTANT: Your HTML must contain: <div class="modules" id="modulesGrid"></div>
-  const modulesEl = document.getElementById("modulesGrid");
-  const resultCountEl = document.getElementById("resultCount");
-  const searchEl = document.getElementById("search");
-  const levelRow = document.getElementById("levelRow");
-  const topicRow = document.getElementById("topicRow");
-
-  const state = { level: "all", topic: "all", q: "" };
-
-  function setActive(rowEl, attr, value) {
-    rowEl
-      ?.querySelectorAll(".filter-pill")
-      .forEach((p) => p.classList.toggle("active", p.getAttribute(attr) === value));
-  }
-
-  function matches(m) {
-    const q = state.q.trim().toLowerCase();
-    const hay = (
-      m.title +
-      " " +
-      m.desc +
-      " " +
-      m.tags.join(" ") +
-      " " +
-      m.topic +
-      " " +
-      m.level
-    ).toLowerCase();
-
-    const okLevel = state.level === "all" || m.level === state.level;
-    const okTopic = state.topic === "all" || m.topic === state.topic;
-    const okQ = !q || hay.includes(q);
-
-    return okLevel && okTopic && okQ;
-  }
-
-  function lvlChip(level) {
-    if (level === "beginner")
-      return `<span class="lvl beginner"><i class="fa-solid fa-seedling"></i> BEGINNER</span>`;
-    if (level === "intermediate")
-      return `<span class="lvl intermediate"><i class="fa-solid fa-chart-line"></i> INTERMEDIATE</span>`;
-    return `<span class="lvl advanced"><i class="fa-solid fa-brain"></i> ADVANCED</span>`;
-  }
+  // ===== Modal functionality =====
+  const modal = document.getElementById("modal");
+  const mClose = document.getElementById("mClose");
+  const mTitle = document.getElementById("mTitle");
+  const mTags = document.getElementById("mTags");
+  const mDesc = document.getElementById("mDesc");
+  const mOutcomes = document.getElementById("mOutcomes");
+  const mChecklist = document.getElementById("mChecklist");
+  const mNext = document.getElementById("mNext");
 
   function topicIcon(topic) {
     const map = {
@@ -342,85 +293,6 @@
     };
     return map[topic] || "fa-layer-group";
   }
-
-  function render() {
-    if (!modulesEl) return;
-
-    const list = MODULES.filter(matches);
-    if (resultCountEl) resultCountEl.textContent = String(list.length);
-
-    modulesEl.innerHTML = list
-      .map(
-        (m) => `
-      <article class="module" data-id="${m.id}">
-        <div class="module-top">
-          <div>
-            <div class="meta">
-              ${lvlChip(m.level)}
-              <span class="duration"><i class="fa-regular fa-clock"></i> ${m.duration}</span>
-            </div>
-            <h3 style="margin-top:8px;">${m.title}</h3>
-          </div>
-          <div class="track-icon" title="${m.topic}">
-            <i class="fa-solid ${topicIcon(m.topic)}"></i>
-          </div>
-        </div>
-
-        <div class="tags">
-          <span class="tag"><i class="fa-solid fa-folder"></i> ${m.topic.toUpperCase()}</span>
-          ${m.tags
-            .slice(0, 3)
-            .map((t) => `<span class="tag"><i class="fa-solid fa-star"></i> ${t}</span>`)
-            .join("")}
-        </div>
-
-        <p>${m.desc}</p>
-
-        <a href="#" class="learn-more" data-open="${m.id}">
-          View Module <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </article>
-    `
-      )
-      .join("");
-
-    document.querySelectorAll("[data-open]").forEach((a) => {
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        openModal(a.getAttribute("data-open"));
-      });
-    });
-
-    const btnStart = document.getElementById("btnStart");
-    if (btnStart) btnStart.onclick = () => openModal("pips-lots-leverage");
-
-    if (!list.length) {
-      modulesEl.innerHTML = `
-        <div class="card" style="grid-column: 1 / -1;">
-          <h3 style="font-size:18px;">
-            <i class="fa-solid fa-circle-info" style="color:var(--gold);margin-right:10px;"></i>
-            No modules found
-          </h3>
-          <p style="margin-top:6px;">
-            Try removing filters or search for broader terms like
-            <b style="color:rgba(255,255,255,.92)">risk</b>,
-            <b style="color:rgba(255,255,255,.92)">support</b>, or
-            <b style="color:rgba(255,255,255,.92)">journal</b>.
-          </p>
-        </div>
-      `;
-    }
-  }
-
-  // ===== Modal =====
-  const modal = document.getElementById("modal");
-  const mClose = document.getElementById("mClose");
-  const mTitle = document.getElementById("mTitle");
-  const mTags = document.getElementById("mTags");
-  const mDesc = document.getElementById("mDesc");
-  const mOutcomes = document.getElementById("mOutcomes");
-  const mChecklist = document.getElementById("mChecklist");
-  const mNext = document.getElementById("mNext");
 
   function li(icon, text) {
     return `<div class="li"><i class="fa-solid ${icon}"></i><div>${text}</div></div>`;
@@ -464,34 +336,29 @@
     if (e.key === "Escape") closeModal();
   });
 
-  // ===== Filters =====
-  function wireRow(rowEl, key, attr) {
-    rowEl?.addEventListener("click", (e) => {
-      const pill = e.target.closest(".filter-pill");
-      if (!pill) return;
-      const v = pill.getAttribute(attr);
-      state[key] = v;
-      setActive(rowEl, attr, v);
-      render();
+  // ===== Open modal from "Start Beginner Track" button =====
+  const btnStart = document.getElementById("btnStart");
+  if (btnStart) {
+    btnStart.addEventListener("click", (e) => {
+      e.preventDefault();
+      openModal("pips-lots-leverage"); // opens the first beginner module
     });
   }
 
-  wireRow(levelRow, "level", "data-level");
-  wireRow(topicRow, "topic", "data-topic");
+  // ===== Newsletter form demo =====
+  const newsletterForm = document.querySelector(".newsletter-form");
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      toast("Subscribed (demo). Wire this to your backend/email tool.");
+      newsletterForm.reset();
+    });
+  }
 
-  searchEl?.addEventListener("input", (e) => {
-    state.q = e.target.value;
-    render();
+  // ===== Optional: close mobile menu on resize (if needed) =====
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 980 && document.body.classList.contains("mobile-open")) {
+      setMenu(false);
+    }
   });
-
-  // Newsletter (demo)
-  const newsletterForm = document.getElementById("newsletter");
-  newsletterForm?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    toast("Subscribed (demo). Wire this to your backend/email tool.");
-    e.target.reset();
-  });
-
-  // Init
-  render();
 })();

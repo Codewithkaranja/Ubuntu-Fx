@@ -44,6 +44,7 @@
         </a>
 
         <nav class="nav-links" aria-label="Primary Navigation">
+          <a href="/">Home</a>
           <a href="learn.html">Learn</a>
           <a href="market-analysis.html">Market Analysis</a>
           <!--  <a href="strategies.html">Strategies</a>
@@ -66,6 +67,7 @@
       <!-- Mobile dropdown -->
       <div class="mobile-panel" id="mobilePanel" aria-label="Mobile Navigation">
         <div class="inner">
+          <a href="/">Home</a>
           <a href="learn.html">Learn</a>
           <a href="market-analysis.html">Market Analysis</a>
           <!--  <a href="strategies.html">Strategies</a>
@@ -80,7 +82,30 @@
       </div>
     </div>
   </div>
+ 
+ <!-- MARKET TICKER BAR (under navbar) -->
+<section class="market-ticker" aria-label="Live FX Market Ticker">
+  <div class="market-ticker__inner">
+    <div class="market-ticker__left">
+      <span class="market-ticker__badge" aria-hidden="true">
+        <i class="fa-solid fa-wave-square"></i>
+       </span>
+       <div class="market-ticker__meta">
+        <strong></strong>
+        <small id="fxStatus"></small>
+       </div>
+       <span class="market-ticker__live">
+        <i class="fa-solid fa-circle"></i> Live
+      </span>
+    </div>
 
+    <div class="market-ticker__viewport" role="marquee" aria-live="polite">
+      <div class="market-ticker__track" id="fxTrack">
+        <!-- JS injects items here -->
+      </div>
+    </div>
+  </div>
+</section>
   <!-- HERO -->
   <header class="hero hero--video">
     <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="poster.webp">
@@ -95,11 +120,13 @@
           <span class="dot"></span> For traders who value process over hype
         </span>
 
-        <h1 class="hero-title" style="color: #00C853; font-weight: 500;">Trade with structure.<br/>Win with discipline.</h1>
+        <h1 class="hero-title" style="color: #00C853; font-weight: 400;">
+  Structure. Discipline. Results.
+</h1>
 
-        <p class="hero-subtitle">
-          Learn institutional structure, get clean market analysis, and execute with a risk-first framework.
-        </p>
+<p class="hero-subtitle">
+  Master forex the right way — learn our institutional trading framework.
+</p>
 
         <div class="btn-row hero-cta">
           <a class="btn btn-primary" href="learn.html">
@@ -122,101 +149,285 @@
     </div>
   </header>
 
+  
+
   <!-- SECTION 1 (aliceblue) -->
-  <section class="section section--light">
-    <div class="container">
-      <div class="sec-head reveal">
-        <div>
-          <span class="eyebrow eyebrow--dark"><span class="dot"></span> What you get</span>
-          <h2 class="h2 h2--dark">Premium education and tools, without the noise.</h2>
-        </div>
-        <p class="p--dark">
-          Minimal, repeatable frameworks that help you build consistency: learn → analyze → plan → execute → review.
-        </p>
-      </div>
-
-      <div class="grid grid-3">
-        <div class="card card--navy reveal">
-          <div class="icon-badge"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3>Learn Forex</h3>
-          <p>A clean curriculum for serious traders: risk, structure, execution, and review routines.</p>
-          <a class="link" href="learn.html">Explore Learning <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-
-        <div class="card card--navy reveal">
-          <div class="icon-badge"><i class="fa-solid fa-chart-column"></i></div>
-          <h3>Market Anlysis</h3>
-          <p>Macro context + technical structure + scenarios. No hype, no guessing.</p>
-          <a class="link" href="market-analysis.html">Read Analysis <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-
-        <div class="card card--navy reveal">
-          <div class="icon-badge"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-          <h3>Live Charts</h3>
-          <p>Sessions, economic calendar, and live charts — built for confirmation and timing.</p>
-          <a class="link" href="livechart.html">Open Charts <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 2 (navy) -->
-  <section class="section section--navy">
-    <div class="container">
-      <div class="sec-head reveal">
-        <div>
-          <span class="eyebrow"><span class="dot"></span> Sessions</span>
-          <h2 class="h2">Know when liquidity shows up.</h2>
-        </div>
-        <p>Trade the active hours. Avoid dead sessions. Align with institutional participation.</p>
-      </div>
-
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <div class="icon-badge"><i class="fa-solid fa-sun"></i></div>
-          <h3>Tokyo</h3>
-          <p>Steadier action — ranges, early positioning, and pre-London structure.</p>
-          <span class="pill" style="margin-top:14px;"><i class="fa-solid fa-clock"></i> 00:00–09:00 GMT</span>
-        </div>
-        <div class="card reveal">
-          <div class="icon-badge"><i class="fa-solid fa-landmark"></i></div>
-          <h3>London</h3>
-          <p>Highest liquidity — clean breaks, continuation setups, and strong direction.</p>
-          <span class="pill" style="margin-top:14px;"><i class="fa-solid fa-clock"></i> 08:00–17:00 GMT</span>
-        </div>
-        <div class="card reveal">
-          <div class="icon-badge"><i class="fa-solid fa-flag-usa"></i></div>
-          <h3>New York</h3>
-          <p>News volatility + reversals. Watch overlap and macro releases.</p>
-          <span class="pill" style="margin-top:14px;"><i class="fa-solid fa-clock"></i> 13:00–22:00 GMT</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 3 (aliceblue) -->
- <!-- Testimonials (Swiper) -->
-<section class="section section--light" id="testimonials">
+<!-- WHY CHOOSE US – Premium conversion layout -->
+<section class="section" id="why-us">
   <div class="container">
+    <!-- HEADER -->
     <div class="sec-head reveal">
       <div>
-        <span class="eyebrow eyebrow--dark"><span class="dot"></span> Student Results</span>
-        <h2 class="h2 h2--dark">Real growth. Real discipline. Real outcomes.</h2>
+        <span class="eyebrow"><span class="dot"></span> Why choose UbuntuFX</span>
+        <h2 class="h2">Premium trading education built for results.</h2>
       </div>
-      <p class="p--dark">
-        UbuntuFx is built on structure — not hype. Here’s what students and traders say after applying
-        risk-first rules, market structure, and macro context.
+      <p class="p-large">
+        Structure‑first learning for serious traders: learn → analyze → plan → execute → review.<br>
+        Clear rules. Risk‑first thinking. Tools that keep you consistent.
       </p>
     </div>
 
-    <div class="card card--navy reveal" style="padding: 22px;">
-      <!-- Swiper -->
+    <!-- PREMIUM CARD GRID -->
+    <div class="why-grid">
+      <!-- FEATURED CARD (main course offer) -->
+      <article class="why-card why-card--featured reveal">
+        <div class="why-media" aria-hidden="true">
+          <img src="https://plus.unsplash.com/premium_photo-1664476845274-27c2dabdd7f0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Structured learning path">
+          <div class="why-media__overlay"></div>
+        </div>
+        <div class="why-body">
+          <div class="why-top">
+            <span class="why-pill"><i class="fa-solid fa-star"></i> Most popular</span>
+            <span class="why-pill why-pill--soft"><i class="fa-solid fa-shield-halved"></i> Risk‑first</span>
+          </div>
+          <h3>Structured Learning Path</h3>
+          <p>
+            Learn Forex the professional way: market structure, execution rules, journaling routines,
+            and risk control — packaged into a clean step‑by‑step system.
+          </p>
+          <ul class="why-points" role="list">
+            <li><i class="fa-solid fa-check"></i> Institutional structure, simplified</li>
+            <li><i class="fa-solid fa-check"></i> Rules‑based entries + invalidation</li>
+            <li><i class="fa-solid fa-check"></i> Repeatable weekly routine</li>
+          </ul>
+          <div class="why-actions">
+            <a class="btn btn-primary" href="learn.html">
+              <i class="fa-solid fa-graduation-cap"></i> Start the course
+            </a>
+            <a class="btn btn-ghost" href="#newsletter">
+              <i class="fa-solid fa-envelope"></i> Get weekly breakdown
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- RIGHT SIDE: 2x2 GRID OF SUPPORTING CARDS -->
+      <div class="why-grid-right">
+        <!-- Card 1 -->
+        <article class="why-card reveal">
+          <div class="why-media why-media--mini" aria-hidden="true">
+            <img src="https://plus.unsplash.com/premium_photo-1770581153543-86c4eb016c3e?q=80&w=911&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Risk framework">
+            <div class="why-media__overlay"></div>
+          </div>
+          <div class="why-body">
+            <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Risk‑First Framework</h3>
+            <p>Position sizing, risk rules, and decision logic that protects capital and keeps emotions out.</p>
+            <a class="link" href="learn.html">Learn risk rules <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="why-card reveal">
+          <div class="why-media why-media--mini" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1620266757065-5814239881fd?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Market analysis">
+            <div class="why-media__overlay"></div>
+          </div>
+          <div class="why-body">
+            <div class="why-icon"><i class="fa-solid fa-chart-column"></i></div>
+            <h3>Clean Market Analysis</h3>
+            <p>Macro context + structure + scenarios — so you know what matters and what to ignore.</p>
+            <a class="link" href="market-analysis.html">View analysis <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="why-card reveal">
+          <div class="why-media why-media--mini" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1707762890671-52ef6d6f51e7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Session clarity">
+            <div class="why-media__overlay"></div>
+          </div>
+          <div class="why-body">
+            <div class="why-icon"><i class="fa-solid fa-clock"></i></div>
+            <h3>Session + Timing Clarity</h3>
+            <p>Trade when liquidity shows up. Avoid dead zones. Plan around sessions and major releases.</p>
+            <a class="link" href="livechart.html">Open live charts <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="why-card reveal">
+          <div class="why-media why-media--mini" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGZvcmV4fGVufDB8fDB8fHww" alt="Consistency tools">
+            <div class="why-media__overlay"></div>
+          </div>
+          <div class="why-body">
+            <div class="why-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>Consistency Tools</h3>
+            <p>Tools + checklists designed to reduce overtrading and keep execution professional.</p>
+            <a class="link" href="learn.html">Explore the system <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNIZED BY – Infinite logo marquee -->
+<section class="section section--dark" id="recognized-by">
+  <div class="container">
+    <!-- Section title (subtle) -->
+    <div class="sec-head reveal text-center">
+      <span class="eyebrow"><span class="dot"></span> Trusted by leading firms</span>
+      <h2 class="h2">Recognized by</h2>
+    </div>
+
+    <!-- Marquee wrapper -->
+    <div class="marquee-wrapper">
+      <div class="marquee">
+        <!-- First set of logos -->
+        <div class="marquee__group">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW8fRaACgDB11KObn-AkQ0tJf6V5PWy3qJCQ&s" alt="FTMO" class="marquee__logo">
+          <img src="https://propfirmapp.com/wp-content/uploads/fundednext-logo-500-250.png" alt="Funded Next" class="marquee__logo">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkJrZPlOQlBp4jq-eAiqrsFUbR-r_H9ETN-w&s" alt="FX Pesa" class="marquee__logo">
+          <img src="https://mma.prnewswire.com/media/2034829/3943464/OANDA_EN_Smarter_Trading_Logo.jpg?p=facebook" alt="oanda" class="marquee__logo">
+          
+          <img src="https://media.safeforexbrokers.com/images/fxtm-logo.png" alt="FXTM" class="marquee__logo">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW8fRaACgDB11KObn-AkQ0tJf6V5PWy3qJCQ&s" alt="FTMO" class="marquee__logo">
+          <img src="https://propfirmapp.com/wp-content/uploads/fundednext-logo-500-250.png" alt="Funded Next" class="marquee__logo">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkJrZPlOQlBp4jq-eAiqrsFUbR-r_H9ETN-w&s" alt="FX Pesa" class="marquee__logo">
+          <img src="https://mma.prnewswire.com/media/2034829/3943464/OANDA_EN_Smarter_Trading_Logo.jpg?p=facebook" alt="Oanda" class="marquee__logo">
+         
+          <img src="https://media.safeforexbrokers.com/images/fxtm-logo.png" alt="FXTM" class="marquee__logo">
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="marquee__group" aria-hidden="true">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW8fRaACgDB11KObn-AkQ0tJf6V5PWy3qJCQ&s" alt="FTMO" class="marquee__logo">
+          <img src="https://propfirmapp.com/wp-content/uploads/fundednext-logo-500-250.png" alt="Funded Next" class="marquee__logo">
+          
+          <img src="https://mma.prnewswire.com/media/2034829/3943464/OANDA_EN_Smarter_Trading_Logo.jpg?p=facebook" alt="Oanda" class="marquee__logo">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkJrZPlOQlBp4jq-eAiqrsFUbR-r_H9ETN-w&s" alt="FX Pesa" class="marquee__logo">
+          <img src="https://media.safeforexbrokers.com/images/fxtm-logo.png" alt="FXTM" class="marquee__logo">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW8fRaACgDB11KObn-AkQ0tJf6V5PWy3qJCQ&s" alt="FTMO" class="marquee__logo">
+          <img src="https://propfirmapp.com/wp-content/uploads/fundednext-logo-500-250.png" alt="Funded Next" class="marquee__logo">
+          <img src="https://mma.prnewswire.com/media/2034829/3943464/OANDA_EN_Smarter_Trading_Logo.jpg?p=facebook" alt="Oanda" class="marquee__logo">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- SECTION 2 (navy) -->
+  <!-- COURSES – Premium tiered offering -->
+<section class="section" id="courses">
+  <div class="container">
+    <!-- HEADER -->
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Premium education</span>
+        <h2 class="h2">Master the markets at your own pace.</h2>
+      </div>
+      <p class="p-large">
+        Structured programs for every stage – from foundations to professional execution.<br>
+        <span class="text-accent">Every course includes complete risk & psychology training.</span>
+      </p>
+    </div>
+
+    <!-- COURSE GRID (3 cards) -->
+    <div class="course-grid reveal">
+      <!-- BEGINNER CARD -->
+      <article class="course-card">
+        <div class="course-card__inner">
+          <div class="course-card__icon">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <span class="course-card__badge">Risk‑first foundation</span>
+          <h3>Beginner</h3>
+          <p class="course-card__description">
+            Foundations of Forex. Learn market structure, basic setups, and risk fundamentals.
+          </p>
+          <ul class="course-card__features">
+            <li><i class="fa-regular fa-circle-check"></i> Structure & terminology</li>
+            <li><i class="fa-regular fa-circle-check"></i> Core risk rules</li>
+            <li><i class="fa-regular fa-circle-check"></i> Simple trade framework</li>
+          </ul>
+          <a href="learn.html?level=beginner" class="course-card__link">
+            Explore beginner <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- INTERMEDIATE CARD -->
+      <article class="course-card course-card--featured">
+        <div class="course-card__inner">
+          <div class="course-card__icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <span class="course-card__badge">Most popular</span>
+          <h3>Intermediate</h3>
+          <p class="course-card__description">
+            Refine your edge. Multi‑timeframe analysis, entries, and trade management.
+          </p>
+          <ul class="course-card__features">
+            <li><i class="fa-regular fa-circle-check"></i> Confluence & confirmation</li>
+            <li><i class="fa-regular fa-circle-check"></i> Advanced risk scenarios</li>
+            <li><i class="fa-regular fa-circle-check"></i> Journaling for consistency</li>
+          </ul>
+          <a href="learn.html?level=intermediate" class="course-card__link">
+            Go intermediate <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ADVANCED CARD -->
+      <article class="course-card">
+        <div class="course-card__inner">
+          <div class="course-card__icon">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <span class="course-card__badge">Professional edge</span>
+          <h3>Advanced</h3>
+          <p class="course-card__description">
+            Institutional methods. Advanced structure, confluences, and professional execution.
+          </p>
+          <ul class="course-card__features">
+            <li><i class="fa-regular fa-circle-check"></i> Order flow & liquidity</li>
+            <li><i class="fa-regular fa-circle-check"></i> Psychology mastery</li>
+            <li><i class="fa-regular fa-circle-check"></i> Live scenario playback</li>
+          </ul>
+          <a href="learn.html?level=advanced" class="course-card__link">
+            Go advanced <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Subtle bottom CTA (all courses include risk/psychology) -->
+    <div class="course-footer reveal">
+      <p class="course-footer__text">
+        <i class="fa-solid fa-shield-heart"></i>
+        All courses include dedicated <strong>risk & psychology modules</strong> – because mindset protects capital.
+      </p>
+      <a href="learn.html" class="btn btn-ghost" style="color: #00C853;">View all courses <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+  <!-- SECTION 3 (aliceblue) -->
+ <!-- Testimonials (Swiper) -->
+<!-- TESTIMONIALS – Premium Google‑style carousel -->
+<section class="section section--light" id="testimonials">
+  <div class="container">
+    <!-- Header -->
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow eyebrow--dark"><span class="dot" ></span > Student Results</span>
+        <h2 class="h2 h2--dark" style="color: #00C853;">Real growth. Real discipline. Real outcomes.</h2>
+      </div>
+      <p class="p--dark">
+        UbuntuFx is built on structure — not hype. Here’s what students and traders say after applying
+        risk‑first rules, market structure, and macro context.
+      </p>
+    </div>
+
+    <!-- Swiper container (no extra background card – let cards breathe) -->
+    <div class="testimonials-swiper reveal">
       <div class="swiper ubxTestimonials">
         <div class="swiper-wrapper">
-
-          <!-- 1 -->
+          <!-- Slide 1 -->
           <div class="swiper-slide">
-            <figure class="t-card">
+            <div class="t-card">
               <div class="t-top">
                 <div class="t-avatar">JM</div>
                 <div class="t-meta">
@@ -225,23 +436,21 @@
                 </div>
                 <span class="t-badge"><i class="fa-solid fa-star"></i> Verified</span>
               </div>
-
               <blockquote class="t-quote">
                 “The biggest shift was risk. I stopped oversizing, started journaling, and my equity curve
-                stopped looking like a heartbeat. UbuntuFx made my trading *measurable*.”
+                stopped looking like a heartbeat. UbuntuFx made my trading <em>measurable</em>.”
               </blockquote>
-
               <div class="t-foot">
                 <span class="t-tag"><i class="fa-solid fa-shield-halved"></i> Risk-first</span>
                 <span class="t-tag"><i class="fa-solid fa-book"></i> Journaling</span>
                 <span class="t-tag"><i class="fa-solid fa-chart-line"></i> Consistency</span>
               </div>
-            </figure>
+            </div>
           </div>
 
-          <!-- 2 -->
+          <!-- Slide 2 -->
           <div class="swiper-slide">
-            <figure class="t-card">
+            <div class="t-card">
               <div class="t-top">
                 <div class="t-avatar">SA</div>
                 <div class="t-meta">
@@ -250,23 +459,21 @@
                 </div>
                 <span class="t-badge"><i class="fa-solid fa-star"></i> Verified</span>
               </div>
-
               <blockquote class="t-quote">
                 “Before UbuntuFx I traded patterns only. Now I check macro drivers and session volatility.
-                My entries improved because my *context* improved.”
+                My entries improved because my <em>context</em> improved.”
               </blockquote>
-
               <div class="t-foot">
                 <span class="t-tag"><i class="fa-solid fa-globe"></i> Macro</span>
                 <span class="t-tag"><i class="fa-solid fa-clock"></i> Sessions</span>
                 <span class="t-tag"><i class="fa-solid fa-layer-group"></i> Structure</span>
               </div>
-            </figure>
+            </div>
           </div>
 
-          <!-- 3 -->
+          <!-- Slide 3 -->
           <div class="swiper-slide">
-            <figure class="t-card">
+            <div class="t-card">
               <div class="t-top">
                 <div class="t-avatar">KB</div>
                 <div class="t-meta">
@@ -275,23 +482,21 @@
                 </div>
                 <span class="t-badge"><i class="fa-solid fa-star"></i> Verified</span>
               </div>
-
               <blockquote class="t-quote">
-                “The rules-based approach saved me. I reduced trades, improved win quality, and passed my
+                “The rules‑based approach saved me. I reduced trades, improved win quality, and passed my
                 evaluation without forcing setups. Structure = freedom.”
               </blockquote>
-
               <div class="t-foot">
                 <span class="t-tag"><i class="fa-solid fa-list-check"></i> Rules</span>
                 <span class="t-tag"><i class="fa-solid fa-bullseye"></i> Selectivity</span>
                 <span class="t-tag"><i class="fa-solid fa-trophy"></i> Prop</span>
               </div>
-            </figure>
+            </div>
           </div>
 
-          <!-- 4 -->
+          <!-- Slide 4 -->
           <div class="swiper-slide">
-            <figure class="t-card">
+            <div class="t-card">
               <div class="t-top">
                 <div class="t-avatar">FN</div>
                 <div class="t-meta">
@@ -300,23 +505,21 @@
                 </div>
                 <span class="t-badge"><i class="fa-solid fa-star"></i> Verified</span>
               </div>
-
               <blockquote class="t-quote">
                 “I used to revenge trade. The psychology lessons + journaling template helped me control
                 emotions. Now my goal is process first, profits second.”
               </blockquote>
-
               <div class="t-foot">
                 <span class="t-tag"><i class="fa-solid fa-brain"></i> Psychology</span>
                 <span class="t-tag"><i class="fa-solid fa-pen-to-square"></i> Routine</span>
                 <span class="t-tag"><i class="fa-solid fa-hand"></i> Patience</span>
               </div>
-            </figure>
+            </div>
           </div>
 
-          <!-- 5 -->
+          <!-- Slide 5 -->
           <div class="swiper-slide">
-            <figure class="t-card">
+            <div class="t-card">
               <div class="t-top">
                 <div class="t-avatar">OT</div>
                 <div class="t-meta">
@@ -325,55 +528,105 @@
                 </div>
                 <span class="t-badge"><i class="fa-solid fa-star"></i> Verified</span>
               </div>
-
               <blockquote class="t-quote">
                 “UbuntuFx helped me stop chasing signals. I now build a plan, wait for confirmations,
                 and protect capital first. My trading finally feels professional.”
               </blockquote>
-
               <div class="t-foot">
                 <span class="t-tag"><i class="fa-solid fa-compass"></i> Planning</span>
                 <span class="t-tag"><i class="fa-solid fa-circle-check"></i> Confirmation</span>
                 <span class="t-tag"><i class="fa-solid fa-lock"></i> Capital Protection</span>
               </div>
-            </figure>
+            </div>
           </div>
-
         </div>
 
-        <!-- Controls -->
-        <div class="t-controls">
-          <div class="swiper-button-prev"></div>
+        <!-- Carousel controls (minimal, elegant) -->
+        <div class="swiper-controls">
+          
           <div class="swiper-pagination"></div>
-          <div class="swiper-button-next"></div>
+         
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
   <!-- NEWSLETTER (navy) -->
-  <section class="section section--navy" id="newsletter">
-    <div class="container">
-      <div class="newsletter reveal">
-        <span class="eyebrow"><span class="dot"></span> Weekly Email (5–7 minutes)</span>
-        <h3 style="color: #00C853;">Subscribe to Our Newsletter</h3>
-        <p>A high-signal recap with macro context, key levels, and risk-first reminders. No spam.</p>
+  <!-- FAQ SECTION (replaces newsletter) -->
+<section class="section section--navy" id="faq">
+  <div class="container">
+    <div class="faq reveal">
+      <!-- Header -->
+      <span class="eyebrow"><span class="dot"></span> Got questions?</span>
+      <h2 class="h2" style="color: #00C853; margin-bottom: 16px;">Frequently asked</h2>
+      <p class="faq-intro">Everything you need to know about UbuntuFX – answered clearly.</p>
 
-        <form class="news-form" onsubmit="event.preventDefault(); toast('Thanks! You’re subscribed (demo).');">
-          <input class="input" type="email" name="email" placeholder="Enter your email address" required />
-          <button class="btn btn-primary" type="submit">
-            <i class="fa-solid fa-paper-plane"></i> Subscribe
+      <!-- Accordion -->
+      <div class="faq-grid">
+        <!-- Item 1 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Is this course suitable for absolute beginners?</span>
+            <i class="fa-solid fa-chevron-down"></i>
           </button>
-        </form>
+          <div class="faq-answer">
+            <p>Absolutely. Our beginner track starts from scratch: what is Forex, how to open a chart, and most importantly – how to manage risk before taking any trade. You'll build a solid foundation step by step.</p>
+          </div>
+        </div>
 
-        <div class="fineprint">
-          By subscribing, you agree to receive educational emails from UbuntuFX. We do not sell your data.
+        <!-- Item 2 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Do you offer a money‑back guarantee?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. If you complete the first three modules and feel the course isn't for you, we'll refund 100% of your payment – no questions asked. We're confident in our method, but we also want zero risk for you.</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How is UbuntuFX different from other trading courses?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We don't teach “magic indicators” or “one secret pattern”. Our curriculum is built on institutional structure, risk‑first psychology, and a repeatable routine. It's the same framework professional traders use, simplified for retail traders.</p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What if I get stuck or have questions?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>All students get access to our community forum and weekly Q&A calls. You'll never feel alone – ask anything, anytime. Our mentors are active traders who know the material inside out.</p>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can I access the course on mobile?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. The platform is fully responsive, so you can watch videos, read lessons, and use the journaling tools on your phone or tablet. Perfect for reviewing structure during a commute.</p>
+          </div>
         </div>
       </div>
+
+      <!-- Bottom CTA (optional, links to contact) -->
+      <div class="faq-footer">
+        <p>Still have questions? <a href="contact.html" class="link">Reach out to us →</a></p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -397,14 +650,14 @@
           </p>
         </div>
 
-        <div>
+         <div>
           <h4>Quick Links</h4>
           <ul>
             <li><a href="learn.html">Learn Forex</a></li>
-            <li><a href="market-analysis.html">Market Analysis</a></li>
-            <li><a href="strategies.html">Trading Strategies</a></li>
-            <li><a href="economic-calendar.html">Economic Calendar</a></li>
-            <li><a href="livechart.html">Live Charts</a></li>
+            
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
           </ul>
         </div>
 
@@ -448,20 +701,9 @@
   </footer>
 
   
-<!-- Floating market widget (bottom-left desktop, docked swiper-ticker on mobile) -->
-<aside class="market-float" aria-label="Live Market Snapshot">
-  <div class="market-head">
-    <div class="market-title">
-      <span class="badge"><i class="fa-solid fa-wave-square"></i></span>
-      <div class="market-text">
-        <strong>Live Market Snapshot</strong>
-        <small>Demo feed</small>
-      </div>
-    </div>
-    <span class="pill pill--live"><i class="fa-solid fa-circle"></i> Live</span>
-  </div>
 
-  <!-- Desktop view -->
+
+  <!-- Desktop view 
   <div class="market-grid">
     <div class="metric">
       <div class="k">EUR/USD</div>
@@ -475,9 +717,20 @@
       <div class="k">USD/JPY</div>
       <div class="v"><span id="usdjpy">148.22</span> <span class="flat" id="usdjpyChg">+0.00%</span></div>
     </div>
+  </div> -->
+<!-- Floating market widget (bottom-left desktop, docked swiper-ticker on mobile)
+<aside class="market-float" aria-label="Live Market Snapshot">
+  <div class="market-head">
+    <div class="market-title">
+      <span class="badge"><i class="fa-solid fa-wave-square"></i></span>
+      <div class="market-text">
+        <strong>Live Market Snapshot</strong>
+        <small>Demo feed</small>
+      </div>
+    </div>
+    <span class="pill pill--live"><i class="fa-solid fa-circle"></i> Live</span>
   </div>
-
-  <!-- Mobile swiper ticker -->
+   Mobile swiper ticker
   <div class="market-dock" aria-hidden="true">
     <div class="dock-title">
       <span class="dot-live"></span>
@@ -504,9 +757,10 @@
       </div>
     </div>
   </div>
-</aside>
+</aside>-->
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
   <script src="index.js"></script>
 </body>
 </html>

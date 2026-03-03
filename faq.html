@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =========================================
+       Core Meta
+  ========================================== -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =========================================
+       Primary SEO
+  ========================================== -->
+  <title>Frequently Asked Questions | UbuntuFX</title>
+  <meta
+    name="description"
+    content="UbuntuFX FAQs — answers about mentorship, curriculum, signals, resources, payments, access, refunds, and support."
+  />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <style>
+    /* =========================
+       UBUNTUFX — FAQS (NAVY + GLASS)
+    ========================= */
+    :root{
+      --bg: #070E18;
+      --panel: rgba(255,255,255,.06);
+      --panel-2: rgba(255,255,255,.04);
+      --text: rgba(244,246,248,.92);
+      --muted: rgba(244,246,248,.66);
+      --muted-2: rgba(244,246,248,.52);
+
+      --accent: #00C853;   /* green */
+      --gold: #F9A825;     /* gold */
+
+      --radius: 22px;
+      --pill: 999px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+
+      --shadow: 0 22px 65px -35px rgba(0,0,0,.75);
+      --shadow-soft: 0 14px 44px -26px rgba(0,0,0,.65);
+      --ring: 0 0 0 4px rgba(0,200,83,.12);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: "Jost", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x:hidden;
+    }
+    a{ color: inherit; text-decoration:none; }
+    a:hover{ opacity:.9; }
+    :focus-visible{ outline:none; box-shadow: var(--ring); border-radius: 12px; }
+
+    .page{
+      min-height:100vh;
+      position:relative;
+      isolation:isolate;
+      background:
+        radial-gradient(1100px 520px at 18% 18%, rgba(0, 200, 83, 0.14), transparent 62%),
+        radial-gradient(900px 420px at 88% 72%, rgba(249, 168, 37, 0.10), transparent 66%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.10));
+    }
+
+    .container{
+      width: min(1140px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       TOPBAR
+    ========================= */
+    .topbar{
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 950;
+      letter-spacing: .02em;
+    }
+    .brand .logo-dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(0,200,83,.12);
+    }
+
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: .98rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .navlinks a{
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .navlinks a:hover{
+      background: rgba(255,255,255,.04);
+      border-color: rgba(255,255,255,.10);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+    .hero{
+      padding: 54px 0 16px;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: var(--pill);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: rgba(244,246,248,.82);
+      font-weight: 900;
+      font-size: 12.5px;
+      letter-spacing: .02em;
+    }
+    .eyebrow .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(249,168,37,.12);
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-size: clamp(2rem, 3.4vw, 3rem);
+    }
+
+    .lede{
+      color: var(--muted);
+      max-width: 78ch;
+      margin: 0 0 16px;
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    /* =========================
+       SEARCH + TAGS
+    ========================= */
+    .faq-controls{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .search{
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .search input{
+      width: 100%;
+      height: 48px;
+      padding: 0 44px 0 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      color: rgba(255,255,255,.92);
+      outline: none;
+      transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
+    }
+    .search input::placeholder{ color: rgba(255,255,255,.55); }
+    .search input:focus{
+      border-color: rgba(0,200,83,.35);
+      box-shadow: var(--ring);
+      background: rgba(0,0,0,.28);
+    }
+    .search i{
+      position:absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(244,246,248,.62);
+      pointer-events:none;
+    }
+
+    .tags{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .tag{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: rgba(244,246,248,.86);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: .92rem;
+      cursor: pointer;
+      transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
+      user-select: none;
+    }
+    .tag:hover{
+      transform: translateY(-2px);
+      border-color: rgba(0,200,83,.22);
+      background: rgba(255,255,255,.06);
+    }
+    .tag.active{
+      border-color: rgba(0,200,83,.35);
+      background: linear-gradient(135deg, rgba(0,200,83,.18), rgba(255,255,255,.05));
+      box-shadow: 0 18px 44px -30px rgba(0,200,83,.55);
+    }
+
+    /* =========================
+       LAYOUT
+    ========================= */
+    .layout{
+      display:grid;
+      grid-template-columns: 0.9fr 1.9fr;
+      gap: 22px;
+      padding: 18px 0 54px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .layout{ grid-template-columns: 1fr; }
+    }
+
+    /* =========================
+       GLASS CARD
+    ========================= */
+    .card{
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px) saturate(120%);
+      -webkit-backdrop-filter: blur(14px) saturate(120%);
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset: 1px;
+      border-radius: calc(var(--radius) - 1px);
+      pointer-events:none;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,.20),
+        rgba(255,255,255,.06) 45%,
+        rgba(255,255,255,.02) 100%);
+      opacity: .55;
+      mix-blend-mode: screen;
+    }
+    .card-body{
+      position: relative;
+      z-index: 2;
+      padding: 18px 16px;
+    }
+
+    /* =========================
+       SIDEBAR (QUICK HELP)
+    ========================= */
+    .side-title{
+      margin: 0 0 10px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 950;
+      letter-spacing: -0.01em;
+    }
+    .side-title i{ color: var(--gold); }
+
+    .side-text{
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .side-actions{
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(244,246,248,.90);
+      font-weight: 950;
+      letter-spacing: .01em;
+      transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease), box-shadow .2s var(--ease);
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(0,200,83,.22);
+      background: rgba(255,255,255,.08);
+    }
+    .btn-primary{
+      border-color: rgba(0,200,83,.30);
+      background: linear-gradient(135deg, rgba(0,200,83,.22), rgba(255,255,255,.06));
+      box-shadow: 0 18px 44px -28px rgba(0,200,83,.55);
+    }
+    .btn-primary i{ color: var(--accent); }
+
+    .mini{
+      margin-top: 12px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      color: rgba(244,246,248,.76);
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+    }
+    .mini i{ margin-top: 2px; color: var(--accent); }
+
+    /* =========================
+       FAQ ACCORDION
+    ========================= */
+    .faq-group{
+      display:grid;
+      gap: 12px;
+    }
+
+    details.faq{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      overflow: hidden;
+      transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease);
+    }
+
+    details.faq:hover{
+      transform: translateY(-2px);
+      border-color: rgba(0,200,83,.22);
+      background: rgba(255,255,255,.03);
+    }
+
+    details.faq[open]{
+      border-color: rgba(0,200,83,.28);
+      background:
+        radial-gradient(900px 240px at 15% 0%, rgba(0,200,83,.10), transparent 60%),
+        rgba(0,0,0,.18);
+    }
+
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 14px 14px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 950;
+      letter-spacing: -0.01em;
+      color: rgba(244,246,248,.92);
+    }
+
+    /* remove default marker */
+    summary::-webkit-details-marker{ display:none; }
+
+    .q{
+      display:flex;
+      align-items:flex-start;
+      gap: 10px;
+    }
+    .q .qicon{
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      display:grid;
+      place-items:center;
+      flex: 0 0 30px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    .chev{
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: rgba(244,246,248,.82);
+      transition: transform .25s var(--ease), border-color .25s var(--ease);
+      flex: 0 0 38px;
+    }
+    details[open] summary .chev{
+      transform: rotate(180deg);
+      border-color: rgba(0,200,83,.24);
+    }
+
+    .answer{
+      padding: 0 14px 14px;
+      color: rgba(244,246,248,.74);
+      line-height: 1.75;
+    }
+    .answer p{ margin: 10px 0; }
+    .answer ul{ margin: 10px 0 0; padding-left: 18px; }
+    .answer li{ margin: 6px 0; }
+
+    .answer .note{
+      margin-top: 12px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: rgba(244,246,248,.78);
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+    }
+    .answer .note i{ margin-top: 2px; color: var(--accent); }
+
+    /* =========================
+       FOOTER
+    ========================= */
+    footer{
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 22px 0;
+      color: var(--muted-2);
+      background: rgba(0,0,0,.10);
+    }
+    .footer-row{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content: space-between;
+    }
+
+    /* =========================
+       SMALL SCREEN TWEAKS
+    ========================= */
+    @media (max-width: 520px){
+      .container{ width: calc(100% - 28px); }
+      summary{ padding: 13px 12px; }
+      .answer{ padding: 0 12px 12px; }
+      .q .qicon{ width: 28px; height: 28px; border-radius: 10px; }
+      .chev{ width: 36px; height: 36px; border-radius: 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="container">
+        <div class="topbar-inner">
+          <a class="brand" href="/">
+            <span class="logo-dot" aria-hidden="true"></span>
+            <span>UbuntuFX</span>
+          </a>
+
+          <nav class="navlinks" aria-label="Primary">
+            <a href="/">Home</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/contact.html">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow"><span class="dot"></span> Support</span>
+        <h1>Frequently Asked Questions</h1>
+        <p class="lede">
+          Straight answers, no fluff. Browse by category or search a keyword. If you still need help,
+          contact us and we’ll guide you quickly.
+        </p>
+
+        <!-- Controls -->
+        <div class="faq-controls" aria-label="FAQ Controls">
+          <div class="search">
+            <input id="faqSearch" type="text" placeholder="Search: payments, signals, mentorship, refunds..." aria-label="Search FAQs">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+
+          <div class="tags" aria-label="FAQ Categories">
+            <button class="tag active" type="button" data-filter="all">All</button>
+            <button class="tag" type="button" data-filter="program">Program</button>
+            <button class="tag" type="button" data-filter="signals">Signals</button>
+            <button class="tag" type="button" data-filter="resources">Resources</button>
+            <button class="tag" type="button" data-filter="billing">Billing</button>
+            <button class="tag" type="button" data-filter="access">Access</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section>
+      <div class="container">
+        <div class="layout">
+
+          <!-- Sidebar -->
+          <aside class="card">
+            <div class="card-body">
+              <h3 class="side-title"><i class="fa-solid fa-life-ring"></i> Quick help</h3>
+              <p class="side-text">
+                Most issues are solved by confirming access details, checking your email spam folder,
+                or verifying payment reference details.
+              </p>
+
+              <div class="side-actions">
+                <a class="btn btn-primary" href="/contact.html"><i class="fa-solid fa-envelope"></i> Contact support</a>
+                <a class="btn" href="#billing"><i class="fa-solid fa-credit-card"></i> Billing questions</a>
+                <a class="btn" href="#access"><i class="fa-solid fa-key"></i> Access & login</a>
+              </div>
+
+              <div class="mini">
+                <i class="fa-solid fa-lock"></i>
+                <div>
+                  <strong>Privacy-first.</strong> We never sell your data. You can unsubscribe anytime from emails.
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- FAQ List -->
+          <main class="card">
+            <div class="card-body">
+              <div class="faq-group" id="faqList">
+
+                <!-- =========================
+                     PROGRAM
+                ========================= -->
+                <section id="program" aria-label="Program FAQs">
+                  <details class="faq" data-category="program">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <span>What is UbuntuFX, and who is it for?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        UbuntuFX is a trading education brand focused on building consistency through structured learning,
+                        risk-first habits, and repeatable execution. It’s best for traders who feel stuck in random setups,
+                        inconsistent results, or emotional decision-making.
+                      </p>
+                      <ul>
+                        <li><strong>Beginners:</strong> learn foundations the right way without chaos.</li>
+                        <li><strong>Intermediate:</strong> tighten strategy, journaling, and discipline.</li>
+                        <li><strong>Advanced:</strong> refine execution, risk, and performance tracking.</li>
+                      </ul>
+                      <div class="note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <div>
+                          We focus on education, not guarantees. Trading involves risk and results vary based on discipline and skill.
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+
+                  <details class="faq" data-category="program">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-route"></i></span>
+                        <span>How is the curriculum structured?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        The curriculum is built as a step-by-step system. You learn concepts, apply them using templates,
+                        then review performance through journaling and scorecards.
+                      </p>
+                      <ul>
+                        <li><strong>Core foundations:</strong> market structure, liquidity, risk basics.</li>
+                        <li><strong>Execution layer:</strong> entries, confirmations, session planning.</li>
+                        <li><strong>Performance layer:</strong> journaling, grading, process scorecards.</li>
+                        <li><strong>Mindset under pressure:</strong> habit engineering and rules that hold under stress.</li>
+                      </ul>
+                    </div>
+                  </details>
+
+                  <details class="faq" data-category="program">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-clock"></i></span>
+                        <span>How long does it take to see progress?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        Most traders notice better decision quality within 2–4 weeks if they follow the process.
+                        Real consistency usually takes longer because it requires repetition, tracking, and emotional stability.
+                      </p>
+                      <ul>
+                        <li><strong>Week 1–2:</strong> clarity improves (less random trades).</li>
+                        <li><strong>Week 3–6:</strong> better risk control and fewer impulse entries.</li>
+                        <li><strong>Month 2–3:</strong> measurable improvement in execution consistency.</li>
+                      </ul>
+                      <div class="note">
+                        <i class="fa-solid fa-bolt"></i>
+                        <div>
+                          Speed depends on how faithfully you journal, review, and follow risk rules.
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+                </section>
+
+                <!-- =========================
+                     SIGNALS
+                ========================= -->
+                <section id="signals" aria-label="Signals FAQs">
+                  <details class="faq" data-category="signals">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-chart-line"></i></span>
+                        <span>Do you provide signals?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        We may share market commentary, levels, and structured watchlists for educational purposes.
+                        These are meant to help you build your own decision-making — not to replace it.
+                      </p>
+                      <ul>
+                        <li><strong>What you get:</strong> context, key levels, risk reminders, trade planning structure.</li>
+                        <li><strong>What you don’t get:</strong> “buy now / sell now” promises or guaranteed outcomes.</li>
+                      </ul>
+                      <div class="note">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div>
+                          Any trade you take is your responsibility. Always confirm with your rules and risk limits.
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+
+                  <details class="faq" data-category="signals">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-crosshairs"></i></span>
+                        <span>How should I use the daily levels properly?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        Treat levels as “areas of interest,” not automatic entries. The correct workflow is:
+                        plan → wait → confirm → execute → review.
+                      </p>
+                      <ul>
+                        <li>Start with session bias (trend / range / key narrative).</li>
+                        <li>Mark levels and define what confirmation looks like.</li>
+                        <li>Size based on risk, not on excitement.</li>
+                        <li>Journal the trade outcome and the process quality.</li>
+                      </ul>
+                    </div>
+                  </details>
+                </section>
+
+                <!-- =========================
+                     RESOURCES
+                ========================= -->
+                <section id="resources" aria-label="Resources FAQs">
+                  <details class="faq" data-category="resources">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-file-arrow-down"></i></span>
+                        <span>Are the free downloads really free?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        Yes — selected resources (like checklists and planners) are available without sign-up when offered as free tools.
+                        Some advanced packs may require an email for delivery or updates.
+                      </p>
+                      <ul>
+                        <li>Free tools are designed to be usable immediately.</li>
+                        <li>If a resource is not downloadable, you can still request guidance through support channels.</li>
+                      </ul>
+                    </div>
+                  </details>
+
+                  <details class="faq" data-category="resources">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-book-open"></i></span>
+                        <span>What’s inside the trade journal?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        The journal is designed to track both execution and psychology. It captures:
+                        setup quality, risk, entry logic, exit logic, emotional state, and post-trade lessons.
+                      </p>
+                      <ul>
+                        <li><strong>Pre-trade:</strong> bias, levels, scenario planning.</li>
+                        <li><strong>During trade:</strong> rules followed, risk behavior.</li>
+                        <li><strong>Post-trade:</strong> grade the process and write one improvement action.</li>
+                      </ul>
+                    </div>
+                  </details>
+                </section>
+
+                <!-- =========================
+                     BILLING
+                ========================= -->
+                <section id="billing" aria-label="Billing FAQs">
+                  <details class="faq" data-category="billing">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-credit-card"></i></span>
+                        <span>What payment methods do you accept?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        Payment options depend on the product and region. Common methods include card payments
+                        and local transfers where available. If you don’t see your option, contact support.
+                      </p>
+                      <div class="note">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                          Tip: Use your correct email during checkout so access details arrive instantly.
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+
+                  <details class="faq" data-category="billing">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-rotate-left"></i></span>
+                        <span>Do you offer refunds?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        Refund eligibility depends on the product type and whether digital access has already been delivered.
+                        If you believe you were charged incorrectly, contact support with your payment reference.
+                      </p>
+                      <ul>
+                        <li>Include your email used during purchase.</li>
+                        <li>Share transaction/reference number.</li>
+                        <li>Explain the issue clearly (wrong plan, duplicate charge, etc.).</li>
+                      </ul>
+                      <div class="note">
+                        <i class="fa-solid fa-lock"></i>
+                        <div>
+                          For security, we can only discuss billing with the payer or the email used at checkout.
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+                </section>
+
+                <!-- =========================
+                     ACCESS
+                ========================= -->
+                <section id="access" aria-label="Access FAQs">
+                  <details class="faq" data-category="access">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-key"></i></span>
+                        <span>I paid but I can’t access the content — what should I do?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        First, check the email address you used during purchase. Look in spam/promotions folders.
+                        If you still can’t find anything, contact support with your payment reference.
+                      </p>
+                      <ul>
+                        <li>Search your inbox for “UbuntuFX”, “access”, or “receipt”.</li>
+                        <li>Confirm the email you entered (small typos are common).</li>
+                        <li>Send proof of payment/reference to support.</li>
+                      </ul>
+                    </div>
+                  </details>
+
+                  <details class="faq" data-category="access">
+                    <summary>
+                      <div class="q">
+                        <span class="qicon"><i class="fa-solid fa-user-gear"></i></span>
+                        <span>Can I use one subscription on multiple devices?</span>
+                      </div>
+                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="answer">
+                      <p>
+                        In most cases, yes — you can access your materials on your phone and laptop.
+                        However, sharing access outside your personal use may violate the usage rules for paid products.
+                      </p>
+                      <div class="note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <div>
+                          If you need team access (e.g., for a small trading group), contact us and we’ll advise the best option.
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+                </section>
+
+              </div>
+            </div>
+          </main>
+
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-row">
+          <div>© <span id="year"></span> UbuntuFX. All rights reserved.</div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="/privacy.html" style="color: rgba(244,246,248,.78); font-weight:900;">Privacy</a>
+            <a href="/terms.html" style="color: rgba(244,246,248,.78); font-weight:900;">Terms</a>
+            <a href="/contact.html" style="color: rgba(244,246,248,.78); font-weight:900;">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Category filter
+    const tags = document.querySelectorAll(".tag");
+    const faqs = document.querySelectorAll("details.faq");
+    let activeFilter = "all";
+
+    tags.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tags.forEach(t => t.classList.remove("active"));
+        btn.classList.add("active");
+        activeFilter = btn.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    // Search filter
+    const searchInput = document.getElementById("faqSearch");
+    searchInput.addEventListener("input", applyFilters);
+
+    function applyFilters(){
+      const q = searchInput.value.trim().toLowerCase();
+
+      faqs.forEach(faq => {
+        const category = faq.dataset.category;
+        const text = faq.innerText.toLowerCase();
+
+        const categoryOk = (activeFilter === "all") || (category === activeFilter);
+        const searchOk = !q || text.includes(q);
+
+        faq.style.display = (categoryOk && searchOk) ? "" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
