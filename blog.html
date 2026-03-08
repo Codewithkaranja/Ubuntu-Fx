@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UbuntuFX – Forex Insights (Blog)</title>
+
+  <!-- Jost -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- using the same CSS as learn (keeps design tokens, navbar, footer, cards) -->
+  <link rel="stylesheet" href="learn.css" />
+
+  <!-- blog-specific adjustments (keep font sizes, premium glass cards) -->
+  <style>
+    /* blog grid – premium 3col, fallback to 2/1 */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media (max-width: 1000px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+
+    /* blog card – inherits glass DNA from .tool-card, with consistent font sizes */
+    .blog-card {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+      backdrop-filter: blur(14px) saturate(120%);
+      -webkit-backdrop-filter: blur(14px) saturate(120%);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 18px 46px -18px rgba(0,0,0,.55), 0 0 0 1px rgba(0,0,0,.22) inset;
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(0,200,83,0.28);
+      box-shadow: 0 28px 70px -30px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.06) inset, 0 22px 55px -35px rgba(0,200,83,.35);
+    }
+
+    /* inner rim light (same as tool-card) */
+    .blog-card::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 25px;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06) 45%, rgba(255,255,255,.02) 100%);
+      opacity: .55;
+      mix-blend-mode: screen;
+    }
+
+    /* shine sweep */
+    .blog-card::after {
+      content: "";
+      position: absolute;
+      inset: -40% -30%;
+      transform: rotate(18deg) translateX(-18%);
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.12) 35%, rgba(255,255,255,.06) 50%, transparent 70%);
+      opacity: 0;
+      transition: opacity .28s var(--ease), transform .45s var(--ease);
+    }
+    .blog-card:hover::after {
+      opacity: .55;
+      transform: rotate(18deg) translateX(10%);
+    }
+
+    /* media area */
+    .blog-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: radial-gradient(900px 260px at 30% 0%, rgba(0,200,83,.16), transparent 55%),
+                  radial-gradient(900px 260px at 85% 80%, rgba(249,168,37,.12), transparent 55%),
+                  rgba(0,0,0,.18);
+    }
+    .blog-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.02);
+      transition: transform .45s var(--ease), filter .45s var(--ease);
+      filter: contrast(1.02) saturate(1.05);
+    }
+    .blog-card:hover .blog-media img {
+      transform: scale(1.08);
+      filter: contrast(1.05) saturate(1.10);
+    }
+    /* image overlay for readability */
+    .blog-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.40) 100%);
+      opacity: .65;
+      pointer-events: none;
+    }
+    /* date badge */
+    .blog-date {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(10,31,47,.75);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      color: rgba(255,255,255,.92);
+    }
+    /* category tag */
+    .blog-cat {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(0,200,83,.18);
+      border: 1px solid rgba(0,200,83,.25);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    /* content area */
+    .blog-content {
+      position: relative;
+      z-index: 2;
+      padding: 22px 20px 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .blog-content h3 {
+      font-size: 1.25rem;  /* ~20px */
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .blog-content p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.85rem;   /* ~13.6px – between 12 and 14, feels premium */
+      margin: 0 0 18px;
+      flex-grow: 1;
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.75rem;   /* 12px */
+      color: var(--muted2);
+      margin-bottom: 10px;
+    }
+    .blog-meta i {
+      color: var(--gold);
+      font-size: 0.7rem;
+    }
+    .blog-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-decoration: none;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: auto;
+      transition: gap .2s var(--ease), color .2s var(--ease);
+    }
+    .blog-link:hover {
+      gap: 16px;
+      color: aliceblue;
+    }
+    .blog-link i {
+      font-size: 0.8rem;
+      transition: transform .2s var(--ease);
+    }
+    .blog-link:hover i {
+      transform: translateX(4px);
+    }
+
+    /* featured post (optional larger) */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0 24px;
+    }
+    @media (max-width: 780px) {
+      .featured-grid { grid-template-columns: 1fr; }
+    }
+    .featured-card {
+      grid-column: 1 / -1; /* full width if we want, but we'll make it a bigger card */
+    }
+    .featured-card .blog-media {
+      aspect-ratio: 21 / 9;
+    }
+
+    /* filter pills – reuse existing .filter-pill */
+    .blog-filters {
+      margin: 24px 0 12px;
+    }
+
+    /* consistent spacing */
+    .section-sm {
+      padding: 64px 0;
+    }
+    .hero-minimal {
+      min-height: 50vh;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR (identical to learn.html, keep brand, links, and "Forex Insights" button) -->
+  <div class="nav-wrap">
+    <div class="container">
+      <div class="navbar">
+        <a class="brand" href="index.html" aria-label="UbuntuFX Home">
+          <div class="logo-slot" title="UbuntuFX Logo">
+            <img src="assets/logo.png" alt="UbuntuFX Logo"
+              onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-graduation-cap&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
+          </div>
+          <div>
+            <strong>UbuntuFX</strong>
+            <small>Learn • Practice • Execute</small>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary Navigation">
+          <a href="index.html">Home</a>
+          <a href="learn.html">Learn</a>
+          <a href="market-analysis.html">Market Analysis</a>
+          <a href="livechart.html">Live Charts</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <!-- active blog button (shown on desktop) -->
+          <a class="btn btn-gold btn-sm desktop-only" href="blog.html" style="background:rgba(249,168,37,0.25); color:#fff; border-color:var(--gold);">
+            <i class="fa-regular fa-newspaper"></i> Forex Insights
+          </a>
+          <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile dropdown -->
+      <div class="mobile-panel" id="mobilePanel" aria-label="Mobile Navigation">
+        <div class="inner">
+          <a href="index.html">Home</a>
+          <a href="learn.html">Learn</a>
+          <a href="market-analysis.html">Market Analysis</a>
+          <a href="livechart.html">Live Charts</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a class="btn btn-gold btn-sm" href="blog.html" style="background:rgba(249,168,37,0.2);">
+            <i class="fa-regular fa-newspaper"></i> Forex Insights
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOG HERO (minimal, 50vh) -->
+  <section class="hero-minimal">
+    <div class="container">
+      <div class="hero-content">
+        <span class="eyebrow"><span class="dot"></span> UbuntuFX Blog</span>
+        <h1 class="hero-title">Forex Insights.<span class="break"> Actionable analysis.</span></h1>
+        <p class="hero-sub">
+          Market structure, risk-first breakdowns, and trader psychology — written for serious traders.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#latest">
+            <i class="fa-regular fa-eye"></i> Latest posts
+          </a>
+          <a class="btn btn-ghost" href="#newsletter">
+            <i class="fa-regular fa-envelope"></i> Weekly digest
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span class="meta-chip"><i class="fa-regular fa-clock"></i> Updated daily</span>
+          <span class="meta-dot">•</span>
+          <span class="meta-chip"><i class="fa-solid fa-feather"></i> 50+ articles</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER BAR (categories) -->
+  <div class="container blog-filters">
+    <div class="filter-row">
+      <span class="filter-pill active"><i class="fa-regular fa-compass"></i> All</span>
+      <span class="filter-pill"><i class="fa-solid fa-chart-line"></i> Market structure</span>
+      <span class="filter-pill"><i class="fa-solid fa-shield-halved"></i> Risk & psychology</span>
+      <span class="filter-pill"><i class="fa-regular fa-calendar"></i> Macro outlook</span>
+      <span class="filter-pill"><i class="fa-solid fa-robot"></i> Strategy lab</span>
+      <span class="filter-pill"><i class="fa-regular fa-newspaper"></i> Weekly recap</span>
+    </div>
+    <!-- optional search (reuse .search) -->
+    <div class="search" style="margin-top: 12px; max-width: 360px;">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search insights..." aria-label="Search blog">
+    </div>
+  </div>
+
+  <!-- FEATURED POST (premium card, full-width highlight) -->
+  <section class="section-sm" style="padding-top: 20px;">
+    <div class="container">
+      <div class="featured-grid">
+        <article class="blog-card featured-card">
+          <div class="blog-media">
+            <span class="blog-date"><i class="fa-regular fa-calendar"></i> Mar 8, 2026</span>
+            <span class="blog-cat">Weekly outlook</span>
+            <img src="https://images.unsplash.com/photo-1761587941453-bd1790225d52?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="charts and dollar">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-user"></i> Ubuntu Fx</span>
+              <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+            </div>
+            <h3>USD preview: NFP, CPI, and liquidity shifts into March OpEx</h3>
+            <p>Key levels on DXY, euro and yen structure, and what to watch for during the US inflation data. We map out high‑probability zones and invalidation levels.</p>
+            <a href="./blogs/Yield-Differentials-and-Currency-Strength-Reading-the-Bond-Market-for-Forex-Direction.html" class="blog-link">Read full analysis <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST POSTS (blog grid) -->
+  <section class="section-sm" id="latest">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span> latest</span>
+        <h2 class="h2">Recent insights</h2>
+      </div>
+
+      <div class="blog-grid">
+        <!-- post 1 -->
+        <article class="blog-card">
+          <div class="blog-media">
+            <span class="blog-date">Mar 6</span>
+            <span class="blog-cat">psychology</span>
+            <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="trader discipline">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta"><span><i class="fa-regular fa-clock"></i> 5 min</span></div>
+            <h3>The cost of revenge trading (and how to stop)</h3>
+            <p>Real examples of emotional blow-ups and a simple checklist to step away after a loss. Protect your P&L with routines.</p>
+            <a href="./blogs/The-Psychology-of-Holding-Winners-Letting-Profits-Run-Without-Self-Sabotage.html" class="blog-link">Read <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- post 2 -->
+        <article class="blog-card">
+          <div class="blog-media">
+            <span class="blog-date">Mar 4</span>
+            <span class="blog-cat">structure</span>
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="forex chart">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta"><span><i class="fa-regular fa-clock"></i> 7 min</span></div>
+            <h3>Liquidity levels: how to map sweeps and reversals</h3>
+            <p>Understanding equal highs/lows, double tops, and where stops cluster. Practical exercise with EUR/USD.</p>
+            <a href="./blogs/Liquidity-Order-Flow-and-Institutional-Positioning-Reading-the-Footprints-of-Smart-Money.html" class="blog-link">Read <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- post 3 -->
+        <article class="blog-card">
+          <div class="blog-media">
+            <span class="blog-date">Mar 2</span>
+            <span class="blog-cat">macro</span>
+            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="central bank">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta"><span><i class="fa-regular fa-clock"></i> 6 min</span></div>
+            <h3>BoJ pivot? USD/JPY structure under pressure</h3> 
+            <p>Bank of Japan whispers and how USD/JPY is reacting. Key support levels and what a policy shift could mean.</p>
+            <a href="./blogs/The-Role-of-Global-Capital-Flows-in-Forex-Following-Money-Across-Borders.html" class="blog-link">Read <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- post 4 -->
+        <article class="blog-card">
+          <div class="blog-media">
+            <span class="blog-date">Feb 28</span>
+            <span class="blog-cat">risk</span>
+            <img src="https://images.unsplash.com/photo-1707762890671-52ef6d6f51e7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="risk management">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta"><span><i class="fa-regular fa-clock"></i> 4 min</span></div>
+            <h3>Position sizing: the 1% myth vs. volatility adjustment</h3>
+            <p>Why fixed percentage risk isn't enough – adapt size to ATR and market conditions. Calculator inside.</p>
+            <a href="./blogs/Volatility-Clusters-and-Expansion-Cycles-Timing-Participation-With-Market-Energy.html" class="blog-link">Read <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- post 5 -->
+        <article class="blog-card">
+          <div class="blog-media">
+            <span class="blog-date">Feb 26</span>
+            <span class="blog-cat">strategy</span>
+            <img src="https://plus.unsplash.com/premium_photo-1682309803127-170fbeda87df?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGludmVzdG1lbnR8ZW58MHx8MHx8fDA%3D" alt="trading plan">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta"><span><i class="fa-regular fa-clock"></i> 9 min</span></div>
+            <h3>Building a high‑probability breaker block strategy</h3>
+            <p>Step‑by‑step: identification, entry, invalidation. Real charts of GBP/USD and Gold.</p>
+            <a href="./blogs/Understanding-Currency-Regime-Shifts-When-Trends-Die-and-New-Cycles-Begin.html" class="blog-link">Read <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- post 6 -->
+        <article class="blog-card">
+          <div class="blog-media">
+            <span class="blog-date">Feb 24</span>
+            <span class="blog-cat">psychology</span>
+            <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="journaling">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta"><span><i class="fa-regular fa-clock"></i> 5 min</span></div>
+            <h3>What to write in a trading journal (beyond P&L)</h3>
+            <p>Mental state, rule adherence, and screenshots – the data that actually improves your trading.</p>
+            <a href="./blogs/The-Psychology-of-Holding-Winners-Letting-Profits-Run-Without-Self-Sabotage.html" class="blog-link">Read <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- load more (optional) -->
+      <div style="text-align: center; margin-top: 40px;">
+        <a class="btn btn-ghost" href="#"><i class="fa-regular fa-plus"></i> More articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER (same premium section as learn.html) -->
+  <section class="section section--navy" id="newsletter">
+    <div class="container">
+      <div class="newsletter-grid reveal">
+        <div class="newsletter-content">
+          <span class="eyebrow"><span class="dot"></span> Never miss an update</span>
+          <h2 class="h2" style="color: #00C853;">Weekly market intelligence</h2>
+          <p class="newsletter-description" style="margin-top:12px; font-size: 12px;">
+            Join 1,500+ traders who start their week with our 5‑minute briefing:
+            macro context, key levels, and risk‑first reminders. No fluff, no spam.
+          </p>
+          <ul class="newsletter-benefits">
+            <li><i class="fa-solid fa-circle-check" style="color: var(--accent);"></i> Monday morning recap</li>
+            <li><i class="fa-solid fa-circle-check" style="color: var(--accent);"></i> High‑probability zones</li>
+            <li><i class="fa-solid fa-circle-check" style="color: var(--accent);"></i> Risk‑first mindset tips</li>
+          </ul>
+          <div class="newsletter-trust">
+            <i class="fa-solid fa-lock"></i> <span>Your data is safe. Unsubscribe anytime.</span>
+          </div>
+        </div>
+
+        <div class="newsletter-card card">
+          <h3>Get the weekly breakdown</h3>
+          <p class="p-muted">Free – no credit card required.</p>
+
+          <form action="https://formsubmit.co/info@ubuntufx.com" method="POST" class="newsletter-form">
+            <div class="form-row">
+              <input type="email" name="email" required placeholder="Your email address" class="input" aria-label="Email address" />
+              <button class="btn btn-gold" type="submit"><i class="fa-solid fa-paper-plane"></i> Subscribe</button>
+            </div>
+            <input type="hidden" name="_subject" value="New UbuntuFx Newsletter Subscriber">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://ubuntufx.com/thank-you.html">
+          </form>
+
+          <p class="fineprint" style="margin-top: 16px;">
+            By subscribing, you agree to receive educational emails from UbuntuFX. We do not sell your data.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (identical) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-logo" title="UbuntuFX Logo">
+              <img src="assets/logo.png" alt="UbuntuFX Logo"
+                onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-graduation-cap&quot; style=&quot;color:#F9A825;font-size:18px&quot;></i>';">
+            </div>
+            <div>
+              <div style="font-weight:500; letter-spacing:.2px; color:rgba(255,255,255,.92);">UbuntuFX</div>
+              <div style="color:rgba(255,255,255,.60); font-size:14px; margin-top:2px;">Structured learning for serious traders</div>
+            </div>
+          </div>
+          <p>
+            UbuntuFX is a premium Forex education and market intelligence platform built to help traders develop structure,
+            discipline, and repeatable decision-making.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="learn.html">Learn Forex</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <div class="contact-line">
+            <i class="fa-solid fa-envelope"></i>
+            <div><a href="mailto:info@ubuntufx.com">info@ubuntufx.com</a></div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-phone"></i>
+            <div><a href="tel:+254717770557">+254 717 770 557</a></div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>ABC Place, Westlands<br /><span style="color:rgba(255,255,255,.55); font-size:13px;">Nairobi, Kenya</span></div>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-circle-info"></i>
+            <div style="color:rgba(255,255,255,.65); font-size:13.5px;">
+              Risk Disclaimer: Trading involves risk. UbuntuFX provides educational content only.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <small>© <span id="year"></span> UbuntuFX. All rights reserved.</small>
+        <small style="color:rgba(255,255,255,.55);">Designed & developed by <a href="https://sarahadevelopers.co.ke" target="_blank" rel="noopener" style="color:rgba(0,200,83,.95); font-weight:950;">Saraha Developers</a></small>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- same JS (handles mobile nav, toast, year, etc.) -->
+  <script src="learn.js"></script>
+  <!-- ensure year updates -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

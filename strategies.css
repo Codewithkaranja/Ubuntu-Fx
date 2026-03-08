@@ -602,3 +602,10 @@ footer{
 
 .modal-body{ overflow:auto; -webkit-overflow-scrolling: touch; }
 .modal-box{ max-height: 88vh; }
+
+.btn-sm{
+padding:5px 10px;
+font-size:10.5px;
+border-radius:7px;
+letter-spacing:.3px;
+}

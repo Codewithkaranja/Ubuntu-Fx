@@ -158,14 +158,14 @@
       margin: 14px 0 10px;
       line-height: 1.08;
       letter-spacing: -0.03em;
-      font-size: clamp(2rem, 3.4vw, 3rem);
+      font-size: clamp(2rem, 2.4vw, 2rem);
     }
 
     .lede{
       color: var(--muted);
       max-width: 70ch;
       margin: 0 0 18px;
-      font-size: 1.08rem;
+      font-size: 0.8rem;
       line-height: 1.75;
     }
 
@@ -229,6 +229,7 @@
       position: relative;
       z-index: 2;
       padding: 18px 16px;
+      font-size: 14px;
     }
 
     /* toc */
@@ -277,18 +278,19 @@
     .policy h2{
       margin: 0;
       padding-top: 10px;
-      font-size: 1.6rem;
+      font-size: 1.2rem;
       letter-spacing: -0.02em;
     }
     .policy h3{
       margin: 18px 0 6px;
-      font-size: 1.15rem;
+      font-size: 0.8rem;
       letter-spacing: -0.01em;
       color: rgba(244,246,248,.92);
     }
     .policy p{
       margin: 10px 0;
       color: rgba(244,246,248,.76);
+      font-size: 12px;
     }
 
     .policy .callout{
@@ -436,7 +438,9 @@
           <nav class="navlinks" aria-label="Primary">
             <a href="/">Home</a>
             <a href="/contact.html">Contact</a>
-            <a href="#contact">Privacy Help</a>
+            <a href="/faq.html">FAQs</a> 
+            <a href="/terms.html">Terms</a>
+            <a href="/privacy.html">Privacy Policy</a>
           </nav>
         </div>
       </div>
@@ -462,321 +466,384 @@
     </section>
 
     <!-- Layout -->
-    <section>
-      <div class="container">
-        <div class="layout">
+   <section>
+<div class="container">
+<div class="layout">
 
-          <!-- TOC -->
-          <aside class="card">
-            <div class="card-body">
-              <div class="toc-title"><i class="fa-solid fa-list"></i> On this page</div>
-              <ul class="toc">
-                <li><a href="#who-we-are">Who we are <span>01</span></a></li>
-                <li><a href="#info-we-collect">Information we collect <span>02</span></a></li>
-                <li><a href="#how-we-use">How we use information <span>03</span></a></li>
-                <li><a href="#sharing">When we share information <span>04</span></a></li>
-                <li><a href="#cookies">Cookies & analytics <span>05</span></a></li>
-                <li><a href="#email">Email & newsletters <span>06</span></a></li>
-                <li><a href="#security">Security <span>07</span></a></li>
-                <li><a href="#retention">Data retention <span>08</span></a></li>
-                <li><a href="#rights">Your rights & choices <span>09</span></a></li>
-                <li><a href="#children">Children’s privacy <span>10</span></a></li>
-                <li><a href="#international">International transfers <span>11</span></a></li>
-                <li><a href="#changes">Changes to this policy <span>12</span></a></li>
-                <li><a href="#contact">Contact us <span>13</span></a></li>
-              </ul>
+<!-- TOC -->
+<aside class="card">
+<div class="card-body">
 
-              <div class="divider"></div>
+<div class="toc-title"><i class="fa-solid fa-list"></i> On this page</div>
 
-              <div class="btn-row">
-                <a class="btn btn-primary" href="#rights"><i class="fa-solid fa-user-shield"></i> Your choices</a>
-                <a class="btn" href="/terms.html"><i class="fa-solid fa-file-contract"></i> Terms</a>
-              </div>
-            </div>
-          </aside>
+<ul class="toc">
+<li><a href="#scope">Scope of Policy <span>01</span></a></li>
+<li><a href="#collection">Information We Collect <span>02</span></a></li>
+<li><a href="#usage">How We Use Information <span>03</span></a></li>
+<li><a href="#legal">Legal Basis <span>04</span></a></li>
+<li><a href="#cookies">Cookies & Tracking <span>05</span></a></li>
+<li><a href="#sharing">Data Sharing <span>06</span></a></li>
+<li><a href="#security">Data Security <span>07</span></a></li>
+<li><a href="#retention">Data Retention <span>08</span></a></li>
+<li><a href="#rights">Your Rights <span>09</span></a></li>
+<li><a href="#international">International Users <span>10</span></a></li>
+<li><a href="#children">Children’s Privacy <span>11</span></a></li>
+<li><a href="#thirdparty">Third-Party Links <span>12</span></a></li>
+<li><a href="#changes">Policy Changes <span>13</span></a></li>
+<li><a href="#contact">Contact <span>14</span></a></li>
+<li><a href="#acknowledgment">Acknowledgment <span>15</span></a></li>
+</ul>
 
-          <!-- Policy -->
-          <main class="card policy" aria-label="Privacy Policy Content">
-            <div class="card-body">
+<div class="divider"></div>
 
-              <section id="who-we-are">
-                <h2>1) Who we are</h2>
-                <p>
-                  UbuntuFX is an education-focused brand providing trading-related learning resources,
-                  newsletters, market commentary, templates, and digital products. This Privacy Policy
-                  applies to our website and related services that link to it.
-                </p>
-                <div class="callout">
-                  <i class="fa-solid fa-circle-info"></i>
-                  <div>
-                    <strong>Quick note:</strong> We do not ask for sensitive personal information
-                    as a condition to access free educational content. If you ever see a request that
-                    looks suspicious, contact us using the details in the <a href="#contact" style="color: var(--accent); font-weight:900;">Contact</a> section.
-                  </div>
-                </div>
-              </section>
+<div class="btn-row">
+<a class="btn btn-primary" href="#rights"><i class="fa-solid fa-user-shield"></i> Your rights</a>
+<a class="btn" href="/terms.html"><i class="fa-solid fa-file-contract"></i> Terms</a>
+</div>
 
-              <div class="divider"></div>
+</div>
+</aside>
 
-              <section id="info-we-collect">
-                <h2>2) Information we collect</h2>
-                <p>We collect information in three main ways: (a) information you provide, (b) information collected automatically, and (c) information from service providers.</p>
+<!-- POLICY -->
+<main class="card policy">
+<div class="card-body">
 
-                <h3>A. Information you provide</h3>
-                <ul>
-                  <li><strong>Contact details:</strong> such as your email address when you subscribe to our newsletter or contact us.</li>
-                  <li><strong>Messages:</strong> information you include when you email us or submit a form (for example, questions or feedback).</li>
-                  <li><strong>Optional details:</strong> any additional information you choose to share, like your name or trading interests.</li>
-                </ul>
+<p style="color:var(--muted); margin-bottom:30px;">
 
-                <h3>B. Information collected automatically</h3>
-                <ul>
-                  <li><strong>Device & usage data:</strong> IP address, browser type, device identifiers, pages viewed, and timestamps.</li>
-                  <li><strong>Approximate location:</strong> derived from your IP address (city/region level, not precise GPS).</li>
-                  <li><strong>Cookies & similar tech:</strong> to remember preferences and help us understand site usage.</li>
-                </ul>
+</p>
 
-                <h3>C. Information from service providers</h3>
-                <p>
-                  If we use tools for forms, email delivery, analytics, or website hosting, those providers may
-                  process data on our behalf. We only use providers we believe are reputable and necessary for delivering the service.
-                </p>
+<p>
+UbuntuFx is committed to protecting your privacy and handling personal information with transparency, responsibility, and care.  
+This Privacy Policy explains how we collect, use, store, and protect information when you access the UbuntuFx website, platforms, tools, content, and services.
+</p>
 
-                <div class="table-wrap" aria-label="Data Categories Table">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Category</th>
-                        <th>Examples</th>
-                        <th>Why we collect it</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Account & contact</td>
-                        <td>Email address, name (optional)</td>
-                        <td>Send newsletters, respond to requests, deliver downloads</td>
-                      </tr>
-                      <tr>
-                        <td>Communications</td>
-                        <td>Support emails, messages you send us</td>
-                        <td>Customer service, troubleshooting, feedback</td>
-                      </tr>
-                      <tr>
-                        <td>Usage & device</td>
-                        <td>IP, browser type, pages viewed</td>
-                        <td>Security, performance, analytics, improve content</td>
-                      </tr>
-                      <tr>
-                        <td>Cookies</td>
-                        <td>Session cookies, preference cookies</td>
-                        <td>Site functionality, remembering settings, analytics</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </section>
+<p>
+By using UbuntuFx, you agree to the practices described in this Privacy Policy. If you do not agree, please discontinue use of the Platform.
+</p>
 
-              <div class="divider"></div>
+<div class="divider"></div>
 
-              <section id="how-we-use">
-                <h2>3) How we use information</h2>
-                <p>We use your information to operate UbuntuFX and provide a better experience. Typical uses include:</p>
-                <ul>
-                  <li>Delivering newsletters, updates, and educational content.</li>
-                  <li>Responding to questions, support requests, or feedback.</li>
-                  <li>Improving site performance, design, and content quality.</li>
-                  <li>Protecting against fraud, spam, and abuse.</li>
-                  <li>Complying with legal obligations when applicable.</li>
-                </ul>
+<section id="scope">
+<h2>1) Scope of This Privacy Policy</h2>
 
-                <div class="callout">
-                  <i class="fa-solid fa-shield"></i>
-                  <div>
-                    <strong>Risk-first principle:</strong> We aim to collect only what we need.
-                    If we don’t need it to run the service, we avoid collecting it.
-                  </div>
-                </div>
-              </section>
+<p>This policy applies to:</p>
 
-              <div class="divider"></div>
+<ul>
+<li>The UbuntuFx website</li>
+<li>Educational content, blogs, and learning resources</li>
+<li>Newsletters and free downloads</li>
+<li>Community platforms such as Telegram or social media (if applicable)</li>
+<li>Future UbuntuFx web or mobile applications</li>
+</ul>
 
-              <section id="sharing">
-                <h2>4) When we share information</h2>
-                <p>We do not sell your personal information. We may share information only in limited cases:</p>
+<p>
+This policy does not apply to third-party websites or services linked from UbuntuFx.
+</p>
 
-                <h3>A. Service providers</h3>
-                <p>
-                  We may share data with vendors who help us run the site or deliver services (e.g., hosting, email delivery, analytics).
-                  They are permitted to process data only to provide services to us.
-                </p>
+</section>
 
-                <h3>B. Legal and safety</h3>
-                <p>
-                  We may disclose information if required by law, to respond to lawful requests, or to protect the rights,
-                  safety, and security of UbuntuFX, our users, or the public.
-                </p>
+<div class="divider"></div>
 
-                <h3>C. Business changes</h3>
-                <p>
-                  If UbuntuFX is involved in a merger, acquisition, or asset sale, your information may be transferred as part of that transaction.
-                  If this happens, we will take reasonable steps to notify users where required.
-                </p>
-              </section>
+<section id="collection">
 
-              <div class="divider"></div>
+<h2>2) Information We Collect</h2>
 
-              <section id="cookies">
-                <h2>5) Cookies & analytics</h2>
-                <p>
-                  Cookies are small files stored on your device. We may use cookies and similar technologies to:
-                </p>
-                <ul>
-                  <li>Keep the site working properly (security and core features).</li>
-                  <li>Remember preferences (like theme or consent choices, where implemented).</li>
-                  <li>Understand which pages are useful, so we can improve content.</li>
-                </ul>
-                <p>
-                  You can control cookies through your browser settings. If you disable certain cookies, some parts of the site may not work as intended.
-                </p>
-                <p>
-                  If you want to opt out of analytics tracking (where applicable), you can also use browser add-ons or privacy tools that block trackers.
-                </p>
-              </section>
+<p>
+UbuntuFx collects only the information necessary to operate and improve the educational platform.
+</p>
 
-              <div class="divider"></div>
+<h3>2.1 Personal Information</h3>
 
-              <section id="email">
-                <h2>6) Email & newsletters</h2>
-                <p>
-                  If you subscribe, we send a weekly email briefing and occasional important updates.
-                  You can unsubscribe at any time by using the unsubscribe link in our emails, or by contacting us.
-                </p>
-                <ul>
-                  <li><strong>What we send:</strong> educational insights, market context, key levels, risk reminders, and product/resource updates.</li>
-                  <li><strong>What we avoid:</strong> spam, selling your email, or sending unrelated marketing blasts.</li>
-                </ul>
-                <p>
-                  Please note: email delivery is handled by service providers and may include basic delivery metrics
-                  (e.g., whether an email was delivered or opened) depending on the provider settings.
-                </p>
-              </section>
+<p>We may collect limited personal information when you voluntarily provide it:</p>
 
-              <div class="divider"></div>
+<ul>
+<li>Email address (newsletter subscriptions or resource downloads)</li>
+<li>Name or username (optional)</li>
+<li>Contact information when communicating with us</li>
+</ul>
 
-              <section id="security">
-                <h2>7) Security</h2>
-                <p>
-                  We use reasonable administrative, technical, and organizational safeguards to protect your information.
-                  However, no internet-based service can be 100% secure. If you believe your interaction with us is no longer secure,
-                  contact us immediately.
-                </p>
-                <ul>
-                  <li>Access controls and limited permissions for internal tools.</li>
-                  <li>Monitoring and spam protection on forms where available.</li>
-                  <li>Best-effort data minimization and retention practices.</li>
-                </ul>
-              </section>
+<p>UbuntuFx does <strong>not</strong> collect:</p>
 
-              <div class="divider"></div>
+<ul>
+<li>Financial account details</li>
+<li>Trading account credentials</li>
+<li>Payment card information (unless future services require it)</li>
+</ul>
 
-              <section id="retention">
-                <h2>8) Data retention</h2>
-                <p>
-                  We retain personal information only as long as necessary for the purposes described in this policy,
-                  including legal, accounting, or reporting requirements.
-                </p>
-                <ul>
-                  <li>Newsletter subscription data is kept until you unsubscribe or request deletion.</li>
-                  <li>Support messages may be retained to improve support quality and maintain records of issues.</li>
-                  <li>Basic logs may be retained for security and performance analysis.</li>
-                </ul>
-              </section>
+<h3>2.2 Non-Personal Information</h3>
 
-              <div class="divider"></div>
+<p>We may automatically collect non-identifiable information including:</p>
 
-              <section id="rights">
-                <h2>9) Your rights & choices</h2>
-                <p>
-                  Depending on your location, you may have rights regarding your personal information. These may include:
-                </p>
-                <ul>
-                  <li><strong>Access:</strong> request a copy of the personal information we hold about you.</li>
-                  <li><strong>Correction:</strong> request updates to inaccurate or incomplete information.</li>
-                  <li><strong>Deletion:</strong> request deletion of your information (where legally allowed).</li>
-                  <li><strong>Objection / restriction:</strong> object to certain processing or request limitations.</li>
-                  <li><strong>Unsubscribe:</strong> opt out of marketing emails anytime.</li>
-                </ul>
+<ul>
+<li>Browser and device type</li>
+<li>IP address for analytics and security</li>
+<li>Pages visited and interaction patterns</li>
+<li>Referring URLs</li>
+</ul>
 
-                <p>
-                  To exercise these rights, contact us using the details in the <a href="#contact" style="color: var(--accent); font-weight:900;">Contact</a> section.
-                  We may need to verify your request to protect your privacy.
-                </p>
+<p>
+This data helps improve platform performance and educational content.
+</p>
 
-                <div class="btn-row">
-                  <a class="btn btn-primary" href="#contact"><i class="fa-solid fa-envelope"></i> Request help</a>
-                  <a class="btn" href="#cookies"><i class="fa-solid fa-cookie-bite"></i> Cookie info</a>
-                </div>
-              </section>
+</section>
 
-              <div class="divider"></div>
+<div class="divider"></div>
 
-              <section id="children">
-                <h2>10) Children’s privacy</h2>
-                <p>
-                  UbuntuFX is intended for a general audience and is not designed to knowingly collect personal information from children.
-                  If you believe a child has provided personal information to us, please contact us and we will take appropriate steps to address it.
-                </p>
-              </section>
+<section id="usage">
 
-              <div class="divider"></div>
+<h2>3) How We Use Your Information</h2>
 
-              <section id="international">
-                <h2>11) International transfers</h2>
-                <p>
-                  If you access UbuntuFX from outside the country where our service providers are located, your information may be processed
-                  in other countries. We take reasonable steps to ensure appropriate safeguards are in place when using vendors and hosting providers.
-                </p>
-              </section>
+<p>UbuntuFx uses collected information to:</p>
 
-              <div class="divider"></div>
+<ul>
+<li>Deliver newsletters, resources, and educational content</li>
+<li>Respond to questions and communication requests</li>
+<li>Improve site functionality and user experience</li>
+<li>Monitor security and performance</li>
+<li>Provide important announcements or updates</li>
+</ul>
 
-              <section id="changes">
-                <h2>12) Changes to this policy</h2>
-                <p>
-                  We may update this Privacy Policy from time to time. When we do, we will revise the “Last updated” date above.
-                  If changes are significant, we may provide additional notice where appropriate.
-                </p>
-              </section>
+<p>UbuntuFx does not use personal data for:</p>
 
-              <div class="divider"></div>
+<ul>
+<li>Selling or renting data to third parties</li>
+<li>Aggressive marketing or targeted financial promotions</li>
+<li>Automated trading decisions</li>
+</ul>
 
-              <section id="contact">
-                <h2>13) Contact us</h2>
-                <p>
-                  If you have questions about this Privacy Policy or your data, contact us:
-                </p>
+</section>
 
-                <div class="callout">
-                  <i class="fa-solid fa-headset"></i>
-                  <div>
-                    <strong>Email:</strong> <a href="mailto:info@ubuntufx.com" style="color: var(--accent); font-weight: 900;">info@ubuntufx.com</a><br>
-                    <strong>Website:</strong> <span style="color: rgba(244,246,248,.88); font-weight: 800;">ubuntufx.com</span><br>
-                    <strong>Subject line suggestion:</strong> <code>Privacy Request</code>
-                  </div>
-                </div>
+<div class="divider"></div>
 
-                <p style="color: var(--muted);">
-                  We aim to respond within a reasonable timeframe. For security reasons, we may ask you to verify ownership of the email address before completing certain requests.
-                </p>
-              </section>
+<section id="legal">
 
-            </div>
-          </main>
+<h2>4) Legal Basis for Processing Data</h2>
 
-        </div>
-      </div>
-    </section>
+<p>Personal data is processed based on:</p>
+
+<ul>
+<li><strong>Consent</strong> – when you voluntarily provide information</li>
+<li><strong>Legitimate interest</strong> – improving the platform and communication</li>
+<li><strong>Legal obligations</strong> – where required by applicable laws</li>
+</ul>
+
+<p>
+You may withdraw consent at any time by contacting UbuntuFx.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="cookies">
+
+<h2>5) Cookies and Tracking Technologies</h2>
+
+<p>UbuntuFx may use cookies to:</p>
+
+<ul>
+<li>Improve navigation and usability</li>
+<li>Understand user interaction with the site</li>
+<li>Analyze traffic and platform performance</li>
+</ul>
+
+<p>
+Cookies do not collect sensitive personal or financial information.
+</p>
+
+<p>
+You can control or disable cookies through your browser settings, though some site features may be affected.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="sharing">
+
+<h2>6) Data Sharing and Third Parties</h2>
+
+<p>
+UbuntuFx does not sell or trade personal information.
+</p>
+
+<p>Limited data may be shared with:</p>
+
+<ul>
+<li>Email delivery providers (for newsletters)</li>
+<li>Analytics providers (site performance insights)</li>
+<li>Hosting or infrastructure services</li>
+</ul>
+
+<p>
+All third-party providers must handle data securely and use it only for the intended services.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="security">
+
+<h2>7) Data Storage and Security</h2>
+
+<p>UbuntuFx applies reasonable safeguards including:</p>
+
+<ul>
+<li>Secure servers and access controls</li>
+<li>Restricted internal access to personal data</li>
+<li>Regular platform maintenance and updates</li>
+</ul>
+
+<p>
+However, no system can guarantee complete security. Use of the Platform is at your own risk.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="retention">
+
+<h2>8) Data Retention</h2>
+
+<p>Information is retained only as long as necessary to:</p>
+
+<ul>
+<li>Provide requested services</li>
+<li>Meet operational or legal requirements</li>
+<li>Maintain communication records</li>
+</ul>
+
+<p>
+When data is no longer required, it is securely deleted or anonymized.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="rights">
+
+<h2>9) Your Rights</h2>
+
+<p>Depending on your jurisdiction, you may have the right to:</p>
+
+<ul>
+<li>Access your personal data</li>
+<li>Request correction of inaccurate information</li>
+<li>Request deletion of your data</li>
+<li>Withdraw consent for communications</li>
+<li>Unsubscribe from newsletters</li>
+</ul>
+
+<p>
+To exercise these rights, contact:
+</p>
+
+<p><strong>Email:</strong> info@ubuntufx.com</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="international">
+
+<h2>10) International Users</h2>
+
+<p>
+UbuntuFx operates globally. By using the Platform, you acknowledge that information may be processed in jurisdictions outside your country, subject to reasonable data protection measures.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="children">
+
+<h2>11) Children’s Privacy</h2>
+
+<p>
+UbuntuFx is not intended for individuals under the age of 18.  
+We do not knowingly collect personal data from minors.
+</p>
+
+<p>
+If a minor has provided personal information, please contact us and we will take appropriate action.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="thirdparty">
+
+<h2>12) Third-Party Links</h2>
+
+<p>
+The Platform may contain links to external websites or tools.
+</p>
+
+<p>
+UbuntuFx is not responsible for the privacy practices or content of third-party sites. Users should review the privacy policies of any external services they access.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="changes">
+
+<h2>13) Changes to This Privacy Policy</h2>
+
+<p>UbuntuFx may update this Privacy Policy periodically.</p>
+
+<ul>
+<li>Updates will be posted on the Platform</li>
+<li>The Effective Date will be revised</li>
+<li>Continued use of the Platform indicates acceptance of the updated policy</li>
+</ul>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="contact">
+
+<h2>14) Contact Information</h2>
+
+<div class="callout">
+<i class="fa-solid fa-envelope"></i>
+<div>
+<strong>Email:</strong>
+<a href="mailto:info@ubuntufx.com" style="color:var(--accent); font-weight:900;">info@ubuntufx.com</a>
+</div>
+</div>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="acknowledgment">
+
+<h2>15) Acknowledgment</h2>
+
+<p>
+By using UbuntuFx, you acknowledge that you have read, understood, and agreed to this Privacy Policy.
+</p>
+
+<p>
+UbuntuFx remains committed to ethical data handling, transparency, and protecting the trust of its trading community.
+</p>
+
+</section>
+
+</div>
+</main>
+
+</div>
+</div>
+</section>
 
     <footer>
       <div class="container">

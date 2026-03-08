@@ -169,7 +169,7 @@
       margin: 14px 0 10px;
       line-height: 1.08;
       letter-spacing: -0.03em;
-      font-size: clamp(2rem, 3.4vw, 3rem);
+      font-size: clamp(2rem, 2.4vw, 2rem);
     }
 
     .lede{
@@ -449,7 +449,7 @@
       color: rgba(244,246,248,.74);
       line-height: 1.75;
     }
-    .answer p{ margin: 10px 0; }
+    .answer p{ margin: 10px 0; font-size: 12px;}
     .answer ul{ margin: 10px 0 0; padding-left: 18px; }
     .answer li{ margin: 6px 0; }
 
@@ -512,10 +512,12 @@
             <span>UbuntuFX</span>
           </a>
 
-          <nav class="navlinks" aria-label="Primary">
+           <nav class="navlinks" aria-label="Primary">
             <a href="/">Home</a>
-            <a href="/privacy.html">Privacy</a>
             <a href="/contact.html">Contact</a>
+            <a href="/faq.html">FAQs</a> 
+            <a href="/terms.html">Terms</a>
+            <a href="/privacy.html">Privacy Policy</a>
           </nav>
         </div>
       </div>
@@ -526,10 +528,10 @@
       <div class="container">
         <span class="eyebrow"><span class="dot"></span> Support</span>
         <h1>Frequently Asked Questions</h1>
-        <p class="lede">
+        <!--  <p class="lede">
           Straight answers, no fluff. Browse by category or search a keyword. If you still need help,
           contact us and we’ll guide you quickly.
-        </p>
+        </p>-->
 
         <!-- Controls -->
         <div class="faq-controls" aria-label="FAQ Controls">
@@ -559,21 +561,21 @@
           <aside class="card">
             <div class="card-body">
               <h3 class="side-title"><i class="fa-solid fa-life-ring"></i> Quick help</h3>
-              <p class="side-text">
+              <p class="side-text" style="font-size: 12px;">
                 Most issues are solved by confirming access details, checking your email spam folder,
                 or verifying payment reference details.
               </p>
 
               <div class="side-actions">
                 <a class="btn btn-primary" href="/contact.html"><i class="fa-solid fa-envelope"></i> Contact support</a>
-                <a class="btn" href="#billing"><i class="fa-solid fa-credit-card"></i> Billing questions</a>
-                <a class="btn" href="#access"><i class="fa-solid fa-key"></i> Access & login</a>
+                <button class="tag"  type="button" data-filter="billing" ><i class="fa-solid fa-credit-card"></i>  Billing Questions</button>
+                <button class="tag"  type="button" data-filter="access" ><i class="fa-solid fa-key"></i>  Access & login</button>
               </div>
 
               <div class="mini">
                 <i class="fa-solid fa-lock"></i>
-                <div>
-                  <strong>Privacy-first.</strong> We never sell your data. You can unsubscribe anytime from emails.
+                <div >
+                  <strong>Privacy-first.</strong> <p style="font-size: 12px;">We never sell your data. You can unsubscribe anytime from emails.</p>
                 </div>
               </div>
             </div>
@@ -584,141 +586,361 @@
             <div class="card-body">
               <div class="faq-group" id="faqList">
 
-                <!-- =========================
-                     PROGRAM
-                ========================= -->
-                <section id="program" aria-label="Program FAQs">
-                  <details class="faq" data-category="program">
-                    <summary>
-                      <div class="q">
-                        <span class="qicon"><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>What is UbuntuFX, and who is it for?</span>
-                      </div>
-                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
-                    </summary>
-                    <div class="answer">
-                      <p>
-                        UbuntuFX is a trading education brand focused on building consistency through structured learning,
-                        risk-first habits, and repeatable execution. It’s best for traders who feel stuck in random setups,
-                        inconsistent results, or emotional decision-making.
-                      </p>
-                      <ul>
-                        <li><strong>Beginners:</strong> learn foundations the right way without chaos.</li>
-                        <li><strong>Intermediate:</strong> tighten strategy, journaling, and discipline.</li>
-                        <li><strong>Advanced:</strong> refine execution, risk, and performance tracking.</li>
-                      </ul>
-                      <div class="note">
-                        <i class="fa-solid fa-circle-info"></i>
-                        <div>
-                          We focus on education, not guarantees. Trading involves risk and results vary based on discipline and skill.
-                        </div>
-                      </div>
-                    </div>
-                  </details>
+<!-- =========================
+     PROGRAM
+========================= -->
+<section id="program" aria-label="Program FAQs">
 
-                  <details class="faq" data-category="program">
-                    <summary>
-                      <div class="q">
-                        <span class="qicon"><i class="fa-solid fa-route"></i></span>
-                        <span>How is the curriculum structured?</span>
-                      </div>
-                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
-                    </summary>
-                    <div class="answer">
-                      <p>
-                        The curriculum is built as a step-by-step system. You learn concepts, apply them using templates,
-                        then review performance through journaling and scorecards.
-                      </p>
-                      <ul>
-                        <li><strong>Core foundations:</strong> market structure, liquidity, risk basics.</li>
-                        <li><strong>Execution layer:</strong> entries, confirmations, session planning.</li>
-                        <li><strong>Performance layer:</strong> journaling, grading, process scorecards.</li>
-                        <li><strong>Mindset under pressure:</strong> habit engineering and rules that hold under stress.</li>
-                      </ul>
-                    </div>
-                  </details>
+<details class="faq" data-category="program">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-globe"></i></span>
+<span>What is forex trading and how does it work?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Forex trading is the process of exchanging one currency for another in the global foreign exchange market. 
+Currencies trade in pairs (for example EUR/USD) where one currency is bought while another is sold.
+</p>
+<p>
+Price movements reflect shifts in economic conditions, interest rates, global events, and capital flows between countries.
+</p>
+</div>
+</details>
 
-                  <details class="faq" data-category="program">
-                    <summary>
-                      <div class="q">
-                        <span class="qicon"><i class="fa-solid fa-clock"></i></span>
-                        <span>How long does it take to see progress?</span>
-                      </div>
-                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
-                    </summary>
-                    <div class="answer">
-                      <p>
-                        Most traders notice better decision quality within 2–4 weeks if they follow the process.
-                        Real consistency usually takes longer because it requires repetition, tracking, and emotional stability.
-                      </p>
-                      <ul>
-                        <li><strong>Week 1–2:</strong> clarity improves (less random trades).</li>
-                        <li><strong>Week 3–6:</strong> better risk control and fewer impulse entries.</li>
-                        <li><strong>Month 2–3:</strong> measurable improvement in execution consistency.</li>
-                      </ul>
-                      <div class="note">
-                        <i class="fa-solid fa-bolt"></i>
-                        <div>
-                          Speed depends on how faithfully you journal, review, and follow risk rules.
-                        </div>
-                      </div>
-                    </div>
-                  </details>
-                </section>
+<details class="faq" data-category="program">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+<span>Is forex trading risky?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Yes, forex trading involves risk because prices can move quickly and unpredictably.
+However, risk does not mean gambling.
+</p>
+<p>
+When traders apply proper risk management such as stop losses, position sizing, and exposure control,
+risk becomes measurable and manageable rather than destructive.
+</p>
+</div>
+</details>
 
-                <!-- =========================
-                     SIGNALS
-                ========================= -->
-                <section id="signals" aria-label="Signals FAQs">
-                  <details class="faq" data-category="signals">
-                    <summary>
-                      <div class="q">
-                        <span class="qicon"><i class="fa-solid fa-chart-line"></i></span>
-                        <span>Do you provide signals?</span>
-                      </div>
-                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
-                    </summary>
-                    <div class="answer">
-                      <p>
-                        We may share market commentary, levels, and structured watchlists for educational purposes.
-                        These are meant to help you build your own decision-making — not to replace it.
-                      </p>
-                      <ul>
-                        <li><strong>What you get:</strong> context, key levels, risk reminders, trade planning structure.</li>
-                        <li><strong>What you don’t get:</strong> “buy now / sell now” promises or guaranteed outcomes.</li>
-                      </ul>
-                      <div class="note">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <div>
-                          Any trade you take is your responsibility. Always confirm with your rules and risk limits.
-                        </div>
-                      </div>
-                    </div>
-                  </details>
+<details class="faq" data-category="program">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-wallet"></i></span>
+<span>How much money do I need to start trading forex?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+There is no fixed minimum amount required to begin trading forex.
+However, extremely small accounts can limit learning flexibility.
+</p>
+<p>
+What matters most is not the account size but how much capital is risked per trade.
+UbuntuFX emphasizes controlled risk and skill development rather than chasing fast profits from small accounts.
+</p>
+</div>
+</details>
 
-                  <details class="faq" data-category="signals">
-                    <summary>
-                      <div class="q">
-                        <span class="qicon"><i class="fa-solid fa-crosshairs"></i></span>
-                        <span>How should I use the daily levels properly?</span>
-                      </div>
-                      <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
-                    </summary>
-                    <div class="answer">
-                      <p>
-                        Treat levels as “areas of interest,” not automatic entries. The correct workflow is:
-                        plan → wait → confirm → execute → review.
-                      </p>
-                      <ul>
-                        <li>Start with session bias (trend / range / key narrative).</li>
-                        <li>Mark levels and define what confirmation looks like.</li>
-                        <li>Size based on risk, not on excitement.</li>
-                        <li>Journal the trade outcome and the process quality.</li>
-                      </ul>
-                    </div>
-                  </details>
-                </section>
+<details class="faq" data-category="program">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-seedling"></i></span>
+<span>Can beginners really succeed in forex trading?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Beginners can succeed if they approach trading as a skill that develops over time.
+</p>
+<p>
+Success depends on education, patience, emotional discipline, and consistent risk management rather than copying trades or chasing quick profits.
+</p>
+</div>
+</details>
 
+<details class="faq" data-category="program">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-hourglass-half"></i></span>
+<span>How long does it take to become profitable?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Profitability varies widely among traders. Some may reach consistency within months, while others require years of development.
+</p>
+<p>
+The determining factor is not time alone but discipline, structured planning, and the ability to learn from mistakes without repeating them.
+</p>
+</div>
+</details>
+
+<details class="faq" data-category="program">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-chart-simple"></i></span>
+<span>Why do most retail traders lose money?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Many traders lose money because they operate without a structured plan.
+</p>
+<ul>
+<li>Overtrading and emotional decision making</li>
+<li>Risking too much per trade</li>
+<li>Ignoring risk management</li>
+<li>Focusing only on entry signals instead of overall strategy</li>
+</ul>
+</div>
+</details>
+
+</section>
+
+<!-- =========================
+     RESOURCES
+========================= -->
+<section id="resources" aria-label="Resources FAQs">
+
+<details class="faq" data-category="resources">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-shield-halved"></i></span>
+<span>What is risk management and why is it important?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Risk management is the process of controlling how much capital is exposed to a single trade or to the market overall.
+</p>
+<p>
+It protects trading accounts during losing periods and ensures that no individual trade can cause significant damage.
+Long-term survival in trading depends more on risk control than strategy accuracy.
+</p>
+</div>
+</details>
+
+<details class="faq" data-category="resources">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-clock"></i></span>
+<span>What are trading sessions and why do they matter?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Trading sessions represent periods of market activity associated with major financial centers such as the Asian, London, and New York sessions.
+</p>
+<p>
+Each session produces different levels of liquidity and volatility.
+Understanding sessions helps traders choose better trading windows and avoid low-activity periods.
+</p>
+</div>
+</details>
+
+<details class="faq" data-category="resources">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-chart-line"></i></span>
+<span>Are indicators enough to trade profitably?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Indicators can assist analysis but should never be used in isolation.
+Most indicators are derived from price data and often lag behind market movement.
+</p>
+<p>
+A stronger approach combines price behavior, market structure, and contextual analysis rather than relying solely on indicators.
+</p>
+</div>
+</details>
+
+<details class="faq" data-category="resources">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-brain"></i></span>
+<span>How does trading psychology affect performance?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Psychology plays a major role in trading outcomes.
+</p>
+<ul>
+<li>Fear may cause early exits</li>
+<li>Greed may encourage overtrading</li>
+<li>Frustration can trigger revenge trading</li>
+</ul>
+<p>
+Emotional awareness and discipline are essential for consistent decision-making.
+</p>
+</div>
+</details>
+
+<details class="faq" data-category="resources">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-sitemap"></i></span>
+<span>What is market structure and why is it important?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Market structure describes how price moves through highs, lows, trends, and ranges over time.
+</p>
+<p>
+Understanding structure helps traders identify liquidity areas, potential reversals, and continuation zones which improves trade selection and risk placement.
+</p>
+</div>
+</details>
+
+</section>
+
+<!-- =========================
+     SIGNALS
+========================= -->
+<section id="signals" aria-label="Signals FAQs">
+
+<details class="faq" data-category="signals">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-building-columns"></i></span>
+<span>Why does UbuntuFx focus on macroeconomic analysis?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Macroeconomic forces such as interest rates, inflation, employment data, and central bank policy influence long-term currency movements.
+</p>
+<p>
+Macro analysis helps traders understand why markets move rather than simply observing price changes.
+</p>
+</div>
+</details>
+
+<details class="faq" data-category="signals">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-landmark"></i></span>
+<span>How do institutions influence the forex market?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+Large banks, hedge funds, and financial institutions control the majority of trading volume in the forex market.
+</p>
+<p>
+Their capital flows create liquidity, establish trends, and influence key price levels.
+Understanding institutional behavior helps retail traders interpret market movement more accurately.
+</p>
+</div>
+</details>
+
+<details class="faq" data-category="signals">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-bullseye"></i></span>
+<span>Does UbuntuFx provide trading signals?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+No. UbuntuFx focuses on education, structured analysis, and decision-making frameworks rather than direct trading signals.
+</p>
+<p>
+The objective is to help traders develop independent thinking and disciplined execution rather than relying on external trade calls.
+</p>
+</div>
+</details>
+
+</section>
+
+<!-- =========================
+     ACCESS
+========================= -->
+<section id="access" aria-label="Access FAQs">
+
+<details class="faq" data-category="access">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-circle-info"></i></span>
+<span>What makes UbuntuFx different from other forex platforms?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+UbuntuFx focuses on structure, discipline, and long-term trader development.
+</p>
+<p>
+Rather than hype or profit promises, the platform emphasizes macro context, institutional understanding,
+ethical education, and risk-first trading principles.
+</p>
+</div>
+</details>
+
+<details class="faq" data-category="access">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-lightbulb"></i></span>
+<span>Why was UbuntuFx created?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+UbuntuFx was created to address the lack of structured and risk-focused education within the retail forex space.
+</p>
+<p>
+Many traders enter the market through hype-driven content and unrealistic expectations.
+UbuntuFx aims to provide a disciplined educational alternative built on clarity and long-term development.
+</p>
+</div>
+</details>
+
+<details class="faq" data-category="access">
+<summary>
+<div class="q">
+<span class="qicon"><i class="fa-solid fa-road"></i></span>
+<span>What has shaped the UbuntuFx trading perspective?</span>
+</div>
+<span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+</summary>
+<div class="answer">
+<p>
+The UbuntuFx perspective developed through real trading experience including early mistakes,
+emotional decision-making, and gradual learning.
+</p>
+<p>
+Deeper study of market structure, macroeconomics, and institutional behavior helped shape a more disciplined approach to trading.
+</p>
+</div>
+</details>
+
+</section>
+
+</div>
                 <!-- =========================
                      RESOURCES
                 ========================= -->

@@ -168,7 +168,7 @@
       margin: 14px 0 10px;
       line-height: 1.08;
       letter-spacing: -0.03em;
-      font-size: clamp(2rem, 3.4vw, 3rem);
+      font-size: clamp(2rem, 2.4vw, 2rem);
     }
 
     .lede{
@@ -255,6 +255,7 @@
       display:flex;
       align-items:center;
       gap: 10px;
+     
     }
     .toc-title i{ color: var(--gold); }
 
@@ -295,12 +296,12 @@
     .terms h2{
       margin: 0;
       padding-top: 10px;
-      font-size: 1.6rem;
+      font-size: 1.2rem;
       letter-spacing: -0.02em;
     }
     .terms h3{
       margin: 18px 0 6px;
-      font-size: 1.15rem;
+      font-size: 0.8rem;
       letter-spacing: -0.01em;
       color: rgba(244,246,248,.92);
     }
@@ -308,13 +309,14 @@
       margin: 10px 0;
       color: rgba(244,246,248,.76);
       line-height: 1.75;
+      font-size: 12px;
     }
     .terms ul{
       margin: 10px 0 14px;
       padding-left: 18px;
       color: rgba(244,246,248,.74);
     }
-    .terms li{ margin: 6px 0; }
+    .terms li{ margin: 6px 0; font-size: 14px; }
 
     .callout{
       margin: 14px 0 18px;
@@ -390,11 +392,12 @@
             <span>UbuntuFX</span>
           </a>
 
-          <nav class="navlinks" aria-label="Primary">
+           <nav class="navlinks" aria-label="Primary">
             <a href="/">Home</a>
-            <a href="/privacy.html">Privacy</a>
-            <a href="/faqs.html">FAQs</a>
             <a href="/contact.html">Contact</a>
+            <a href="/faq.html">FAQs</a> 
+            <a href="/terms.html">Terms</a>
+            <a href="/privacy.html">Privacy Policy</a>
           </nav>
         </div>
       </div>
@@ -405,14 +408,14 @@
       <div class="container">
         <span class="eyebrow"><span class="dot"></span> Legal</span>
         <h1>Terms & Conditions</h1>
-        <p class="lede">
+        <p class="lede" style="font-size: 12px;">
           These Terms & Conditions govern your access to and use of UbuntuFX (“we”, “us”, “our”)
           including our website, educational content, downloads, and related services. By using the site,
           you agree to these Terms.
         </p>
 
         <div class="meta-row">
-          <span class="meta-pill"><i class="fa-solid fa-calendar"></i> Effective date: <strong>March 3, 2026</strong></span>
+          <span class="meta-pill"><i class="fa-solid fa-calendar"></i> Effective date: <strong>February 15, 2019</strong></span>
           <span class="meta-pill"><i class="fa-solid fa-scale-balanced"></i> Common commercial terms</span>
           <span class="meta-pill"><i class="fa-solid fa-lock"></i> Security + fair use</span>
         </div>
@@ -421,261 +424,378 @@
 
     <!-- Content -->
     <section>
-      <div class="container">
-        <div class="layout">
+<div class="container">
+<div class="layout">
 
-          <!-- TOC -->
-          <aside class="card">
-            <div class="card-body">
-              <div class="toc-title"><i class="fa-solid fa-list"></i> On this page</div>
-              <ul class="toc">
-                <li><a href="#acceptance">Acceptance <span>01</span></a></li>
-                <li><a href="#eligibility">Eligibility <span>02</span></a></li>
-                <li><a href="#services">Services & content <span>03</span></a></li>
-                <li><a href="#accounts">Accounts <span>04</span></a></li>
-                <li><a href="#payments">Payments <span>05</span></a></li>
-                <li><a href="#refunds">Refunds <span>06</span></a></li>
-                <li><a href="#acceptable-use">Acceptable use <span>07</span></a></li>
-                <li><a href="#ip">Intellectual property <span>08</span></a></li>
-                <li><a href="#disclaimers">Disclaimers <span>09</span></a></li>
-                <li><a href="#liability">Limitation of liability <span>10</span></a></li>
-                <li><a href="#third-party">Third-party links <span>11</span></a></li>
-                <li><a href="#termination">Termination <span>12</span></a></li>
-                <li><a href="#governing-law">Governing law <span>13</span></a></li>
-                <li><a href="#contact">Contact <span>14</span></a></li>
-              </ul>
+<!-- TOC -->
+<aside class="card">
+<div class="card-body">
 
-              <div class="divider"></div>
+<div class="toc-title"><i class="fa-solid fa-list"></i> On this page</div>
 
-              <div class="callout" style="margin: 0;">
-                <i class="fa-solid fa-circle-info"></i>
-                <div>
-                  <strong>Important:</strong> UbuntuFX provides education. We do not provide personalized financial advice,
-                  and trading involves risk of loss.
-                </div>
-              </div>
-            </div>
-          </aside>
+<ul class="toc">
+<li><a href="#about">About UbuntuFx <span>01</span></a></li>
+<li><a href="#eligibility">Eligibility <span>02</span></a></li>
+<li><a href="#education">Educational Purpose <span>03</span></a></li>
+<li><a href="#risk">Risk Disclosure <span>04</span></a></li>
+<li><a href="#signals">No Signals or Guarantees <span>05</span></a></li>
+<li><a href="#tools">Tools & Data <span>06</span></a></li>
+<li><a href="#responsibilities">User Responsibilities <span>07</span></a></li>
+<li><a href="#ip">Intellectual Property <span>08</span></a></li>
+<li><a href="#community">Community Conduct <span>09</span></a></li>
+<li><a href="#third-party">Third-Party Links <span>10</span></a></li>
+<li><a href="#liability">Limitation of Liability <span>11</span></a></li>
+<li><a href="#indemnification">Indemnification <span>12</span></a></li>
+<li><a href="#privacy">Privacy & Data <span>13</span></a></li>
+<li><a href="#modifications">Modifications <span>14</span></a></li>
+<li><a href="#termination">Termination <span>15</span></a></li>
+<li><a href="#law">Governing Law <span>16</span></a></li>
+<li><a href="#contact">Contact <span>17</span></a></li>
+<li><a href="#acknowledgment">Acknowledgment <span>18</span></a></li>
+</ul>
 
-          <!-- Terms -->
-          <main class="card terms" aria-label="Terms & Conditions">
-            <div class="card-body">
+<div class="divider"></div>
 
-              <section id="acceptance">
-                <h2>1) Acceptance of these Terms</h2>
-                <p>
-                  By accessing or using <strong>ubuntufx.com</strong>, you confirm that you have read, understood,
-                  and agree to be bound by these Terms & Conditions and our <a href="/privacy.html" style="color: var(--accent); font-weight: 900;">Privacy Policy</a>.
-                  If you do not agree, you must not use the website or services.
-                </p>
-              </section>
+<div class="callout" style="margin:0;">
+<i class="fa-solid fa-circle-info"></i>
+<div>
+<strong>Important:</strong> UbuntuFx is an educational platform. We do not provide financial advice, trading signals, or investment guarantees.
+</div>
+</div>
 
-              <div class="divider"></div>
+</div>
+</aside>
 
-              <section id="eligibility">
-                <h2>2) Eligibility</h2>
-                <p>
-                  You must be legally capable of entering a binding agreement in your jurisdiction to use our services.
-                  If you are using the site on behalf of an organization, you represent that you have authority to bind that organization.
-                </p>
-              </section>
+<!-- TERMS CONTENT -->
+<main class="card terms" aria-label="Terms & Conditions">
+<div class="card-body">
 
-              <div class="divider"></div>
+<p style="color:var(--muted); margin-bottom:30px;">
+<strong>Effective Date:</strong> 15 February 2019
+</p>
 
-              <section id="services">
-                <h2>3) Services & educational content</h2>
-                <p>
-                  UbuntuFX provides educational materials including lessons, templates, newsletters, commentary, and digital resources.
-                  Some resources may be free, while others may be offered as paid products or subscriptions.
-                </p>
+<section id="about">
+<h2>1) About UbuntuFx</h2>
+<p>
+UbuntuFx is an education-first forex learning and market analysis platform. UbuntuFx provides educational content, market commentary, analytical tools, and community resources designed to help users understand the foreign exchange market.
+</p>
 
-                <h3>No financial advice</h3>
-                <p>
-                  Content provided is for general education and informational purposes only. Nothing on the site constitutes
-                  investment, financial, legal, or tax advice. You are solely responsible for your trading and investment decisions.
-                </p>
+<p>
+UbuntuFx does <strong>not</strong> operate as a broker, asset manager, investment advisor, or signal provider.
+</p>
+</section>
 
-                <div class="callout">
-                  <i class="fa-solid fa-triangle-exclamation"></i>
-                  <div>
-                    <strong>Risk warning:</strong> Trading financial instruments carries substantial risk and may not be suitable for everyone.
-                    Past performance is not indicative of future results.
-                  </div>
-                </div>
-              </section>
+<div class="divider"></div>
 
-              <div class="divider"></div>
+<section id="eligibility">
+<h2>2) Eligibility</h2>
 
-              <section id="accounts">
-                <h2>4) Accounts, access, and security</h2>
-                <p>
-                  Some services may require you to provide an email address or create an account. You agree to provide accurate information
-                  and keep it updated. You are responsible for maintaining the confidentiality of login details and for all activity under your account.
-                </p>
-                <ul>
-                  <li>Notify us if you suspect unauthorized access or security issues.</li>
-                  <li>Do not share paid access outside your personal use unless explicitly allowed.</li>
-                  <li>We may suspend access if we reasonably believe your account is compromised or misused.</li>
-                </ul>
-              </section>
+<p>By using this Platform, you confirm that:</p>
 
-              <div class="divider"></div>
+<ul>
+<li>You are at least 18 years old or the legal age of majority in your jurisdiction.</li>
+<li>You have the legal capacity to enter into binding agreements.</li>
+<li>You are not prohibited by local laws or regulations from accessing financial educational content.</li>
+</ul>
 
-              <section id="payments">
-                <h2>5) Payments and billing</h2>
-                <p>
-                  If you purchase a product, you agree to pay the fees shown at checkout, including any applicable taxes.
-                  Prices and availability may change at any time, but changes will not affect confirmed purchases.
-                </p>
-                <ul>
-                  <li><strong>Checkout:</strong> ensure your email address is correct to receive access details.</li>
-                  <li><strong>Authorization:</strong> you confirm you are authorized to use the payment method.</li>
-                  <li><strong>Chargebacks:</strong> unauthorized chargebacks may result in access suspension while we investigate.</li>
-                </ul>
-              </section>
+</section>
 
-              <div class="divider"></div>
+<div class="divider"></div>
 
-              <section id="refunds">
-                <h2>6) Refunds</h2>
-                <p>
-                  Refund eligibility depends on the nature of the product (digital download, subscription, or service) and
-                  whether access has been delivered or content has been consumed. Where refunds are offered, they will be processed
-                  using the original payment method whenever possible.
-                </p>
-                <ul>
-                  <li>If you believe you were charged incorrectly, contact us with your transaction reference.</li>
-                  <li>Digital products may be non-refundable once delivered, except where required by law.</li>
-                  <li>Subscriptions may be cancelled anytime; access typically remains active until the end of the billing period (where applicable).</li>
-                </ul>
+<section id="education">
 
-                <p>
-                  To request a refund, email us with the subject <span class="inline-code"><i class="fa-solid fa-receipt"></i> Refund Request</span>
-                  and include your purchase email and proof of payment.
-                </p>
-              </section>
+<h2>3) Educational Purpose Only (No Financial Advice)</h2>
 
-              <div class="divider"></div>
+<p>
+All content provided on UbuntuFx is strictly for <strong>educational and informational purposes</strong>.
+</p>
 
-              <section id="acceptable-use">
-                <h2>7) Acceptable use</h2>
-                <p>
-                  You agree not to misuse the site or services. This includes, but is not limited to:
-                </p>
-                <ul>
-                  <li>Attempting to hack, disrupt, or gain unauthorized access to any system or data.</li>
-                  <li>Scraping, copying, reselling, or redistributing paid content without permission.</li>
-                  <li>Uploading viruses, malicious code, or engaging in harmful automated activity.</li>
-                  <li>Using the site for unlawful, abusive, defamatory, or fraudulent purposes.</li>
-                  <li>Impersonating others or misrepresenting your affiliation with UbuntuFX.</li>
-                </ul>
-                <p>
-                  We may suspend or terminate access if we reasonably determine that your use violates these Terms or harms other users.
-                </p>
-              </section>
+<ul>
+<li>Nothing on this Platform constitutes financial, investment, trading, legal, or tax advice.</li>
+<li>UbuntuFx does not recommend buying or selling any financial instruments.</li>
+<li>Any market analysis, outlooks, tools, or commentary represent general observations rather than personalized advice.</li>
+</ul>
 
-              <div class="divider"></div>
+<p>
+You are solely responsible for your trading and investment decisions.
+</p>
 
-              <section id="ip">
-                <h2>8) Intellectual property</h2>
-                <p>
-                  All content on UbuntuFX — including text, graphics, templates, PDFs, branding, logos, course structure,
-                  and design — is owned by or licensed to UbuntuFX and is protected by intellectual property laws.
-                </p>
-                <ul>
-                  <li>You may use content for your personal educational purposes only.</li>
-                  <li>You may not copy, distribute, modify, publish, sell, sublicense, or create derivative works without written permission.</li>
-                  <li>Trademarks and brand elements may not be used without permission.</li>
-                </ul>
-              </section>
+</section>
 
-              <div class="divider"></div>
+<div class="divider"></div>
 
-              <section id="disclaimers">
-                <h2>9) Disclaimers</h2>
-                <p>
-                  The website and services are provided on an “as is” and “as available” basis. We make no warranties
-                  of any kind, express or implied, including merchantability, fitness for a particular purpose, and non-infringement.
-                </p>
-                <p>
-                  We do not guarantee that the site will be uninterrupted, secure, error-free, or that any content will produce specific results.
-                </p>
-              </section>
+<section id="risk">
 
-              <div class="divider"></div>
+<h2>4) Risk Disclosure</h2>
 
-              <section id="liability">
-                <h2>10) Limitation of liability</h2>
-                <p>
-                  To the maximum extent permitted by law, UbuntuFX and its team shall not be liable for any indirect, incidental,
-                  special, consequential, or punitive damages, or any loss of profits, data, goodwill, or other intangible losses,
-                  resulting from your use of the site or services.
-                </p>
-                <p>
-                  In jurisdictions that do not allow certain limitations, liability will be limited to the extent permitted by law.
-                </p>
-              </section>
+<p>
+Trading foreign exchange, CFDs, and other leveraged financial instruments involves substantial risk and may not be suitable for all individuals.
+</p>
 
-              <div class="divider"></div>
+<ul>
+<li>You may lose part or all of your invested capital.</li>
+<li>Past performance is not indicative of future results.</li>
+<li>Market conditions can change rapidly due to economic, political, or unforeseen events.</li>
+</ul>
 
-              <section id="third-party">
-                <h2>11) Third-party links and services</h2>
-                <p>
-                  Our website may contain links to third-party websites or services. We do not control these third parties
-                  and are not responsible for their content, policies, or practices. Your use of third-party sites is at your own risk.
-                </p>
-              </section>
+<div class="callout">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<div>
+UbuntuFx strongly encourages users to understand the risks involved and to apply sound risk management practices.
+</div>
+</div>
 
-              <div class="divider"></div>
+</section>
 
-              <section id="termination">
-                <h2>12) Termination</h2>
-                <p>
-                  We may suspend or terminate your access to the site or services at any time if we reasonably believe you have violated
-                  these Terms, engaged in fraud, or harmed the platform or community. You may stop using the services at any time.
-                </p>
-              </section>
+<div class="divider"></div>
 
-              <div class="divider"></div>
+<section id="signals">
 
-              <section id="governing-law">
-                <h2>13) Governing law</h2>
-                <p>
-                  These Terms are governed by applicable laws in the jurisdiction where UbuntuFX operates, without regard to conflict
-                  of law principles. If any provision is found unenforceable, the remaining provisions will remain in effect.
-                </p>
-              </section>
+<h2>5) No Trading Signals or Guarantees</h2>
 
-              <div class="divider"></div>
+<p>
+UbuntuFx does not provide trading signals, copy-trading services, or guarantees of profitability.
+</p>
 
-              <section id="contact">
-                <h2>14) Contact</h2>
-                <p>
-                  If you have questions about these Terms, contact us:
-                </p>
+<ul>
+<li>Any references to setups, scenarios, or market levels are educational examples only.</li>
+<li>UbuntuFx makes no representation or warranty regarding trading success.</li>
+</ul>
 
-                <div class="callout">
-                  <i class="fa-solid fa-headset"></i>
-                  <div>
-                    <strong>Email:</strong>
-                    <a href="mailto:info@ubuntufx.com" style="color: var(--accent); font-weight: 950;">info@ubuntufx.com</a><br>
-                    <strong>Website:</strong> <span style="font-weight: 900; color: rgba(244,246,248,.88);">ubuntufx.com</span><br>
-                    <strong>Subject line suggestion:</strong>
-                    <span class="inline-code"><i class="fa-solid fa-file-contract"></i> Terms Question</span>
-                  </div>
-                </div>
+</section>
 
-                <p style="color: var(--muted);">
-                  We aim to respond within a reasonable timeframe. For security reasons, we may request verification before addressing account or billing inquiries.
-                </p>
-              </section>
+<div class="divider"></div>
 
-            </div>
-          </main>
+<section id="tools">
 
-        </div>
-      </div>
-    </section>
+<h2>6) Use of Tools and Data</h2>
+
+<p>
+UbuntuFx may provide access to tools such as charts, economic calendars, currency strength meters, and analytical visuals.
+</p>
+
+<ul>
+<li>Some data may originate from third-party providers.</li>
+<li>Data may occasionally be delayed or contain inaccuracies.</li>
+<li>All tools are provided <strong>"as-is"</strong> for educational observation.</li>
+</ul>
+
+<p>
+UbuntuFx is not responsible for trading decisions made using these tools.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="responsibilities">
+
+<h2>7) User Responsibilities</h2>
+
+<p>You agree to:</p>
+
+<ul>
+<li>Use the Platform only for lawful purposes.</li>
+<li>Not copy, scrape, or redistribute UbuntuFx content without permission.</li>
+<li>Not engage in harassment, spam, misinformation, or unethical conduct.</li>
+<li>Respect the professional learning environment of the UbuntuFx community.</li>
+</ul>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="ip">
+
+<h2>8) Intellectual Property</h2>
+
+<p>
+All materials on UbuntuFx — including text, charts, graphics, videos, branding, course material, and tools — are protected intellectual property owned by UbuntuFx or its licensors.
+</p>
+
+<ul>
+<li>Content may not be reproduced or redistributed without written consent.</li>
+<li>Personal educational use is permitted.</li>
+</ul>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="community">
+
+<h2>9) Community Conduct</h2>
+
+<p>
+UbuntuFx maintains a disciplined and ethical learning environment.
+</p>
+
+<p>Prohibited behavior includes:</p>
+
+<ul>
+<li>Signal selling or solicitation</li>
+<li>Profit bragging or misleading performance claims</li>
+<li>Promotion of scams or unverified brokers</li>
+<li>Harassment or abusive language</li>
+</ul>
+
+<p>
+UbuntuFx reserves the right to remove content or restrict access when these rules are violated.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="third-party">
+
+<h2>10) Third-Party Links and Services</h2>
+
+<p>
+The Platform may contain links to third-party websites, services, or tools.
+</p>
+
+<ul>
+<li>UbuntuFx does not control or endorse third-party platforms.</li>
+<li>Use of third-party services occurs at your own risk.</li>
+<li>UbuntuFx is not responsible for losses arising from third-party interactions.</li>
+</ul>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="liability">
+
+<h2>11) Limitation of Liability</h2>
+
+<p>
+To the maximum extent permitted by law, UbuntuFx shall not be liable for direct or indirect losses arising from use of the Platform.
+</p>
+
+<p>
+This includes trading losses, reliance on educational content, data inaccuracies, or service interruptions.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="indemnification">
+
+<h2>12) Indemnification</h2>
+
+<p>
+You agree to indemnify and hold harmless UbuntuFx and its contributors from any claims or damages resulting from:
+</p>
+
+<ul>
+<li>Your use of the Platform</li>
+<li>Your violation of these Terms</li>
+<li>Your personal trading decisions</li>
+</ul>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="privacy">
+
+<h2>13) Privacy and Data Use</h2>
+
+<p>
+Use of UbuntuFx is also governed by our Privacy Policy.
+</p>
+
+<ul>
+<li>We may collect limited personal information such as email addresses for newsletters.</li>
+<li>User data is handled responsibly and not sold to third parties.</li>
+<li>Users are responsible for protecting their own login credentials.</li>
+</ul>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="modifications">
+
+<h2>14) Modifications to Terms</h2>
+
+<p>
+UbuntuFx may update these Terms periodically.
+</p>
+
+<ul>
+<li>Updates will be published on this page.</li>
+<li>Continued use of the Platform indicates acceptance of updated Terms.</li>
+</ul>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="termination">
+
+<h2>15) Termination of Access</h2>
+
+<p>
+UbuntuFx may suspend or terminate access if:
+</p>
+
+<ul>
+<li>These Terms are violated</li>
+<li>Platform misuse occurs</li>
+<li>Legal or regulatory obligations require it</li>
+</ul>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="law">
+
+<h2>16) Governing Law</h2>
+
+<p>
+These Terms shall be governed and interpreted according to applicable laws in the jurisdiction where UbuntuFx operates.
+</p>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="contact">
+
+<h2>17) Contact Information</h2>
+
+<div class="callout">
+<i class="fa-solid fa-envelope"></i>
+<div>
+<strong>Email:</strong>
+<a href="mailto:info@ubuntufx.com" style="color:var(--accent); font-weight:900;">info@ubuntufx.com</a>
+</div>
+</div>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="acknowledgment">
+
+<h2>18) Acknowledgment</h2>
+
+<p>
+By accessing UbuntuFx, you acknowledge that you understand the risks associated with forex trading and agree that UbuntuFx is an educational platform focused on structure, discipline, and long-term trader development.
+</p>
+
+</section>
+
+</div>
+</main>
+
+</div>
+</div>
+</section>
 
     <footer>
       <div class="container">
